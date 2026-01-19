@@ -39,7 +39,7 @@
 
                         <div class="col-auto  ">
                             <button class="btn btn-primary add-btn w-100"><i class="ri-add-fill me-1 align-bottom"></i>
-                                Registrar Inscripción
+                                Registrar Militancia
                             </button>
                         </div>
                     </div>
@@ -55,14 +55,12 @@
                                 <thead class="table-light sticky-top top-0 z-index-10 ">
                                     <tr>
                                         <th data-sort="nombre" scope="col">Nro. <br> Inscripción</th>
-                                        <th data-sort="nombre" scope="col">Datos del Inscrito</th>
-                                        <th data-sort="ci" scope="col">Tipo de <br> Inscripción.</th>
+                                        <th data-sort="nombre" scope="col">Datos del Militante</th>
                                         <th data-sort="celular" scope="col">Fecha Inicio/Fin</th>
                                         <th data-sort="oficina" scope="col" class="break-word">Observación</th>
-                                        <th data-sort="tipoPersonal" scope="col"> Matricula <br> (Bs.)</th>
                                         <th data-sort="tipoPersonal" scope="col"> Estado <br>Inscripción </th>
-                                        <th data-sort="estado" scope="col">Grupo Entrenamiento</th>
-                                        <th data-sort="estado" scope="col">Sucursal</th>
+                                        <th data-sort="estado" scope="col">Bloque Politico</th>
+                                        <th data-sort="estado" scope="col">Casa de Campaña</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -101,7 +99,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0">
                 <div class="modal-header bg-soft-info p-3">
-                    <h5 class="modal-title" id="tituloModal">Registrar Inscripción</h5>
+                    <h5 class="modal-title" id="tituloModal">Registrar Militancia</h5>
                     <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
@@ -137,7 +135,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="choice-mb-none ">
-                                            <label for="id_persona_inscribir" class="form-label">Estudiante <small
+                                            <label for="id_persona_inscribir" class="form-label">Militante <small
                                                     class="text-danger">*</small> </label>
 
                                             <select name="id_persona" id="id_persona_inscribir" required></select>
@@ -147,7 +145,7 @@
                                                 <input class="form-check-input" type="checkbox" id="checkNuevaPersona"
                                                     name="nueva_persona">
                                                 <label class="form-check-label" for="checkNuevaPersona">
-                                                    Registrar Nueva Persona
+                                                    Registrar Nuevo Militante
                                                 </label>
                                                 <i class="ri-question-line text-muted align-bottom"
                                                     data-bs-toggle="tooltip" data-bs-placement="right"
@@ -162,66 +160,63 @@
 
                                     <div class="col-lg-6">
                                         <div class="choice-mb-none ">
-                                            <label for="id_sucursal_fk" class="form-label">Sucursal <small
+                                            <label for="id_sucursal_fk" class="form-label">Casa de Campaña <small
                                                     class="text-danger">*</small> </label>
 
                                             <select name="id_sucursal_fk" id="id_sucursal_fk" required></select>
 
-                                            <div class="invalid-feedback">Por favor seleccione una Sucursal</div>
+                                            <div class="invalid-feedback">Por favor seleccione una Casa de Campaña</div>
                                         </div>
 
                                     </div>
                                     <div class="col-lg-12">
                                         <div>
-                                            <label for="id_grupo_entrenamiento" class="form-label">Grupo de Entrenamiento
+                                            <label for="id_grupo_entrenamiento" class="form-label">Bloque de Militancia
                                                 <small class="text-danger">*</small> </label>
 
                                             <select name="id_grupo_entrenamiento" class="form-select"
                                                 id="id_grupo_entrenamiento" required>
-                                                <option value="">Seleccione una Sucursal para continuar...</option>
+                                                <option value="">Seleccione una Casa de Campaña para continuar...</option>
                                             </select>
 
-                                            <div class="invalid-feedback">Por favor seleccione un Grupo de Entrenamiento
+                                            <div class="invalid-feedback">Por favor seleccione un Bloque de Militancia
                                             </div>
                                         </div>
 
                                     </div>
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 d-none">
                                         <div>
                                             <label for="tipo_inscripcion" class="form-label">Tipo de
-                                                Inscripción <small class="text-danger">*</small></label>
+                                                Militancia <small class="text-danger">*</small></label>
 
                                             <select class="form-select" id="tipo_inscripcion" name="tipo_inscripcion"
                                                 required>
-                                                <option value="PAGO MENSUAL">Pago Mensual</option>
-                                                <option value="PAGO ANUAL">Pago Anual</option>
-                                                <option value="SEMESTRAL">Semestral (6 meses)</option>
-                                                <option value="TRIMESTRAL">Trimestral (3 meses)</option>
-                                                <option value="BECA">Beca</option>
-                                                <option value="MEDIA BECA">Media Beca</option>
-
+                                                <option value="DIRIGENCIA"> Dirigencia </option>
+                                                <option value="CUADRO_TECNICO">Cuadro Técnico</option>
+                                                <option value="ENCARGADO">Encargado</option>
+                                                <option value="SIMPATIZANTE" selected>Simpatizante</option>
 
                                             </select>
                                             <div class="invalid-feedback">
-                                                Por favor Seleccione un Tipo de Inscripción.
+                                                Por favor Seleccione un Tipo de Militancia.
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div>
-                                            <label for="monto_inscripcion" class="form-label">Monto Matricula
+                                            <label for="monto_inscripcion" class="form-label">Aporte Inicial
                                                 (Bs.)</label>
                                             <input type="text" id="monto_inscripcion" name="monto_inscripcion"
-                                                class="form-control max-length txtDecimal" maxlength="8"
+                                                class="form-control max-length txtDecimal" maxlength="8" value="0"
                                                 placeholder=" Bs." />
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div>
-                                            <label for="fecha_inicio" class="form-label">Fecha de Inicio <small
+                                            <label for="fecha_inicio" class="form-label">Fecha de Afiliación <small
                                                     class="text-danger">*</small> </label>
 
                                             <input type="date" class="form-control" id="fecha_inicio"
@@ -230,12 +225,12 @@
                                                 min="2022-01-01" />
 
                                             <div class="invalid-feedback">
-                                                Por favor ingrese una fecha de inicio.
+                                                Por favor ingrese una fecha de afiliación.
                                             </div>
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 d-none">
                                         <div>
                                             <label for="fecha_fin" class="form-label">Fecha de Finalización <small
                                                     class="text-danger">*</small> </label>
@@ -244,7 +239,7 @@
                                                 max="{{ date('Y-m-d', strtotime('+2 year')) }}" />
 
                                             <div class="invalid-feedback">
-                                                Por favor ingrese una fecha de Finalizacion.
+                                                Por favor ingrese una fecha de finalización.
                                             </div>
 
                                         </div>
@@ -252,13 +247,13 @@
 
 
 
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div>
                                             <label for="" class="form-label">Estado Inscripción <small
                                                     class="text-danger">*</small> </label>
                                             <div class="form-check form-radio-primary mb-0">
                                                 <input class="form-check-input" type="radio" name="estado_inscripcion"
-                                                    value="INSCRITO" id="estado_ins" required>
+                                                    value="INSCRITO" id="estado_ins" required checked>
                                                 <label class="form-check-label" for="estado_ins">
                                                     Inscrito
                                                 </label>
@@ -279,23 +274,7 @@
                                                 </label>
 
                                             </div>
-                                            <div class="form-check form-radio-danger mb-1">
-                                                <input class="form-check-input" type="radio" name="estado_inscripcion"
-                                                    value="CAMBIO DE TURNO" id="estado_cambio" required>
-                                                <label class="form-check-label" for="estado_cambio">
-                                                    Cambio de turno
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-radio-danger mb-1">
-                                                <input class="form-check-input" type="radio" name="estado_inscripcion"
-                                                    value="CAMBIO DE TURNO" id="estado_cambio_sucursal" required>
-                                                <label class="form-check-label" for="estado_cambio_sucursal">
-                                                    Cambio de sucursal
-                                                </label>
-                                                <div class="invalid-feedback">
-                                                    Por favor seleccione un estado de Inscripcion.
-                                                </div>
-                                            </div>
+
 
                                         </div>
                                     </div>
@@ -383,12 +362,12 @@
 
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="numero_documento" class="form-label">Nro C.I. del Estudiante
+                                                <label for="numero_documento" class="form-label">Nro C.I. del Militante
                                                     <small class="text-danger">*</small>
                                                 </label>
                                                 <input type="text" id="numero_documento" name="numero_documento"
                                                     class="form-control txtNormal sinEspacios" required placeholder="" />
-                                                <small class="text-muted">(Nro. C.I. del Inscrito)</small>
+                                                <small class="text-muted">(Nro. C.I. del Militante)</small>
                                                 <div class="invalid-feedback">
                                                     Por favor ingrese un numero de carnet de identidad.
                                                 </div>
@@ -396,7 +375,7 @@
 
                                         </div>
 
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-8 d-none">
                                             <div>
                                                 <label for="apoderado" class="form-label">Nombre Completo del Apoderado
                                                     <small class="text-muted">(opcional)</small> </label>
@@ -408,12 +387,12 @@
 
                                         <div class="col-lg-4">
                                             <div>
-                                                <label for="nombre" class="form-label">Nombre(s) del Estudiante <small
+                                                <label for="nombre" class="form-label">Nombre(s) del Militante <small
                                                         class="text-danger">*</small> </label>
                                                 <input type="text" id="nombre" name="nombre"
                                                     class="form-control txtMayuscula txtNormal" placeholder="" required />
                                                 <div class="invalid-feedback">
-                                                    Por favor ingrese un nombre o nombres.
+                                                    Por favor ingrese un nombre .
                                                 </div>
                                             </div>
                                         </div>
@@ -503,7 +482,7 @@
                                                     Inscripción</label>
                                                 <div class="form-check form-radio-primary mb-0">
                                                     <input class="form-check-input" type="radio" name="estado_persona"
-                                                        value="INSCRITO" id="estado_persona_inscrito" required>
+                                                        value="INSCRITO" id="estado_persona_inscrito" required checked>
                                                     <label class="form-check-label" for="estado_persona_inscrito">
                                                         Inscrito
                                                     </label>
@@ -526,11 +505,11 @@
                                         <div class="col-lg-4">
                                             <div>
                                                 <label for="id_tipo_persona_fk" class="form-label">Tipo
-                                                    Persona <small class="text-danger">*</small></label>
+                                                    Militancia <small class="text-danger">*</small></label>
 
                                                 <select class="form-select" id="id_tipo_persona_fk"
                                                     name="id_tipo_persona_fk" required>
-                                                    <option value="">Seleccione el Tipo de Persona</option>
+                                                    <option value="">Seleccione el Tipo de Militancia</option>
                                                     @foreach ($tipoPersona as $tp)
                                                         <option value="{{ $tp->id_tipo_persona }}">
                                                             {{ $tp->tipo_persona }}</option>
@@ -541,7 +520,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div>
                                                 <label for="direccion" class="form-label">Dirección de Domicilio </label>
 
@@ -550,7 +529,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 d-none">
                                             <div>
                                                 <label for="lugar_nacimiento" class="form-label">Lugar de Nacimiento
                                                 </label>

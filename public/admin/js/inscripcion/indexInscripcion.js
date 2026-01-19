@@ -52,7 +52,7 @@ $(function () {
         let optionsSucursal = [];
         // placeholder
         optionsSucursal.push({
-            label: "Seleccione Sucursal",
+            label: "Seleccione Casa de Campaña",
             value: "",
             id: "",
         });
@@ -79,7 +79,7 @@ $(function () {
         let optionsGrupoEntrenamiento = [];
         // placeholder
         optionsGrupoEntrenamiento.push({
-            label: "Seleccione Grupo de Entrenamiento",
+            label: "Seleccione Bloque de Militancia",
             value: "",
             id: "",
             disabled: true,
@@ -89,7 +89,7 @@ $(function () {
         listaGrupoEntrenamiento.forEach((item) => {
             if (Number(item.id_sucursal_fk) == Number(idSucursal)) {
                 optionsGrupoEntrenamiento.push({
-                    label: item.gestion + " - " + item.nombre_categoria + " - TURNO " + item.turno + " [" + item.dia + "]",
+                    label: item.nombre_grupo ,
                     value: item.id_grupo_entrenamiento,
                     id: item.id_grupo_entrenamiento,
                 });
@@ -100,7 +100,7 @@ $(function () {
         if (optionsGrupoEntrenamiento.length == 1) {
             optionsGrupoEntrenamiento = [];
             optionsGrupoEntrenamiento.push({
-                label: "Por favor seleccione una sucursal para continuar...",
+                label: "Por favor seleccione una casa de campaña para continuar...",
                 value: "",
                 id: "",
                 disabled: true,
@@ -475,9 +475,7 @@ $(function () {
 
             </td>
 
-            <td class="celular">
-                ${item.tipo_inscripcion || ""}
-            </td>
+
             <td class="oficina break-word"  >
                 <p class="text-muted mb-0">F. Inscripción: <span class="fw-medium"> ${fomatDate(item.fecha_inicio)} </span></p>
                 <p class="text-muted mb-0">F. Finalización: <span class="fw-medium"> ${fomatDate(item.fecha_fin)} </span></p>
@@ -491,10 +489,6 @@ $(function () {
                 </div>
             </td>
 
-            <td class="estado">
-                ${numeroMonto(item.monto_inscripcion || "")}
-
-            </td>
             <td class="tipoPersonal">
                 <span class="text-${estadoInscripcion[item.estado_inscripcion] || "primary"}">
                  ${item.estado_inscripcion || ""}
@@ -504,10 +498,7 @@ $(function () {
 
             <td class="grupo break-word">
                 <div class="" style="max-width:150px;">
-                    ${item.gestion || ""} -
-                    ${item.nombre_categoria || ""}
-                    TURNO ${item.turno || ""}
-                    [${item.dia || ""}]
+                    ${item.nombre_grupo || ""}
 
                 </div>
             </td>
@@ -539,22 +530,23 @@ $(function () {
                             <i class="ri-delete-bin-2-line fs-16"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item edit" >
-                        <a href="javascript:void(0);" class="text-primary hover-secondary d-inline-block card-control-btn" tooltip="tooltip" data-bs-placement="top" title="TARJETA DE CONTROL">
-                            <i class="mdi mdi-card-text-outline mdi-20px"></i>
+                     <li class="list-inline-item edit" >
+                        <a href="javascript:void(0);" class="text-secondary hover-secondary d-inline-block pay-list-btn" tooltip="tooltip" data-bs-placement="top" title="Listar Pagos">
+                            <i class=" mdi mdi-cash-register mdi-20px"></i>
                         </a>
                     </li>
 
+
                 </ul>
-                <ul class="list-inline hstack gap-2 mb-0">
+                <ul class="list-inline hstack gap-2 mb-0 d-none">
                     <li class="list-inline-item edit" >
                         <a href="javascript:void(0);" class="text-success hover-secondary d-inline-block card-btn" tooltip="tooltip" data-bs-placement="top" title="Credencial">
                             <i class=" mdi mdi-card-account-details-star-outline mdi-20px"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item edit" >
-                        <a href="javascript:void(0);" class="text-secondary hover-secondary d-inline-block pay-list-btn" tooltip="tooltip" data-bs-placement="top" title="Listar Pagos">
-                            <i class=" mdi mdi-cash-register mdi-20px"></i>
+                <li class="list-inline-item edit d-none" >
+                        <a href="javascript:void(0);" class="text-primary hover-secondary d-inline-block card-control-btn" tooltip="tooltip" data-bs-placement="top" title="TARJETA DE CONTROL">
+                            <i class="mdi mdi-card-text-outline mdi-20px"></i>
                         </a>
                     </li>
                 </ul>
@@ -1061,7 +1053,7 @@ $(function () {
 
                         </div>
                         <div class="card-body">
-                            <h6 class="text-muted text-uppercase fw-semibold mb-3">Grupo de Entrenamiento : <br>  ${datos.gestion || ""} -
+                            <h6 class="text-muted text-uppercase fw-semibold mb-3">Bloque político : <br>  ${datos.gestion || ""} -
                             ${datos.nombre_categoria || ""}
                             TURNO ${datos.turno || ""}
                             [${datos.dia || ""}] </h6>
@@ -1077,18 +1069,8 @@ $(function () {
                                             <td class=""><span
                                                     class=""> ${fomatDate(datos.fecha_inicio)} al  ${fomatDate(datos.fecha_fin)} </span> </td>
                                         </tr>
-                                        <tr>
-                                            <td class="fw-medium " scope="row"><span
-                                                    class=""> Tipo Inscripción </span> </td>
-                                            <td class=""> <span class="">
-                                                    ${datos.tipo_inscripcion || ""} </span> </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="fw-medium " scope="row"><span
-                                                    class=""> Matricula </span> </td>
-                                            <td class=""> <span class="">
-                                            ${numeroMonto(datos.monto_inscripcion || "")} Bs.</span> </td>
-                                        </tr>
+
+
                                         <tr>
                                             <td class="fw-medium " scope="row"><span
                                                     class=""> Estado Inscripcion </span> </td>
@@ -1097,7 +1079,7 @@ $(function () {
                                         </tr>
                                         <tr>
                                             <td class="fw-medium " scope="row"><span
-                                                    class=""> Sucursal </span> </td>
+                                                    class=""> Distrito </span> </td>
                                             <td class=""> <span class="">
                                                     ${datos.nombre_sucursal || ""} </span> </td>
                                         </tr>
@@ -1155,7 +1137,6 @@ $(function () {
             </div>
             <div class="card-body">
                 <h6 class="text-muted text-uppercase fw-semibold mb-3">Información Personal </h6>
-                <p class="text-muted mb-4"><b>Apoderado: </b> ${datos.apoderado || "-"}</p>
                 <div class="table-responsive table-card">
                     <table class="table table-borderless mb-0">
                         <tbody>
@@ -1183,10 +1164,7 @@ $(function () {
                                 <td class="fw-medium" scope="row">Dirección Domicilio</td>
                                 <td>${datos.direccion || ""} </td>
                             </tr>
-                            <tr>
-                                <td class="fw-medium" scope="row">Lugar de Nacimiento</td>
-                                <td>${datos.lugar_nacimiento || ""} </td>
-                            </tr>
+
                             <tr>
                                 <td class="fw-medium" scope="row">Fecha de Registro</td>
                                 <td>${fomatDate(datos.created_at || "", "fh")} </td>

@@ -38,7 +38,7 @@ class Categoria extends Model implements Auditable
     static $rules = [
         'nombre_categoria' => 'required|max:255|min:5|unique:weps_categoria,nombre_categoria',
         'descripcion' => 'nullable',
-        'precio' => 'nullable|numeric|min:1|max:300',
+        'precio' => 'nullable|numeric|max:300',
         'estado' => 'nullable'
     ];
 

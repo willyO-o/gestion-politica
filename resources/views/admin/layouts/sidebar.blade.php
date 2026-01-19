@@ -86,11 +86,11 @@
                         <i class="mdi mdi-format-list-bulleted"></i> <span data-key="t-categorias">Categorías</span>
                     </a>
                 </li> --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('seguimientos.index') }}" aria-expanded="false">
                         <i class="mdi mdi-format-list-bulleted"></i> <span data-key="t-seguimientos">Seguimientos</span>
                     </a>
-                </li>
+                </li> --}}
 
 
                 @endif
@@ -107,7 +107,7 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="{{ route('asistencia.marcado') }}" class="nav-link"
-                                        data-key="t-asistencia-estudiante"> Asistencia Estudiantil </a>
+                                        data-key="t-asistencia-estudiante"> Asistencia Actividades </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route("asistencia.index") }}" class="nav-link" data-key="t-asistencia"> Asistencia </a>

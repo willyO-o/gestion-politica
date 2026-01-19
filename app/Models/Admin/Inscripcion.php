@@ -36,7 +36,7 @@ class Inscripcion extends Model implements Auditable
     public static $rules = [
         'id_persona' => 'required|integer|exists:weps_persona,id_persona',
         'id_grupo_entrenamiento' => 'required|integer|exists:weps_grupo_entrenamiento,id_grupo_entrenamiento',
-        'tipo_inscripcion' => 'required',
+        'tipo_inscripcion' => 'nullable',
         'fecha_inicio' => 'required|date',
         'fecha_fin' => 'nullable|date',
         'descripcion' => 'nullable|string|max:250',

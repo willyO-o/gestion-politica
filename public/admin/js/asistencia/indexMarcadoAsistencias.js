@@ -278,7 +278,7 @@ $(function () {
                     if (estado) {
 
                         Swal.fire({
-                            title: `¿Desea Registrar <b class="text-${estado == "El Ingreso" ? "success" : "danger"} " > ${estado}  </b>   del estudiante?:`,
+                            title: `¿Desea Registrar <b class="text-${estado == "El Ingreso" ? "success" : "danger"} " > ${estado}  </b>   del Militante?:`,
                             html: `<div><span class="h3 text-primary">
                             <i class="mdi mdi-clock-time-four-outline"></i></span>
                             <span class="h3  text-primary reloj" id="reloj" class="text-primary"></span></div><p>Nombre: <b>${nombre}  </b> </p> <p>Nro Inscripción: <b>${nroInscripcion} </b> </p>`,
@@ -295,7 +295,7 @@ $(function () {
                                         if (res.success) {
                                             Swal.fire({
                                                 icon: 'success',
-                                                title: ` <p class="text-${estado == "El Ingreso" ? "success" : "danger"} ">Se registró  ${estado} del estudiante: </p>  `,
+                                                title: ` <p class="text-${estado == "El Ingreso" ? "success" : "danger"} ">Se registró  ${estado} del Militante: </p>  `,
                                                 html: `<p>Nombre: <b>${nombre}  </b> </p> <p>Nro Inscripción: <b>${nroInscripcion} </b> </p> `,
                                                 confirmButtonColor: '#3085d6',
                                                 confirmButtonText: 'Aceptar'
@@ -320,7 +320,7 @@ $(function () {
 
                     Swal.fire({
                         icon: 'warning',
-                        title: `El estudiante:`,
+                        title: `El militante:`,
                         html: `<p>Nombre: <b>${nombre}  </b> </p> <p>Nro Inscripcion: <b>${nroInscripcion} </b> </p> <p class="text-danger">Ya tiene registrado la asistencia del dia de hoy</p>`,
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'Aceptar'
@@ -345,7 +345,7 @@ $(function () {
     $("#nroInscripcion").select2({
         dropdownParent: $("#showModal"),
         minimumInputLength: 3,
-        placeholder: "Ingrese Nro Inscripción, Nombre o C.I. del estudiante",
+        placeholder: "Ingrese Nro Inscripción, Nombre o C.I. del Militante",
         language: {
             inputTooShort: function () {
                 return "Ingrese 3 o más caracteres";

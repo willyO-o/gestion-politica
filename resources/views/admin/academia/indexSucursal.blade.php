@@ -9,7 +9,7 @@
 
                         <div class="col-md-6">
                             <div class="search-box">
-                                <input type="search" class="form-control" placeholder="Buscar sucursal."
+                                <input type="search" class="form-control" placeholder="Buscar casa de campaña."
                                     id="inputBuscarSucursal">
                                 <i class="ri-search-line search-icon"></i>
                             </div>
@@ -19,7 +19,7 @@
 
                         <div class="col-md-2  ">
                             <button class="btn btn-outline-info add-btn"><i class="ri-add-fill me-1 align-bottom"></i>
-                                Registrar Nueva Sucursal
+                                Registrar Nueva Casa de Campaña
                             </button>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <table class="table align-middle table-wrap table-sm  mb-0" id="tablaSucursal">
                                 <thead class="table-light sticky-top top-0 z-index-10 ">
                                     <tr>
-                                        <th data-sort="nombre" scope="col">sucursal</th>
+                                        <th data-sort="nombre" scope="col">Casa de campaña</th>
                                         <th data-sort="ci" scope="col">Dirección</th>
                                         <th data-sort="celular" scope="col">telefono</th>
                                         <th data-sort="tipoPersonal" scope="col">Coordenadas </th>
@@ -78,7 +78,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0">
                 <div class="modal-header bg-soft-info p-3">
-                    <h5 class="modal-title" id="tituloModal">Registrar Sucursal</h5>
+                    <h5 class="modal-title" id="tituloModal">Registrar Casa de Campaña</h5>
                     <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
@@ -95,13 +95,13 @@
 
                             <div class="col-lg-6">
                                 <div>
-                                    <label for="nombre_sucursal" class="form-label">Número de la Sucursal <small
+                                    <label for="nombre_sucursal" class="form-label">Nombre de la Casa de Campaña <small
                                             class="text-danger">*</small>
                                     </label>
                                     <input type="text" id="nombre_sucursal" name="nombre_sucursal"
                                         class="form-control txtNormal txtMayuscula " required placeholder="" />
                                     <div class="invalid-feedback">
-                                        Por favor ingrese un nombre de la sucursal.
+                                        Por favor ingrese un nombre de la casa de campaña.
                                     </div>
                                 </div>
 
@@ -118,7 +118,7 @@
 
                             <div class="col-lg-12">
                                 <div>
-                                    <label for="direccion_sucursal" class="form-label">Dirección de la Sucursal <small
+                                    <label for="direccion_sucursal" class="form-label">Dirección de la Casa de Campaña <small
                                             class="text-muted">(opcional)</small> </label>
                                     <textarea type="text" id="direccion_sucursal" name="direccion_sucursal"
                                         class="form-control txtNormal" placeholder="" ></textarea>
@@ -154,7 +154,7 @@
                             <button type="reset" class="btn btn-light" data-bs-dismiss="modal"
                                 id="cancel-btn">Cancelar</button>
                             <button type="submit" class="btn btn-success mdi" id="add-btn">Registrar
-                                Sucursal</button>
+                                Casa de Campaña</button>
 
                         </div>
                     </div>
@@ -268,13 +268,13 @@
         <div class="page-title-right">
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="javascript: void(0);"></a>Inicio</li>
-                <li class="breadcrumb-item active">Administrar Sucursales </li>
+                <li class="breadcrumb-item active">Administrar Casas de Campaña </li>
             </ol>
         </div>
     @endsection
 
     @section('title')
-        Administración de Sucursales
+        Administración de Casas de Campaña
     @endsection
 
     @section('js')

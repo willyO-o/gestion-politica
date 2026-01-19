@@ -33,7 +33,7 @@ class Asistencia extends Model  implements Auditable
         'observacion' => 'nullable|max:2000',
         'ingreso' => 'nullable|date_format:H:i|required_without:permiso',
         'salida' => 'nullable|date_format:H:i|required_without:permiso',
-        'fecha_asistencia' => 'required|date|dia_correspondiente|unique_asistencia',
+        'fecha_asistencia' => 'required|date|unique_asistencia',
         'permiso' => 'nullable',
     ];
 

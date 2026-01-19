@@ -379,7 +379,7 @@ class GrupoEntrenamientoController extends Controller
     {
 
         $data["categorias"] = Categoria::where('estado', 'ACTIVO')->get();
-        $data["entrenadores"] = DB::table('weps_persona')->where('estado_persona', 'ACTIVO')->where('id_tipo_persona_fk', 2)->get();
+        $data["entrenadores"] = DB::table('weps_persona')->where('estado_persona', 'ACTIVO')->get();
         $data["sucursales"] = DB::table('weps_sucursal')->where('estado_sucursal', 'ACTIVO')->get();
 
 

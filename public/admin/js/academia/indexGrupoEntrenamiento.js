@@ -66,7 +66,7 @@ $(function () {
         let optionsCategoria = [];
         // placeholder
         optionsCategoria.push({
-            label: "Seleccione una Categoría",
+            label: "Seleccione un distrito",
             value: "",
             id: "",
         });
@@ -97,7 +97,7 @@ $(function () {
         let optionsSucursal = [];
         // placeholder
         optionsSucursal.push({
-            label: "Seleccione una Sucursal",
+            label: "Seleccione una Casa de campaña",
             value: "",
             id: "",
         });
@@ -127,7 +127,7 @@ $(function () {
         let options = [];
         // placeholder
         options.push({
-            label: "Seleccione un Entrenador",
+            label: "Seleccione un Encargado",
             value: "",
             id: "",
         });
@@ -157,7 +157,7 @@ $(function () {
         let optionsSucursal = [];
         // placeholder
         optionsSucursal.push({
-            label: "Seleccione una Sucursal",
+            label: "Seleccione una Casa de Campaña",
             value: "",
             id: "",
         });
@@ -183,7 +183,7 @@ $(function () {
         let optionsCategoria = [];
         // placeholder
         optionsCategoria.push({
-            label: "Seleccione una Categoría",
+            label: "Seleccione un distrito",
             value: "",
             id: "",
         });
@@ -305,26 +305,7 @@ $(function () {
             <td class="fecha_fin">
                 ${fomatDate(item.fecha_fin || "")}
             </td>
-            <td class="dia">
-                ${item.dia}
-            </td>
 
-
-            <td class="hora">
-                ${item.hora_inicio || ""}
-                <br>
-                ${item.hora_fin || ""}
-            </td>
-
-            <td class="dia_extra">
-                ${item.dia_extra || ""}
-            </td>
-            <td class="hora_inicio_dia_extra">
-                ${item.hora_inicio_dia_extra || ""}
-            </td>
-            <td class="turno">
-                ${item.turno}
-            </td>
             <td class="estado">
 
                 <div class="form-check form-switch">
@@ -395,9 +376,9 @@ $(function () {
             let itemId = $(this).closest("tr").data("id");
 
 
-            $("#add-btn").text("Actualizar Grupo de Entrenamiento");
+            $("#add-btn").text("Actualizar Bloque Politico");
 
-            $("#tituloModal").text("Actualizar Grupo de Entrenamiento");
+            $("#tituloModal").text("Actualizar Bloque Politico");
 
             $.get(baseUrl + '/admin/grupos-entrenamientos/' + itemId)
                 .done(function (res) {
@@ -483,7 +464,7 @@ $(function () {
 
 
             Swal.fire({
-                title: '¿Estas seguro de eliminar el grupo de Entrenamiento: ' + nombre + '?',
+                title: '¿Estas seguro de eliminar el bloque politico: ' + nombre + '?',
                 text: "No podras revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -498,7 +479,7 @@ $(function () {
                         .done(function (data) {
 
                             if (data.success) {
-                                notification(data.message, "Grupo de Entrenamiento...")
+                                notification(data.message, "Bloque Politico...")
 
                                 btn.closest("tr").fadeOut("slow", function () {
                                     $(this).remove();
@@ -613,8 +594,8 @@ $(function () {
         $("#formGrupoEntrenamiento")[0].reset();
         $("#imagen").val("");
         $("#action").val("crear");
-        $("#add-btn").text("Registrar Grupo de Entrenamiento");
-        $("#tituloModal").text("Registrar Grupo de Entrenamiento");
+        $("#add-btn").text("Registrar Bloque politico");
+        $("#tituloModal").text("Registrar Bloque Politico");
 
         llenarSelectCategoria();
         llenarSelectSucursal();
@@ -635,7 +616,7 @@ $(function () {
 
                 if (data.success) {
                     $("#cancel-btn").trigger("click");
-                    notification(data.message, "Grupo de Entrenamiento Registrado Correctamente")
+                    notification(data.message, "Bloque Politico Registrado Correctamente")
                     let row = rowHtml(data.data, 1);
                     $("#tbodyListaGrupo").prepend(row);
                     $("#formGrupoEntrenamiento").removeClass('was-validated');
@@ -670,7 +651,7 @@ $(function () {
                 if (data.success) {
                     $("#cancel-btn").trigger("click");
 
-                    notification(data.message, "Grupo de Entrenamiento Actualizado Correctamente")
+                    notification(data.message, "Bloque Politico Actualizado Correctamente")
                     let row = rowHtml(data.data, 1);
                     $("#tbodyListaGrupo").find(`tr[data-id="${data.data.id_grupo_entrenamiento}"]`).replaceWith(row);
 

@@ -30,7 +30,7 @@
                 <div class="card-header row">
                     <div class="col-9">
                         <input type="search" class="form-control" id="buscarAsistencia"
-                            placeholder="Buscar por inscripcion, nombre o C.I.  de estudiante"
+                            placeholder="Buscar por inscripcion, nombre o C.I.  de militante"
                             aria-label="Buscar por nombre o celular" aria-describedby="button-addon2">
                     </div>
                     <div class="col-auto">
@@ -51,12 +51,12 @@
                                 <thead class="table-light sticky-top top-0 z-index-10 ">
                                     <tr>
                                         <th data-sort="nombre" scope="col">Nro. <br> Inscripción</th>
-                                        <th data-sort="nombre" scope="col">Estudiante</th>
+                                        <th data-sort="nombre" scope="col">Militante</th>
                                         <th data-sort="celular" scope="col">Fecha Asistencia</th>
                                         <th data-sort="tipoPersonal" scope="col"> Entrada</th>
                                         <th data-sort="tipoPersonal" scope="col"> Salida </th>
-                                        <th data-sort="estado" scope="col">Grupo Entrenamiento</th>
-                                        <th data-sort="sucursal" scope="col">Sucursal</th>
+                                        <th data-sort="estado" scope="col">Bloque Politico</th>
+                                        <th data-sort="sucursal" scope="col">Casa de Campaña</th>
                                         <th data-sort="oficina" scope="col" class="break-word">Observación</th>
                                         <th data-sort="permiso" scope="col">Permiso</th>
                                         <th scope="col">Acciones</th>

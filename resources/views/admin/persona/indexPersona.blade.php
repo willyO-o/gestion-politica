@@ -245,7 +245,7 @@
 
                             <div class="col-lg-4">
                                 <div>
-                                    <label for="numero_documento" class="form-label">Nro C.I. del Estudiante <small
+                                    <label for="numero_documento" class="form-label">Nro C.I.  <small
                                             class="text-danger">*</small>
                                     </label>
                                     <input type="text" id="numero_documento" name="numero_documento"
@@ -258,7 +258,7 @@
 
                             </div>
 
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 d-none">
                                 <div>
                                     <label for="apoderado" class="form-label">Nombre Completo del Apoderado <small
                                             class="text-muted">(opcional)</small> </label>
@@ -270,7 +270,7 @@
 
                             <div class="col-lg-4">
                                 <div>
-                                    <label for="nombre" class="form-label">Nombre(s) del Estudiante <small
+                                    <label for="nombre" class="form-label">Nombre(s) de la Persona <small
                                             class="text-danger">*</small> </label>
                                     <input type="text" id="nombre" name="nombre"
                                         class="form-control txtMayuscula txtNormal" placeholder="" required />
@@ -361,7 +361,7 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label for="id_tipo_persona_fk" class="form-label">Tipo
-                                        Persona <small class="text-danger">*</small></label>
+                                        Militancia <small class="text-danger">*</small></label>
 
                                     <select class="form-select" id="id_tipo_persona_fk" name="id_tipo_persona_fk"
                                         required>
@@ -385,7 +385,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div>
                                     <label for="lugar_nacimiento" class="form-label">Lugar de Nacimiento </label>
 

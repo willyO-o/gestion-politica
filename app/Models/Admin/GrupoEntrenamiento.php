@@ -60,13 +60,13 @@ class GrupoEntrenamiento extends Model implements Auditable
         'descripcion_grupo' => 'nullable|max:1000',
         'fecha_creacion' => 'required|date',
         'fecha_fin' => 'nullable|date',
-        'dias' => 'required',
-        'hora_inicio' => 'required|date_format:H:i',
-        'hora_fin' => 'required|date_format:H:i',
+        'dias' => 'nullable',
+        'hora_inicio' => 'nullable|date_format:H:i',
+        'hora_fin' => 'nullable|date_format:H:i',
         'dia_extra' => 'nullable',
         'hora_inicio_dia_extra' => 'nullable|date_format:H:i',
         'estado_grupo' => 'nullable|in:ACTIVO,INACTIVO',
-        'turno' => 'required|in:MAÑANA,TARDE',
+        'turno' => 'nullable|in:MAÑANA,TARDE',
         'id_sucursal_fk' => 'required|exists:weps_sucursal,id_sucursal',
     ];
 

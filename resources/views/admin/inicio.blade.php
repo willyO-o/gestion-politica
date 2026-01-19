@@ -72,7 +72,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <p class="fw-medium text-muted mb-0">Sucursales</p>
+                                        <p class="fw-medium text-muted mb-0">Casas de Campaña</p>
                                         <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
                                                 data-target="{{ $sucursales }}">0</span></h2>
                                         <p class="mb-0 text-muted"><span class="badge bg-light text-success mb-0">
@@ -98,7 +98,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <p class="fw-medium text-muted mb-0">Entrenadores</p>
+                                        <p class="fw-medium text-muted mb-0">Encargados</p>
                                         <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
                                                 data-target="{{ $entrenadores }}">0</span>
                                         </h2>
@@ -189,7 +189,7 @@
                 <div class="col-xl-6">
                     <div class="card card-height-100">
                         <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Inscritos Por Sucursales</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Inscritos Por Casas de Campaña</h4>
 
                         </div>
                         <div class="card-body p-0">

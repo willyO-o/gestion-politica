@@ -6,19 +6,19 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="/" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{ url('/assets/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ url('img/mts/logo-legion-alt.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ url('/assets/images/logo-dark.png') }}" alt="" height="17">
+                            <img src="{{ url('img/mts/logo-legion-alt.png') }}" alt="" height="17">
                         </span>
                     </a>
 
                     <a href="/" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ url('/assets/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ url('img/mts/logo-legion-alt.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ url('/assets/images/logo-light.png') }}" alt="" height="17">
+                            <img src="{{ url('img/mts/logo-legion-alt.png') }}" alt="" height="17">
                         </span>
                     </a>
                 </div>
@@ -35,8 +35,7 @@
 
                 <!-- App Search-->
                 {{-- <h5 class="page-title-main title-system mt-4 d-sm-block d-none">Bienvenido al Sistema De Administración y Control de Activos Fijos - SICAF </h5> --}}
-                <h5 class="page-title-main title-systems mt-4  ">Bienvenido al Sistema RT </h5>
-
+                <h5 class="page-title-main title-systems mt-4  ">Bienvenido al Sistema de Gestion Política </h5>
             </div>
 
             <div class="d-flex align-items-center">

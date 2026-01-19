@@ -103,7 +103,7 @@ $(function () {
         listaGruposEntrenamiento.forEach(function (row, index) {
 
             optionsGrupoEntrenamiento.push({
-                label: row.nombre_grupo + ", sucursal: " + row.nombre_sucursal + ", horario: " + row.hora_inicio + " - " + row.hora_fin + ", dias: " + row.dia,
+                label: row.nombre_grupo + ", Distrito: " + row.nombre_sucursal ,
                 value: row.id_grupo_entrenamiento,
                 id: row.id_grupo_entrenamiento,
                 selected: index === 0 ? true : false,
@@ -159,7 +159,7 @@ $(function () {
 
 
 
-        let diasEntrenamiento = grupoEntrenamiento.dia.split(",").map(dia => dia.trim());
+        let diasEntrenamiento = grupoEntrenamiento.dia?.split(",").map(dia => dia.trim())|| [];
 
 
         if (grupoEntrenamiento.dia_extra) {

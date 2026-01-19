@@ -9,7 +9,7 @@
 
                         <div class="col-md-6">
                             <div class="search-box">
-                                <input type="search" class="form-control" placeholder="Buscar sucursal."
+                                <input type="search" class="form-control" placeholder="Buscar distrito."
                                     id="inputBuscarCategoria">
                                 <i class="ri-search-line search-icon"></i>
                             </div>
@@ -19,7 +19,7 @@
 
                         <div class="col-auto  ">
                             <button class="btn btn-outline-info add-btn"><i class="ri-add-fill me-1 align-bottom"></i>
-                                Registrar Nueva Categoria
+                                Registrar Nuevo Distrito
                             </button>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <table class="table align-middle table-wrap table-sm  mb-0" id="tablaCategoria">
                                 <thead class="table-light sticky-top top-0 z-index-10 ">
                                     <tr>
-                                        <th data-sort="nombre" scope="col">Categoria</th>
+                                        <th data-sort="nombre" scope="col">Distrito</th>
                                         <th data-sort="ci" scope="col">Descripción</th>
                                         <th data-sort="celular" scope="col">Precio</th>
                                         <th data-sort="celular" scope="col">Fecha Creación</th>
@@ -78,7 +78,7 @@
             <div class="modal-content border-0">
                 <div class="modal-header bg-soft-info p-3">
 
-                    <h5 class="modal-title" id="tituloModal">Registrar Categoría</h5>
+                    <h5 class="modal-title" id="tituloModal">Registrar Distrito</h5>
 
                     <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
@@ -94,23 +94,23 @@
 
                             <div class="col-lg-6">
                                 <div>
-                                    <label for="nombre_categoria" class="form-label">Nombre de la Categoria <small
+                                    <label for="nombre_categoria" class="form-label">Nombre del Distrito <small
                                             class="text-danger">*</small>
                                     </label>
                                     <input type="text" id="nombre_categoria" name="nombre_categoria"
                                         class="form-control txtNormal txtMayuscula " required placeholder="" />
                                     <div class="invalid-feedback">
-                                        Por favor ingrese un nombre para la categoria.
+                                        Por favor ingrese un nombre para el distrito.
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div>
                                     <label for="precio" class="form-label">Precio / costo matrícula (Bs.)</label>
                                     <input type="text" id="precio" name="precio"
-                                        class="form-control txtMayuscula txtDecimal" placeholder="" required />
+                                        class="form-control txtMayuscula txtDecimal" placeholder="" required value="0" />
                                         <div class="invalid-feedback">
                                             Por favor ingrese un precio para la categoria.
                                         </div>
@@ -123,10 +123,10 @@
                                     <label for="descripcion" class="form-label">Descripción  </label>
                                     <textarea type="text" id="descripcion" name="descripcion"
                                         class="form-control txtNormal" placeholder="" required ></textarea>
-                                    <small class="text-muted">(Descripción a que publico va dirigido)</small>
+                                    <small class="text-muted">(Descripción a que distrito va dirigido)</small>
 
                                     <div class="invalid-feedback">
-                                        Por favor ingrese una descripción para la categoria.
+                                        Por favor ingrese una descripción para el distrito.
                                     </div>
 
                                 </div>
@@ -139,7 +139,7 @@
                             <button type="reset" class="btn btn-light" data-bs-dismiss="modal"
                                 id="cancel-btn">Cancelar</button>
                             <button type="submit" class="btn btn-success mdi" id="add-btn">Registrar
-                                Categoria</button>
+                                Distrito</button>
 
                         </div>
                     </div>

@@ -164,9 +164,9 @@ $(function () {
             let itemId = $(this).closest("tr").data("id");
 
 
-            $("#add-btn").text("Actualizar sucursal");
+            $("#add-btn").text("Actualizar Casa de Campaña");
 
-            $("#tituloModal").text("Actualizar sucursal");
+            $("#tituloModal").text("Actualizar Casa de Campaña");
 
             $.get(baseUrl + '/admin/sucursales/' + itemId)
                 .done(function (res) {
@@ -231,7 +231,7 @@ $(function () {
 
 
             Swal.fire({
-                title: '¿Estas seguro de eliminar la sucursal: ' + nombre + '?',
+                title: '¿Estas seguro de eliminar la casa de campaña: ' + nombre + '?',
                 text: "No podras revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -359,8 +359,8 @@ $(function () {
         $("#formSucursal")[0].reset();
         $("#imagen").val("");
         $("#action").val("crear");
-        $("#add-btn").text("Registrar Sucursal");
-        $("#tituloModal").text("Registrar Sucursal");
+        $("#add-btn").text("Registrar casa de campaña");
+        $("#tituloModal").text("Registrar Casa de Campaña");
     }
 
     $("#cancel-btn,#close-modal").click(function (e) {
@@ -378,7 +378,7 @@ $(function () {
 
                 if (data.success) {
                     $("#cancel-btn").trigger("click");
-                    notification(data.message, "Sucursal Registrada")
+                    notification(data.message, "Casa de Campaña Registrada")
                     let row = rowHtml(data.data, 1);
                     $("#tbodyListaSucursal").prepend(row);
                     $("#formSucursal").removeClass('was-validated');
@@ -413,7 +413,7 @@ $(function () {
                 if (data.success) {
                     $("#cancel-btn").trigger("click");
 
-                    notification(data.message, "Sucursal Actualizada")
+                    notification(data.message, "Casa de Campaña Actualizada")
                     let row = rowHtml(data.data, 1);
                     $("#tbodyListaSucursal").find(`tr[data-id="${data.data.id_sucursal}"]`).replaceWith(row);
 

@@ -10,13 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet">
 
     <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS (CDN para prototipado rápido) -->
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Configuración de Colores Personalizados -->
@@ -28,8 +31,10 @@
                         mts: {
                             green: '#006837',
                             /* Verde Corporativo */
+                            greenLight: '#008f4c',
                             copper: '#D98D5F',
                             /* Color de Acento/Botones */
+                            copperDark: '#b86e42',
                             dark: '#1A1A1A',
                             /* Texto Oscuro */
                             light: '#F8F9FA',
@@ -39,6 +44,9 @@
                     fontFamily: {
                         display: ['Oswald', 'sans-serif'],
                         body: ['Roboto', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'pattern': "url('https://www.transparenttextures.com/patterns/cubes.png')",
                     }
                 }
             }
@@ -48,55 +56,68 @@
     <style>
         /* Estilos base adicionales */
         .clip-diagonal {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .clip-diagonal-reverse {
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
         }
 
         .hero-gradient {
-            background: linear-gradient(to right, rgba(0, 104, 55, 0.95), rgba(0, 104, 55, 0.7));
+            background: linear-gradient(135deg, rgba(0, 104, 55, 0.95) 0%, rgba(0, 80, 40, 0.8) 100%);
         }
 
-        /* Animación suave para el menú móvil */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
+        /* Botón de Play personalizado */
+        .play-button {
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(217, 141, 95, 0.6);
         }
     </style>
 </head>
 
-<body class="font-body text-mts-dark bg-white antialiased">
+<body class="font-body text-mts-dark bg-white antialiased overflow-x-hidden">
 
     <!-- NAV BAR -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-md" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <!-- Icono simulando logo -->
+                <a href="#" class="flex-shrink-0 flex items-center gap-2 group">
                     <div
-                        class="w-10 h-10 bg-mts-green rounded-full flex items-center justify-center text-white font-display font-bold text-xl">
+                        class="w-10 h-10 bg-mts-green group-hover:bg-mts-copper transition-colors duration-300 rounded-full flex items-center justify-center text-white font-display font-bold text-xl shadow-lg">
                         MTS
                     </div>
                     <div>
-                        <h1 class="font-display font-bold text-2xl text-mts-green leading-none">DAVID VARGAS</h1>
+                        <h1
+                            class="font-display font-bold text-2xl text-mts-green leading-none group-hover:text-mts-dark transition-colors">
+                            DAVID VARGAS</h1>
                         <span class="text-xs font-bold text-mts-copper tracking-widest uppercase">Alcalde 2026</span>
                     </div>
-                </div>
+                </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#inicio" class="text-mts-dark hover:text-mts-copper font-medium transition">Inicio</a>
-                    <a href="#propuestas" class="text-mts-dark hover:text-mts-copper font-medium transition">Propuestas
-                        Clave</a>
-                    <a href="#plan" class="text-mts-dark hover:text-mts-copper font-medium transition">Plan de
-                        Gobierno</a>
-                    <a href="#unete"
-                        class="bg-mts-copper hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold transition shadow-lg transform hover:-translate-y-0.5">
-                        <i class="fab fa-whatsapp mr-2"></i> Únete al Equipo
+                    <a href="#inicio"
+                        class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Inicio</a>
+                    <a href="#historia"
+                        class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Biografía</a>
+                    <a href="#propuestas"
+                        class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Propuestas</a>
+                    <a href="#multimedia"
+                        class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Prensa</a>
+                    <a href="https://whatsapp.com/channel/0029Vb7imk5EQIav20vde90Y" target="_blank"
+                        class="bg-mts-copper hover:bg-mts-copperDark text-white px-6 py-2 rounded-full font-bold transition shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
+                        <i class="fab fa-whatsapp mr-2"></i> Únete
                     </a>
                 </div>
 
                 <!-- Mobile Button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-mts-green text-2xl focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-mts-green text-2xl focus:outline-none p-2">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -105,223 +126,439 @@
 
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu"
-            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100">
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 z-40 transform transition-transform duration-300">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#inicio"
-                    class="block px-3 py-3 text-base font-medium text-mts-green hover:bg-gray-50 rounded">Inicio</a>
+                    class="block px-3 py-3 text-base font-medium text-mts-green hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-green">Inicio</a>
+                <a href="#historia"
+                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Biografía</a>
                 <a href="#propuestas"
-                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded">Propuestas</a>
-                <a href="#plan"
-                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded">Plan
-                    Completo</a>
+                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Propuestas</a>
+                <a href="#multimedia"
+                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Videos</a>
                 <a href="#unete"
-                    class="block px-3 py-3 text-base font-bold text-mts-copper hover:bg-gray-50 rounded">Sumarse al
-                    Cambio</a>
+                    class="block px-3 py-3 text-base font-bold text-white bg-mts-copper rounded text-center mt-4">Sumarse
+                    al Cambio</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="inicio" class="relative pt-20 min-h-[90vh] flex items-center clip-diagonal bg-gray-900">
-        <!-- Background Image Placeholder (Reemplazar con foto real del candidato/banner) -->
-        <div class="absolute inset-0 z-0">
+    <section id="inicio"
+        class="relative pt-20 min-h-[90vh] flex items-center clip-diagonal bg-gray-900 overflow-hidden">
+        <!-- Background Image Parallax -->
+        <div class="absolute inset-0 z-0 transform scale-105">
             <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
-                alt="El Alto Fondo" class="w-full h-full object-cover opacity-40">
-            <!-- Capa verde encima de la foto -->
+                alt="El Alto Fondo" class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="w-full md:w-2/3 text-white py-12">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center w-full">
+            <div class="w-full md:w-3/5 text-white py-12" data-aos="fade-right" data-aos-duration="1000">
                 <div
+                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full font-bold text-xs mb-6 tracking-wider uppercase shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> Gestión 2026 - 2031
+                </div>
+                {{-- <h1 class="font-display font-bold text-5xl md:text-7xl leading-tight mb-6 drop-shadow-lg">
+                    ¡VALENTÍA PARA<br>
+                    <span class="text-mts-copper">TRANSFORMAR!</span>
+                </h1> --}}
+                {{-- <div
                     class="inline-block bg-mts-copper text-white px-4 py-1 rounded-sm font-bold text-sm mb-4 tracking-wider uppercase">
                     Gestión 2026 - 2031
-                </div>
+                </div> --}}
                 <h1 class="font-display font-bold text-5xl md:text-7xl leading-tight mb-6">
                     ¡POR UNA CIUDAD VALIENTE,<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">UN ALCALDE
                         VALIENTE!</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-light mb-8 max-w-2xl text-gray-100">
-                    Un Gobierno con Rostro Humano para El Alto. Priorizamos tu dignidad, seguridad y bolsillo.
-                </p>
+                {{-- <p
+                    class="text-xl md:text-2xl font-light mb-8 max-w-2xl text-gray-100 border-l-4 border-mts-copper pl-6">
+                    No más promesas vacías. Un gobierno con <strong>Rostro Humano</strong> que devuelve la dignidad a
+                    cada familia alteña.
+                </p> --}}
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#propuestas"
-                        class="bg-mts-copper hover:bg-orange-600 text-white text-center px-8 py-4 rounded font-bold text-lg shadow-xl transition transform hover:-translate-y-1">
-                        Conoce las Propuestas
+                        class="bg-mts-copper hover:bg-mts-copperDark text-white text-center px-8 py-4 rounded-lg font-bold text-lg shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <span>Ver Propuestas</span> <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#plan"
-                        class="border-2 border-white hover:bg-white hover:text-mts-green text-white text-center px-8 py-4 rounded font-bold text-lg transition">
-                        Descargar Plan
+                    <a href="https://www.youtube.com/watch?v=placeholder" target="_blank"
+                        class="group flex items-center justify-center gap-3 px-8 py-4 rounded-lg border-2 border-white/30 hover:bg-white/10 text-white font-bold transition">
+                        <i class="fas fa-play-circle text-2xl group-hover:text-mts-copper transition-colors"></i> Ver
+                        Spot
                     </a>
                 </div>
             </div>
 
-            <!-- Espacio para foto del candidato (Recortada sin fondo idealmente) -->
-            <div class="hidden md:block w-1/3 h-full relative">
-                <!-- Placeholder visual de donde iría la foto recortada -->
-                <div
-                    class="border-4 border-mts-copper rounded-lg p-2 bg-white/10 backdrop-blur-sm transform rotate-3 mt-10">
-                    <div class="bg-gray-300 h-96 w-full flex items-center justify-center text-gray-500 font-bold">
-                        [FOTO CANDIDATO AQUÍ]
+            <!-- Foto Candidato -->
+            <div class="hidden md:block w-2/5 h-full relative" data-aos="fade-left" data-aos-delay="200"
+                data-aos-duration="1000">
+                <!-- Imagen del candidato (Placeholder SVG si no hay imagen) -->
+                <div class="relative z-10 mt-12">
+                    <!-- Decoración trasera -->
+                    <div class="absolute -inset-4 bg-mts-copper/20 rounded-full blur-2xl"></div>
+                    <!-- Contenedor Imagen -->
+                    <img src="/img/candidato/candidato3.png"
+                        class="relative z-10 w-full drop-shadow-2xl transform hover:scale-105 transition duration-700 mask-image-bottom"
+                        alt="David Vargas">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIOGRAFÍA / HISTORIA (NUEVA SECCIÓN) -->
+    <section id="historia" class="py-24 bg-white relative overflow-hidden">
+        <!-- Decoración de fondo -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-mts-green/5 rounded-full -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-mts-copper/5 rounded-full translate-x-1/3 translate-y-1/3">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Imagen Historia -->
+                <div class="relative" data-aos="fade-right">
+                    <div class="absolute top-4 -left-4 w-full h-full border-2 border-mts-green rounded-xl z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=1932&auto=format&fit=crop"
+                        alt="David Vargas con el pueblo"
+                        class="relative z-10 rounded-xl shadow-2xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition duration-500">
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-white p-4 shadow-xl rounded-lg z-20 max-w-xs border-l-4 border-mts-copper">
+                        <p class="font-display text-mts-dark font-bold text-lg">"Hijo de El Alto, forjado en el
+                            esfuerzo."</p>
+                    </div>
+                </div>
+
+                <!-- Texto Historia -->
+                <div data-aos="fade-left">
+                    <h4 class="text-mts-copper font-bold tracking-widest uppercase mb-2">Sobre David Vargas</h4>
+                    <h2 class="font-display font-bold text-4xl lg:text-5xl text-mts-dark mb-6">UN LÍDER QUE CONOCE
+                        <br><span class="text-mts-green">TUS LUCHAS</span></h2>
+
+                    <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+                        <p>
+                            Nacido en el Distrito 8, David no es un político de escritorio. Es un profesional que caminó
+                            las mismas calles de tierra que tú, enfrentó las mismas carencias y decidió prepararse para
+                            cambiar esa realidad.
+                        </p>
+                        <p>
+                            Como parte del <strong>Movimiento Tercer Sistema (MTS)</strong>, David representa la
+                            verdadera renovación. Su trayectoria en la gestión social y su lucha incansable por los
+                            derechos vecinales lo convierten en la única opción capaz de ordenar nuestra ciudad sin
+                            perder la sensibilidad humana.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-100 flex gap-8">
+                        <div>
+                            <span class="block font-display font-bold text-4xl text-mts-green">15+</span>
+                            <span class="text-sm text-gray-500 font-medium">Años de Servicio</span>
+                        </div>
+                        <div>
+                            <span class="block font-display font-bold text-4xl text-mts-green">100%</span>
+                            <span class="text-sm text-gray-500 font-medium">Compromiso</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROPUESTAS DESTACADAS (HOOKS) -->
-    <section id="propuestas" class="py-20 bg-mts-light -mt-20 relative z-20">
+    <!-- PROPUESTAS DESTACADAS -->
+    <section id="propuestas" class="py-24 bg-mts-light relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="font-display font-bold text-4xl text-mts-green mb-4">MEDIDAS URGENTES</h2>
-                <div class="w-24 h-1 bg-mts-copper mx-auto"></div>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Acciones inmediatas para mejorar la calidad de vida de
-                    las familias alteñas.</p>
+                <div class="w-24 h-1.5 bg-mts-copper mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">No necesitamos magia, necesitamos gestión.
+                    Estas son las 3 primeras acciones del Gobierno Municipal.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div
-                    class="bg-white p-8 rounded-xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition transform hover:-translate-y-2 group">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-mts-green hover:border-mts-copper hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group"
+                    data-aos="fade-up" data-aos-delay="0">
                     <div
-                        class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-mts-green transition">
+                        class="w-20 h-20 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-mts-green transition duration-300 rotate-3 group-hover:rotate-0">
                         <i class="fas fa-bus text-3xl text-mts-green group-hover:text-white transition"></i>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-gray-800 mb-3">Pasaje Cero</h3>
-                    <p class="text-gray-600">Transporte gratuito en Wayna Bus para <strong>niños menores de 12
-                            años</strong> y adultos mayores. Apoyo directo a la economía familiar.</p>
+                    <h3
+                        class="font-display font-bold text-2xl text-gray-800 mb-3 group-hover:text-mts-green transition">
+                        Pasaje Cero</h3>
+                    <p class="text-gray-600 leading-relaxed">Transporte gratuito en Wayna Bus para <strong>niños
+                            menores de 12 años</strong> y adultos mayores. Apoyo directo al bolsillo de mamá y papá.</p>
                 </div>
 
                 <!-- Card 2 -->
-                <div
-                    class="bg-white p-8 rounded-xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition transform hover:-translate-y-2 group">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group"
+                    data-aos="fade-up" data-aos-delay="100">
                     <div
-                        class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-mts-copper transition">
-                        <i class="fas fa-dog text-3xl text-mts-copper group-hover:text-white transition"></i>
+                        class="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-mts-copper transition duration-300 -rotate-3 group-hover:rotate-0">
+                        <i class="fas fa-shield-dog text-3xl text-mts-copper group-hover:text-white transition"></i>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-gray-800 mb-3">Seguridad Canina</h3>
-                    <p class="text-gray-600">Rescate de canes callejeros para entrenarlos como <strong>unidad de
-                            patrullaje policial</strong>. Seguridad ciudadana con bienestar animal.</p>
+                    <h3
+                        class="font-display font-bold text-2xl text-gray-800 mb-3 group-hover:text-mts-copper transition">
+                        Seguridad Canina</h3>
+                    <p class="text-gray-600 leading-relaxed">Rescate masivo de canes callejeros para entrenamiento en
+                        <strong>seguridad barrial</strong>. Calles seguras y trato ético animal en un solo programa.</p>
                 </div>
 
                 <!-- Card 3 -->
-                <div
-                    class="bg-white p-8 rounded-xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition transform hover:-translate-y-2 group">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-mts-green hover:border-mts-copper hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 group"
+                    data-aos="fade-up" data-aos-delay="200">
                     <div
-                        class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-mts-green transition">
+                        class="w-20 h-20 bg-green-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-mts-green transition duration-300 rotate-3 group-hover:rotate-0">
                         <i class="fas fa-pills text-3xl text-mts-green group-hover:text-white transition"></i>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-gray-800 mb-3">Farmacias del Pueblo</h3>
-                    <p class="text-gray-600">Venta de medicamentos genéricos de calidad a <strong>precio de
-                            costo</strong>. Sin intermediarios, directo de laboratorios al vecino.</p>
+                    <h3
+                        class="font-display font-bold text-2xl text-gray-800 mb-3 group-hover:text-mts-green transition">
+                        Farmacias del Pueblo</h3>
+                    <p class="text-gray-600 leading-relaxed">Red municipal de medicamentos esenciales a <strong>precio
+                            de costo</strong>. Eliminamos intermediarios para garantizar tu salud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN MULTIMEDIA / VIDEO (NUEVA) -->
+    <section id="multimedia" class="py-20 bg-mts-dark relative overflow-hidden">
+        <!-- Overlay Pattern -->
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'0 0 2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2" data-aos="fade-right">
+                    <h3 class="text-mts-copper font-bold tracking-widest uppercase mb-2">Mensaje del Candidato</h3>
+                    <h2 class="font-display font-bold text-4xl text-white mb-6">"NO VENGO A PROMETER,<br>VENGO A
+                        TRABAJAR"</h2>
+                    <p class="text-gray-300 text-lg mb-8">
+                        Escucha de viva voz por qué nuestro plan es diferente. No se trata de colores políticos, se
+                        trata del futuro de nuestros hijos. Un minuto que cambiará tu perspectiva.
+                    </p>
+                    <a href="https://youtube.com" target="_blank"
+                        class="inline-flex items-center text-white font-bold hover:text-mts-copper transition">
+                        Ver canal oficial de YouTube <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="w-full md:w-1/2" data-aos="zoom-in">
+                    <!-- Contenedor Responsive para Video -->
+                    <div
+                        class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-700 bg-black aspect-video group cursor-pointer">
+                        <!-- Placeholder Image (Thumbnail) -->
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition duration-500"
+                            alt="Video Thumbnail">
+
+                        <!-- Play Button Overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div
+                                class="w-20 h-20 bg-mts-copper rounded-full flex items-center justify-center play-button group-hover:bg-white">
+                                <i
+                                    class="fas fa-play text-white text-3xl ml-2 group-hover:text-mts-copper transition-colors"></i>
+                            </div>
+                        </div>
+
+                        <!-- Texto flotante -->
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">NUEVO</span>
+                            <p class="text-white font-display font-bold mt-1 text-lg truncate">El Alto Renace: Spot
+                                Oficial de Campaña</p>
+                        </div>
+
+                        <!-- Nota: Para insertar video real de YouTube, reemplazar todo el contenido de este div con:
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/TU_ID_VIDEO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- EL PLAN DE GOBIERNO (GRID DETALLADO) -->
-    <section id="plan" class="py-20 bg-white">
+    <section id="plan" class="py-24 bg-white clip-diagonal-reverse pb-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
                 <div>
                     <h2 class="font-display font-bold text-4xl text-mts-green">LOS 7 PILARES DEL CAMBIO</h2>
-                    <p class="text-gray-500 mt-2">Un plan estructurado para el desarrollo integral.</p>
+                    <p class="text-gray-500 mt-2 text-lg">Estructura técnica para problemas reales.</p>
                 </div>
-                <button class="hidden md:block text-mts-copper font-bold hover:text-orange-700 underline">Descargar
-                    documento PDF</button>
+                <button
+                    class="hidden md:block mt-4 md:mt-0 text-mts-copper font-bold hover:text-orange-700 border-b-2 border-mts-copper pb-1 transition">
+                    <i class="fas fa-file-pdf mr-2"></i> Descargar Plan Completo PDF
+                </button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Pilar 1 -->
-                <div class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-university text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Institucionalidad</h4>
-                    <p class="text-sm text-gray-600">Aprobación inmediata de la Carta Orgánica Municipal.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-university text-blue-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Institucionalidad</h4>
+                    <p class="text-sm text-gray-600">Carta Orgánica Municipal ¡Ya! Autonomía real para gestionar
+                        nuestros recursos.</p>
                 </div>
                 <!-- Pilar 2 -->
-                <div
-                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-shield-alt text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Seguridad Inteligente</h4>
-                    <p class="text-sm text-gray-600">Centro de Control Municipal con monitoreo en tiempo real.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-red-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Seguridad Inteligente</h4>
+                    <p class="text-sm text-gray-600">Centro de Monitoreo BOL-110 conectado con juntas vecinales 24/7.
+                    </p>
                 </div>
                 <!-- Pilar 3 -->
-                <div
-                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-heartbeat text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Salud Universal</h4>
-                    <p class="text-sm text-gray-600">Vacunación 100% y fortalecimiento de infraestructura.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-teal-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Salud Universal</h4>
+                    <p class="text-sm text-gray-600">Hospitales de segundo nivel equipados y personal médico digno.</p>
                 </div>
                 <!-- Pilar 4 -->
-                <div
-                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-wifi text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Educación Digna</h4>
-                    <p class="text-sm text-gray-600">Calefacción en aulas y WiFi gratuito en escuelas.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-wifi text-yellow-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Educación Digital</h4>
+                    <p class="text-sm text-gray-600">Fibra óptica en escuelas y tablets para bachilleres destacados.
+                    </p>
                 </div>
                 <!-- Pilar 5 -->
-                <div
-                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-recycle text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Medio Ambiente</h4>
-                    <p class="text-sm text-gray-600">Convertir basura en energía y plantas de reciclaje.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-recycle text-mts-green text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Medio Ambiente</h4>
+                    <p class="text-sm text-gray-600">Planta de industrialización de basura. De desechos a energía.</p>
                 </div>
                 <!-- Pilar 6 -->
-                <div
-                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-road text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Infraestructura</h4>
-                    <p class="text-sm text-gray-600">Mantenimiento vial y ampliación de rutas Wayna Bus.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-4">
+                        <i class="fas fa-road text-gray-700 text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Infraestructura</h4>
+                    <p class="text-sm text-gray-600">Plan "Bache Cero" y conclusión de avenidas troncales.</p>
                 </div>
                 <!-- Pilar 7 -->
-                <div
-                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
-                    <i class="fas fa-coins text-mts-green text-2xl mb-4"></i>
-                    <h4 class="font-display font-bold text-lg mb-2">Economía</h4>
-                    <p class="text-sm text-gray-600">Banco Municipal de fomento y microcréditos.</p>
+                <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                    data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-coins text-mts-copper text-xl"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Economía</h4>
+                    <p class="text-sm text-gray-600">Créditos "Semilla" para mujeres emprendedoras y gremiales.</p>
                 </div>
                 <!-- Pilar Extra (Humano) -->
-                <div class="p-6 bg-mts-green text-white rounded-lg shadow-lg transform md:scale-105">
-                    <i class="fas fa-hands-helping text-white text-2xl mb-4"></i>
+                <div class="p-6 bg-gradient-to-br from-mts-green to-green-800 text-white rounded-xl shadow-lg transform md:scale-105"
+                    data-aos="zoom-in" data-aos-delay="700">
+                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-hands-helping text-white text-xl"></i>
+                    </div>
                     <h4 class="font-display font-bold text-lg mb-2">Rostro Humano</h4>
-                    <p class="text-sm opacity-90">Centro de rehabilitación integral y oportunidades reales.</p>
+                    <p class="text-sm opacity-90">El centro de todo es la persona. Trato digno en oficinas públicas
+                        garantizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS (NUEVA SECCIÓN DE CONFIANZA) -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="font-display font-bold text-3xl text-mts-dark mb-12" data-aos="fade-up">LA VOZ DE LOS BARRIOS
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow border border-gray-100" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-12 h-12 rounded-full">
+                        <div class="text-left">
+                            <p class="font-bold text-sm">Juana Mamani</p>
+                            <p class="text-xs text-gray-500">Comerciante - La Ceja</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic text-sm">"Nadie nos había hablado de créditos para gremiales sin
+                        tanto papeleo. David entiende lo que sufrimos los comerciantes."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border border-gray-100" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full">
+                        <div class="text-left">
+                            <p class="font-bold text-sm">Carlos Quispe</p>
+                            <p class="text-xs text-gray-500">Estudiante UPEA</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic text-sm">"El internet gratuito en las plazas y colegios es vital. Es
+                        el único candidato que habla de tecnología real."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border border-gray-100" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full">
+                        <div class="text-left">
+                            <p class="font-bold text-sm">Sra. Elena T.</p>
+                            <p class="text-xs text-gray-500">Junta Vecinal Dist. 8</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic text-sm">"Lo vi caminar por mi barrio cuando no había campaña. Eso
+                        me da confianza. Es uno de nosotros."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CALL TO ACTION (LEAD MAGNET) -->
-    <section id="unete" class="py-20 bg-mts-dark text-white relative overflow-hidden">
+    <section id="unete" class="py-24 bg-mts-dark text-white relative overflow-hidden">
         <!-- Elemento decorativo de fondo -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-mts-green opacity-20 blur-3xl">
+        <div
+            class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-mts-green opacity-20 blur-3xl animate-pulse">
         </div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-mts-copper opacity-20 blur-3xl">
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-mts-copper opacity-20 blur-3xl">
         </div>
 
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 class="font-display font-bold text-4xl mb-4">EL ALTO NECESITA TU FUERZA</h2>
-            <p class="text-xl text-gray-300 mb-8">El cambio lo construimos entre todos. Únete al equipo digital y
-                recibe las noticias de campaña.</p>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10" data-aos="zoom-in">
+            <h2 class="font-display font-bold text-4xl mb-4">¡EL ALTO TE NECESITA!</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">No mires el cambio desde la ventana. Únete al
+                equipo digital, recibe propuestas y defiende tu voto.</p>
 
-            <form class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10 max-w-lg mx-auto">
+            <form
+                class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 max-w-lg mx-auto shadow-2xl">
                 <div class="space-y-4">
-                    <input type="text" placeholder="Tu Nombre Completo"
-                        class="w-full px-4 py-3 rounded bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-mts-copper">
+                    <div>
+                        <input type="text" placeholder="Tu Nombre Completo"
+                            class="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-mts-copper/50 transition">
+                    </div>
 
                     <div class="flex gap-2">
-                        <select class="px-2 py-3 rounded bg-gray-100 text-gray-700 border-none outline-none">
-                            <option>+591</option>
+                        <select
+                            class="px-2 py-3 rounded-lg bg-gray-100 text-gray-700 border-none outline-none font-bold">
+                            <option>🇧🇴 +591</option>
                         </select>
                         <input type="tel" placeholder="Número de WhatsApp"
-                            class="w-full px-4 py-3 rounded bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-mts-copper">
+                            class="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-mts-copper/50 transition">
+                    </div>
+
+                    <div class="flex items-start gap-2 text-left">
+                        <input type="checkbox" id="terms" class="mt-1">
+                        <label for="terms" class="text-xs text-gray-400">Acepto recibir información de la campaña
+                            (No SPAM, solo propuestas).</label>
                     </div>
 
                     <button type="button"
-                        class="w-full bg-mts-copper hover:bg-orange-600 text-white font-bold py-4 rounded shadow-lg transition text-lg">
-                        <i class="fab fa-whatsapp mr-2"></i> QUIERO PARTICIPAR
+                        class="w-full bg-gradient-to-r from-mts-copper to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1 text-lg flex justify-center items-center gap-2">
+                        <i class="fab fa-whatsapp"></i> QUIERO PARTICIPAR
                     </button>
-                    <p class="text-xs text-gray-400 mt-2">Tus datos están protegidos. Movimiento Tercer Sistema.</p>
                 </div>
             </form>
         </div>
@@ -330,29 +567,58 @@
     <!-- FOOTER -->
     <footer class="bg-black text-white py-12 border-t border-gray-800">
         <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <h3 class="font-display font-bold text-2xl text-mts-green">DAVID VARGAS</h3>
-                <p class="text-gray-500 text-sm mt-1">Candidato a la Alcaldía de El Alto 2026</p>
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                    <div class="w-8 h-8 bg-mts-green rounded-full flex items-center justify-center text-xs font-bold">
+                        MTS</div>
+                    <h3 class="font-display font-bold text-2xl text-white">DAVID VARGAS</h3>
+                </div>
+                <p class="text-gray-500 text-sm max-w-xs">Compromiso, Lealtad y Trabajo por la ciudad más joven de
+                    Bolivia.</p>
             </div>
 
             <div class="flex space-x-6">
-                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
-                        class="fab fa-facebook"></i></a>
-                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                <a href="https://www.facebook.com/alcaldevaliente" target="_blank"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-mts-green hover:text-white transition duration-300"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@david_vargas_alcalde" target="_blank"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white hover:border-white border border-transparent transition duration-300"><i
                         class="fab fa-tiktok"></i></a>
-                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition duration-300"><i
                         class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                <a href="https://x.com/DavidVargas_ea" target="_blank"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition duration-300"><i
                         class="fab fa-twitter"></i></a>
             </div>
         </div>
-        <div class="text-center mt-8 pt-8 border-t border-gray-800 text-gray-600 text-sm">
-            &copy; 2026 Movimiento Tercer Sistema. Todos los derechos reservados.
+        <div class="text-center mt-10 pt-8 border-t border-gray-900 text-gray-600 text-xs">
+            <p>&copy; 2026 Movimiento Tercer Sistema | El Alto, Bolivia.</p>
+            <p class="mt-2">Desarrollado con pasión patriótica.</p>
         </div>
     </footer>
 
-    <!-- JS simple para menú móvil -->
+    <!-- FLOAT WHATSAPP BUTTON -->
+    <a href="https://whatsapp.com/channel/0029Vb7imk5EQIav20vde90Y" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 animate-bounce">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Scripts -->
+
+    <!-- Inicialización de AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // Animación solo ocurre una vez al bajar
+            offset: 100, // Comienza antes de llegar al elemento
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+    </script>
+
+    <!-- JS Menu Logica -->
     <script>
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
@@ -365,7 +631,7 @@
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
+                navbar.classList.add('shadow-lg', 'bg-white/95');
                 navbar.classList.remove('py-2');
             } else {
                 navbar.classList.remove('shadow-lg');

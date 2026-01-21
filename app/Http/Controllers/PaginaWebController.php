@@ -13,13 +13,14 @@ class PaginaWebController extends Controller
     public function index()
     {
 
-        return redirect()->route('login');
-        $sucursales = DB::table('weps_sucursal')->get();
+        // return redirect()->route('login');
+        // $sucursales = DB::table('weps_sucursal')->get();
 
-        $entrenadores = DB::table('weps_persona')->where('id_tipo_persona_fk', 2)->where('estado_persona', "ACTIVO")->get();
+        // $entrenadores = DB::table('weps_persona')->where('id_tipo_persona_fk', 2)->where('estado_persona', "ACTIVO")->get();
 
 
-        return view('public.index')->with('sucursales', $sucursales)->with('entrenadores', $entrenadores);
+        // return view('public.index')->with('sucursales', $sucursales)->with('entrenadores', $entrenadores);
+        return view('public.index');
     }
 
     public function velzon(string $file = 'index')

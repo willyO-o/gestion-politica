@@ -1,785 +1,378 @@
-@section('content')
-    <section class="section swiper-container swiper-slider swiper-classic bg-gray-2"
-        data-swiper='{"autoplay":{"delay":4000},"simulateTouch":false,"effect":"fade"}'>
-        <div class="swiper-wrapper">
-            <div class="swiper-slide text-center" data-slide-bg="soccer/images/slider-1-slide-1-1920x671.jpg">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-6">
-                            <div class="swiper-slide-caption">
-                                <h1 data-caption-animate="fadeInUp" data-caption-delay="100">CLUB DEPORTIVO R.T. <span
-                                        class="text-warning">
-                                        "NUEVAS ESTRELLAS" </span> </h1>
-                                <h4 data-caption-animate="fadeInUp" data-caption-delay="200">FÚTBOL - FUTSAL</h4><a
-                                    class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300"
-                                    href="{{ route('contacto') }}">Contactar</a>
-                            </div>
-                        </div>
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Vargas 2026 | Un Futuro Digno para El Alto</title>
+
+    <!-- Google Fonts: Oswald (Títulos) y Roboto (Cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN para prototipado rápido) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración de Colores Personalizados -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mts: {
+                            green: '#006837',
+                            /* Verde Corporativo */
+                            copper: '#D98D5F',
+                            /* Color de Acento/Botones */
+                            dark: '#1A1A1A',
+                            /* Texto Oscuro */
+                            light: '#F8F9FA',
+                            /* Fondos Suaves */
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos base adicionales */
+        .clip-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0, 104, 55, 0.95), rgba(0, 104, 55, 0.7));
+        }
+
+        /* Animación suave para el menú móvil */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="font-body text-mts-dark bg-white antialiased">
+
+    <!-- NAV BAR -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-md" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Icono simulando logo -->
+                    <div
+                        class="w-10 h-10 bg-mts-green rounded-full flex items-center justify-center text-white font-display font-bold text-xl">
+                        MTS
+                    </div>
+                    <div>
+                        <h1 class="font-display font-bold text-2xl text-mts-green leading-none">DAVID VARGAS</h1>
+                        <span class="text-xs font-bold text-mts-copper tracking-widest uppercase">Alcalde 2026</span>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide" data-slide-bg="soccer/images/slider-1-slide-2-1920x671.jpg">
-                {{-- <div class="swiper-slide" data-slide-bg="img/logo/POR-1.jpg"> --}}
-                <div class="container">
-                    <div class="row justify-content-end">
-                        <div class="col-xl-5">
-                            <div class="swiper-slide-caption">
-                                <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Descubre tu potencial</h1>
-                                <h4 data-caption-animate="fadeInUp" data-caption-delay="200">Conoce nuestas Categorías</h4>
-                                <a class="button button-primary" data-caption-animate="fadeInUp" data-caption-delay="300"
-                                    href="{{ route('contacto') }}">Contactar</a>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-mts-dark hover:text-mts-copper font-medium transition">Inicio</a>
+                    <a href="#propuestas" class="text-mts-dark hover:text-mts-copper font-medium transition">Propuestas
+                        Clave</a>
+                    <a href="#plan" class="text-mts-dark hover:text-mts-copper font-medium transition">Plan de
+                        Gobierno</a>
+                    <a href="#unete"
+                        class="bg-mts-copper hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold transition shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fab fa-whatsapp mr-2"></i> Únete al Equipo
+                    </a>
                 </div>
-            </div>
-            <div class="swiper-slide" data-slide-bg="soccer/images/slider-1-slide-3-1920x671.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5">
-                            <div class="swiper-slide-caption">
-                                <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Descubre tu Talento</h1>
-                                <h4 data-caption-animate="fadeInUp" data-caption-delay="200">Entrenamiento de Arqueros<br
-                                        class="d-none d-xl-block"> Personalizado!!!</h4><a class="button button-primary"
-                                    data-caption-animate="fadeInUp" data-caption-delay="300"
-                                    href="{{ route('contacto') }}">Contactar</a>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Mobile Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-mts-green text-2xl focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="swiper-button swiper-button-prev"></div>
-        <div class="swiper-button swiper-button-next"></div>
-        <div class="swiper-pagination"></div>
-    </section>
 
-    <section class="section section-md bg-gray-100">
-        <div class="container">
-            <div class="row row-50">
-                <div class="col-lg-8">
-                    <div class="main-component">
-                        <article class="heading-component ">
-                            <div class="heading-component-inner">
-                                <h5 class="heading-component-title">Temporada {{ date('Y') }}
-                                </h5>
-                            </div>
-                        </article>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#inicio"
+                    class="block px-3 py-3 text-base font-medium text-mts-green hover:bg-gray-50 rounded">Inicio</a>
+                <a href="#propuestas"
+                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded">Propuestas</a>
+                <a href="#plan"
+                    class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded">Plan
+                    Completo</a>
+                <a href="#unete"
+                    class="block px-3 py-3 text-base font-bold text-mts-copper hover:bg-gray-50 rounded">Sumarse al
+                    Cambio</a>
+            </div>
+        </div>
+    </nav>
 
-                        <div class="row row-30">
-                            <div class="col-md-12">
-                                <!-- Post Gloria-->
-                                {{-- <article class="post-gloria"><img src="/img/logo/05.jpg" alt="" --}}
-                                <article class="post-gloria"><img src="soccer/images/post-gloria-1-769x429.jpg"
-                                        alt="" width="769" height="429">
-                                    <div class="post-gloria-main">
-                                        <h3 class="post-gloria-title"><a href="blog-post.html">¡APROVECHA TUS VACACIONES AL
-                                                MAXIMO!</a></h3>
-                                        <div class="post-gloria-meta">
-                                            <!-- Badge-->
-                                            <div class="badge badge-primary">Entrenando
-                                            </div>
-                                            <div class="post-gloria-time"><span class="icon mdi mdi-clock"></span>
-                                                <time datetime="2022">Abril 15, 2023</time>
-                                            </div>
-                                        </div>
-                                        <div class="post-gloria-text">
-                                            <svg version="1.1" x="0px" y="0px" width="6.888px" height="4.68px"
-                                                viewbox="0 0 6.888 4.68" enable-background="new 0 0 6.888 4.68"
-                                                xml:space="preserve">
-                                                <path
-                                                    d="M1.584,0h1.8L2.112,4.68H0L1.584,0z M5.112,0h1.776L5.64,4.68H3.528L5.112,0z">
-                                                </path>
-                                            </svg>
-                                            <p>Te invitamos a ser parte de la Gran Escuela de Futbol...</p>
-                                        </div>
-                                        <a class="button" href="#modal1" data-bs-toggle="modal">Ver video...</a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                        <!-- Heading Component-->
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-20 min-h-[90vh] flex items-center clip-diagonal bg-gray-900">
+        <!-- Background Image Placeholder (Reemplazar con foto real del candidato/banner) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+                alt="El Alto Fondo" class="w-full h-full object-cover opacity-40">
+            <!-- Capa verde encima de la foto -->
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
 
-                        <article class="heading-component mt-3">
-                            <div class="heading-component-inner">
-                                <h5 class="heading-component-title">Temporada {{ date('Y') }} Horarios
-                                </h5><a class="button button-xs button-gray-outline" href="news-1.html">Ver mas</a>
-                            </div>
-                        </article>
-
-                        <div class="row row-30">
-                            <div class="col-md-12">
-                                <!-- Post Future-->
-                                <div class="table-custom-responsive">
-                                    <table class="table-custom table-standings table-classic">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">TURNO MAÑANA
-                                                </th>
-                                                <th>Martes</th>
-                                                <th>Miercoles</th>
-                                                <th>Viernes</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span>1</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png" alt=""
-                                                            width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 14</div>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><span>2</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 15</div>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><span>3</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 16</div>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><span>4</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 17</div>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td><span>5</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 18</div>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                                <td>08:00 a 10:00</td>
-                                            </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                            <div class="col-md-12">
-                                <!-- Post Future-->
-                                <div class="table-custom-responsive">
-                                    <table class="table-custom table-standings table-classic">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">TURNO TARDE
-                                                </th>
-                                                <th>Martes</th>
-                                                <th>Jueves</th>
-                                                <th>Sábado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span>1</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 5</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>2</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 6</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>3</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 7</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>4</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 8</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>5</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 9</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>6</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 10</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>7</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 11</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>8</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Sub 12</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:00 a 18:00</td>
-                                                <td>14:00 a 18:00</td>
-                                                <td>09:30 a 11:30</td>
-                                            </tr>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-                                <!-- Post Future-->
-                                <div class="table-custom-responsive">
-                                    <table class="table-custom table-standings table-classic">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Categoría Mayores
-                                                </th>
-                                                <th>Jueves</th>
-                                                <th>Sábado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span>1</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Mayores
-                                                            (edad 20+)</div>
-                                                    </div>
-                                                </td>
-                                                <td>16:30 a 18:30</td>
-                                                <td>07:00 a 9:00</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Post Future-->
-                                <div class="table-custom-responsive">
-                                    <table class="table-custom table-standings table-classic">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Arqueros
-                                                </th>
-                                                <th>Jueves</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span>1</span></td>
-                                                <td class="team-inline">
-                                                    <div class="team-figure"><img src="img/logo/cancha.png"
-                                                            alt="" width="45" height="45">
-
-                                                    </div>
-                                                    <div class="team-title">
-                                                        <div class="team-name">Arqueros (Personalizado)</div>
-                                                    </div>
-                                                </td>
-                                                <td>08:00 a 10:00</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                    <div class="main-component">
-                        <!-- Heading Component-->
-                        <article class="heading-component">
-                            <div class="heading-component-inner">
-                                <h5 class="heading-component-title">ENTRENADORES
-                                </h5><a class="button button-xs button-gray-outline" href="#">Calendar</a>
-                            </div>
-                        </article>
-                        <!-- Game Result Bug-->
-                        <div class="row row-30">
-
-                            @foreach ($entrenadores as $entrenador)
-                                <div class="col-sm-6 col-lg-4">
-                                    <!-- Player Info Modern-->
-                                    <div class="player-info-modern"><a class="player-info-modern-figure"
-                                            href="player-page.html"><img src="soccer/images/roster-player-1-368x286.png"
-                                                alt="" width="368" height="286"></a>
-                                        <div class="player-info-modern-footer">
-                                            <div class="player-info-modern-number">
-                                                <p>
-                                                    <i class="fa fa-user"></i>
-                                                </p>
-                                            </div>
-                                            <div class="player-info-modern-content">
-                                                <div class="player-info-modern-title">
-                                                    <h5><a href="player-page.html">{{ $entrenador->nombre }}
-                                                            {{ $entrenador->paterno }}</a></h5>
-                                                    {{-- <p>Defender</p> --}}
-                                                </div>
-                                                <div class="player-info-modern-progress">
-                                                    <!-- Linear progress bar-->
-                                                    <article class="progress-linear progress-bar-modern animated">
-                                                        <div class="progress-header">
-                                                            <p>Pass Acc</p>
-                                                        </div>
-                                                        <div class="progress-bar-linear-wrap">
-                                                            <div class="progress-bar-linear"
-                                                                style="transition-duration: 1s; width: 95%;"></div>
-                                                        </div><span class="progress-value">95</span>
-                                                    </article>
-                                                    <!-- Linear progress bar-->
-                                                    <article class="progress-linear progress-bar-modern animated">
-                                                        <div class="progress-header">
-                                                            <p>Shots Acc</p>
-                                                        </div>
-                                                        <div class="progress-bar-linear-wrap">
-                                                            <div class="progress-bar-linear"
-                                                                style="transition-duration: 1s; width: 70%;"></div>
-                                                        </div><span class="progress-value">70</span>
-                                                    </article>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-2/3 text-white py-12">
+                <div
+                    class="inline-block bg-mts-copper text-white px-4 py-1 rounded-sm font-bold text-sm mb-4 tracking-wider uppercase">
+                    Gestión 2026 - 2031
                 </div>
-                <!-- Aside Block-->
-                <div class="col-lg-4">
-                    <aside class="aside-components">
+                <h1 class="font-display font-bold text-5xl md:text-7xl leading-tight mb-6">
+                    ¡POR UNA CIUDAD VALIENTE,<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">UN ALCALDE
+                        VALIENTE!</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-8 max-w-2xl text-gray-100">
+                    Un Gobierno con Rostro Humano para El Alto. Priorizamos tu dignidad, seguridad y bolsillo.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#propuestas"
+                        class="bg-mts-copper hover:bg-orange-600 text-white text-center px-8 py-4 rounded font-bold text-lg shadow-xl transition transform hover:-translate-y-1">
+                        Conoce las Propuestas
+                    </a>
+                    <a href="#plan"
+                        class="border-2 border-white hover:bg-white hover:text-mts-green text-white text-center px-8 py-4 rounded font-bold text-lg transition">
+                        Descargar Plan
+                    </a>
+                </div>
+            </div>
 
-                        <div class="aside-component">
-                            <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Nuestras Redes Sociales
-                                    </h5>
-                                </div>
-                            </article>
-                            <!-- Buttons Media-->
-                            <div class="group-sm group-flex"><a class="button-media button-media-facebook"
-                                    href="https://www.facebook.com/people/Escuela-de-f%C3%BAtbol-Ramiro-Ticona/100066934180223/"
-                                    target="_blank">
-                                    <h4 class="button-media-title">200+</h4>
-                                    <p class="button-media-action">Me Gusta<span
-                                            class="icon material-icons-add_circle_outline icon-sm"></span></p>
-                                    <span class="button-media-icon fa-facebook"></span>
-                                </a><a class="button-media button-media-google" target="_blank"
-                                    href="https://www.tiktok.com/@academia.de.ftbol">
-                                    <h4 class="button-media-title">600+</h4>
-                                    <p class="button-media-action">Tiktok<span
-                                            class="icon material-icons-add_circle_outline icon-sm"></span></p>
-                                    <span class="button-media-icon  fa-tiktok"></span>
-                                </a>
-                                {{-- <a class="button-media button-media-google" href="#">
-                                    <h4 class="button-media-title">15k</h4>
-                                    <p class="button-media-action">Follow<span
-                                            class="icon material-icons-add_circle_outline icon-sm"></span></p>
-                                    <span class="button-media-icon fa-google"></span>
-                                </a>
-                                <a class="button-media button-media-instagram" href="#">
-                                    <h4 class="button-media-title">85k</h4>
-                                    <p class="button-media-action">Follow<span
-                                            class="icon material-icons-add_circle_outline icon-sm"></span></p>
-                                    <span class="button-media-icon fa-instagram"></span>
-                                </a> --}}
-                            </div>
-                        </div>
-
-                        <div class="aside-component">
-                            <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Nuestas Sucursales
-                                    </h5><a class="button button-xs button-gray-outline" href="{{ route("sucursales") }}">Ver mas</a>
-                                </div>
-                            </article>
-                            <!-- List Post Classic-->
-                            <div class="list-post-classic">
-                                <!-- Post Classic-->
-
-                                @foreach ($sucursales as $sucursal)
-                                    <article class="post-classic">
-                                        <div class="post-classic-aside"><a class="post-classic-figure"
-                                                href="#"><img src="soccer/images/blog-element-3-94x94.jpg"
-                                                    alt="" width="94" height="94"></a></div>
-                                        <div class="post-classic-main">
-                                            <p class="post-classic-title">
-                                                <a href="#">
-                                                    {{ $sucursal->nombre_sucursal }}
-                                                </a>
-                                            </p>
-                                            <div class="post-classic-time"><span class="icon mdi mdi-map-marker"></span>
-                                                <p>
-                                                    {{ $sucursal->direccion_sucursal }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                @endforeach
-
-                            </div>
-                        </div>
-
-                        <div class="aside-component">
-                            <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Reconocimientos
-                                    </h5>
-                                </div>
-                            </article>
-                            <!-- Owl Carousel-->
-                            <div class="owl-carousel owl-carousel-dots-modern awards-carousel" data-items="1"
-                                data-autoplay="true" data-autoplay-speed="4000" data-dots="true" data-nav="false"
-                                data-stage-padding="0" data-loop="true" data-margin="0" data-mouse-drag="true">
-                                <!-- Awards Item-->
-                                <div class="awards-item">
-                                    <div class="awards-item-main">
-                                        <h4 class="awards-item-title"><span class="text-accent">Copa</span>Champions
-                                        </h4>
-                                        <div class="divider"></div>
-                                        <h5 class="awards-item-time">Diciembre 2020</h5>
-                                    </div>
-                                    <div class="awards-item-aside"> <img
-                                            src="soccer/images/thumbnail-minimal-1-67x147.png" alt=""
-                                            width="67" height="147">
-                                    </div>
-                                </div>
-                                <!-- Awards Item-->
-                                {{-- <div class="awards-item">
-                                    <div class="awards-item-main">
-                                        <h4 class="awards-item-title"><span class="text-accent">Best</span>Forward
-                                        </h4>
-                                        <div class="divider"></div>
-                                        <h5 class="awards-item-time">June 2015</h5>
-                                    </div>
-                                    <div class="awards-item-aside"> <img
-                                            src="soccer/images/thumbnail-minimal-2-68x126.png" alt=""
-                                            width="68" height="126">
-                                    </div>
-                                </div>
-                                <!-- Awards Item-->
-                                <div class="awards-item">
-                                    <div class="awards-item-main">
-                                        <h4 class="awards-item-title"><span class="text-accent">Best</span>Coach
-                                        </h4>
-                                        <div class="divider"></div>
-                                        <h5 class="awards-item-time">November 2016</h5>
-                                    </div>
-                                    <div class="awards-item-aside"> <img
-                                            src="soccer/images/thumbnail-minimal-3-73x135.png" alt=""
-                                            width="73" height="135">
-                                    </div>
-                                </div> --}}
-                            </div>
-                        </div>
-                        <div class="aside-component">
-                            <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Galería de Imágenes
-                                    </h5>
-                                    <a class="button button-xs button-gray-outline" href="{{ route('galeria') }}">
-                                        Ver mas
-                                    </a>
-
-                                </div>
-                            </article>
-                            <article class="gallery" data-lightgallery="group">
-                                <div class="row row-10 row-narrow">
-                                    <div class="col-6 col-sm-4 col-md-6 col-lg-4"><a class="thumbnail-creative"
-                                            data-lightgallery="item"
-                                            href="rt/gallery/photo_1_2024-02-13_15-33-13.jpg"><img
-                                                src="rt/gallery/photo_1_2024-02-13_15-33-13.jpg" alt="">
-                                            <div class="thumbnail-creative-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-md-6 col-lg-4"><a class="thumbnail-creative"
-                                            data-lightgallery="item"
-                                            href="rt/gallery/photo_2_2024-02-13_15-33-13.jpg"><img
-                                                src="rt/gallery/photo_2_2024-02-13_15-33-13.jpg" alt="">
-                                            <div class="thumbnail-creative-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-md-6 col-lg-4"><a class="thumbnail-creative"
-                                            data-lightgallery="item"
-                                            href="rt/gallery/photo_2_2024-02-13_15-33-25.jpg"><img
-                                                src="rt/gallery/photo_2_2024-02-13_15-33-25.jpg" alt="">
-                                            <div class="thumbnail-creative-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-md-6 col-lg-4"><a class="thumbnail-creative"
-                                            data-lightgallery="item"
-                                            href="rt/gallery/photo_3_2024-02-13_15-33-13.jpg"><img
-                                                src="rt/gallery/photo_3_2024-02-13_15-33-13.jpg" alt="">
-                                            <div class="thumbnail-creative-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-md-6 col-lg-4"><a class="thumbnail-creative"
-                                            data-lightgallery="item"
-                                            href="rt/gallery/photo_4_2024-02-13_15-33-25.jpg"><img
-                                                src="rt/gallery/photo_4_2024-02-13_15-33-25.jpg" alt="">
-                                            <div class="thumbnail-creative-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-sm-4 col-md-6 col-lg-4"><a class="thumbnail-creative"
-                                            data-lightgallery="item"
-                                            href="rt/gallery/photo_6_2024-02-13_15-33-13.jpg"><img
-                                                src="rt/gallery/photo_6_2024-02-13_15-33-13.jpg" alt="">
-                                            <div class="thumbnail-creative-overlay"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="aside-component">
-                            <!-- Heading Component-->
-                            <article class="heading-component">
-                                <div class="heading-component-inner">
-                                    <h5 class="heading-component-title">Colaboradores
-                                    </h5>
-                                </div>
-                            </article>
-                            <div class="block-voting">
-                                <div class="group-md">
-                                    <!-- Player Voting Item-->
-                                    <div class="player-voting-item">
-                                        <div class="player-voting-item-figure"><img src="{{ url('/img/rt/avatar.png') }}"
-                                                alt="" width="152" height="144">
-                                            <div class="player-number">
-                                                <p>
-                                                    <i class="material-icons-thumb_up"></i>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="player-voting-item-title">
-                                            <p>{{ config('app.constants.colaborator2') }}</p>
-                                        </div>
-
-                                        <button class="button button-block button-icon button-icon-left button-primary"
-                                            type="button"><span
-                                                class="icon material-icons-thumb_up"></span><span>Contactar</span></button>
-                                    </div>
-
-                                    <div class="player-voting-item">
-                                        <div class="player-voting-item-figure"><img src="{{ url('/img/rt/avatar.png') }}"
-                                                alt="" width="152" height="144">
-                                            <div class="player-number">
-                                                <p>
-                                                    <i class="material-icons-thumb_up"></i>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="player-voting-item-title">
-                                            <p>{{ config('app.constants.colaborator3') }}</p>
-                                        </div>
-
-                                        <button class="button button-block button-icon button-icon-left button-primary"
-                                            type="button"><span
-                                                class="icon material-icons-thumb_up"></span><span>Contactar</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </aside>
+            <!-- Espacio para foto del candidato (Recortada sin fondo idealmente) -->
+            <div class="hidden md:block w-1/3 h-full relative">
+                <!-- Placeholder visual de donde iría la foto recortada -->
+                <div
+                    class="border-4 border-mts-copper rounded-lg p-2 bg-white/10 backdrop-blur-sm transform rotate-3 mt-10">
+                    <div class="bg-gray-300 h-96 w-full flex items-center justify-center text-gray-500 font-bold">
+                        [FOTO CANDIDATO AQUÍ]
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- PROPUESTAS DESTACADAS (HOOKS) -->
+    <section id="propuestas" class="py-20 bg-mts-light -mt-20 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display font-bold text-4xl text-mts-green mb-4">MEDIDAS URGENTES</h2>
+                <div class="w-24 h-1 bg-mts-copper mx-auto"></div>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Acciones inmediatas para mejorar la calidad de vida de
+                    las familias alteñas.</p>
+            </div>
 
-    <div class="modal modal-video fade" id="modal1" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="ratio ratio-16x9">
-                        {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/42STRZ2DTEM"
-                            allowfullscreen=""></iframe> --}}
-                        <video controls>
-                            <source src="{{ url('/rt/video/entrenamiento_1.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition transform hover:-translate-y-2 group">
+                    <div
+                        class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-mts-green transition">
+                        <i class="fas fa-bus text-3xl text-mts-green group-hover:text-white transition"></i>
                     </div>
+                    <h3 class="font-display font-bold text-2xl text-gray-800 mb-3">Pasaje Cero</h3>
+                    <p class="text-gray-600">Transporte gratuito en Wayna Bus para <strong>niños menores de 12
+                            años</strong> y adultos mayores. Apoyo directo a la economía familiar.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition transform hover:-translate-y-2 group">
+                    <div
+                        class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-mts-copper transition">
+                        <i class="fas fa-dog text-3xl text-mts-copper group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-gray-800 mb-3">Seguridad Canina</h3>
+                    <p class="text-gray-600">Rescate de canes callejeros para entrenarlos como <strong>unidad de
+                            patrullaje policial</strong>. Seguridad ciudadana con bienestar animal.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg border-b-4 border-mts-copper hover:shadow-2xl transition transform hover:-translate-y-2 group">
+                    <div
+                        class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-mts-green transition">
+                        <i class="fas fa-pills text-3xl text-mts-green group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-gray-800 mb-3">Farmacias del Pueblo</h3>
+                    <p class="text-gray-600">Venta de medicamentos genéricos de calidad a <strong>precio de
+                            costo</strong>. Sin intermediarios, directo de laboratorios al vecino.</p>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    </section>
 
-@extends('public.layouts.base')
+    <!-- EL PLAN DE GOBIERNO (GRID DETALLADO) -->
+    <section id="plan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-display font-bold text-4xl text-mts-green">LOS 7 PILARES DEL CAMBIO</h2>
+                    <p class="text-gray-500 mt-2">Un plan estructurado para el desarrollo integral.</p>
+                </div>
+                <button class="hidden md:block text-mts-copper font-bold hover:text-orange-700 underline">Descargar
+                    documento PDF</button>
+            </div>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Pilar 1 -->
+                <div class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-university text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Institucionalidad</h4>
+                    <p class="text-sm text-gray-600">Aprobación inmediata de la Carta Orgánica Municipal.</p>
+                </div>
+                <!-- Pilar 2 -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-shield-alt text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Seguridad Inteligente</h4>
+                    <p class="text-sm text-gray-600">Centro de Control Municipal con monitoreo en tiempo real.</p>
+                </div>
+                <!-- Pilar 3 -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-heartbeat text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Salud Universal</h4>
+                    <p class="text-sm text-gray-600">Vacunación 100% y fortalecimiento de infraestructura.</p>
+                </div>
+                <!-- Pilar 4 -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-wifi text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Educación Digna</h4>
+                    <p class="text-sm text-gray-600">Calefacción en aulas y WiFi gratuito en escuelas.</p>
+                </div>
+                <!-- Pilar 5 -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-recycle text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Medio Ambiente</h4>
+                    <p class="text-sm text-gray-600">Convertir basura en energía y plantas de reciclaje.</p>
+                </div>
+                <!-- Pilar 6 -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-road text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Infraestructura</h4>
+                    <p class="text-sm text-gray-600">Mantenimiento vial y ampliación de rutas Wayna Bus.</p>
+                </div>
+                <!-- Pilar 7 -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg bg-gray-50 hover:bg-white hover:shadow-md transition">
+                    <i class="fas fa-coins text-mts-green text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Economía</h4>
+                    <p class="text-sm text-gray-600">Banco Municipal de fomento y microcréditos.</p>
+                </div>
+                <!-- Pilar Extra (Humano) -->
+                <div class="p-6 bg-mts-green text-white rounded-lg shadow-lg transform md:scale-105">
+                    <i class="fas fa-hands-helping text-white text-2xl mb-4"></i>
+                    <h4 class="font-display font-bold text-lg mb-2">Rostro Humano</h4>
+                    <p class="text-sm opacity-90">Centro de rehabilitación integral y oportunidades reales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-@section('css')
-    {{-- <link href="{{ url('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ url('/assets/libs/glightbox/css/glightbox.min.css') }}">
-    <link rel="stylesheet" href="{{ url('/css/croppie_2.6.5_croppie.min.css') }}"> --}}
-@endsection
+    <!-- CALL TO ACTION (LEAD MAGNET) -->
+    <section id="unete" class="py-20 bg-mts-dark text-white relative overflow-hidden">
+        <!-- Elemento decorativo de fondo -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-mts-green opacity-20 blur-3xl">
+        </div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-mts-copper opacity-20 blur-3xl">
+        </div>
 
-@section('breadcrumb')
-    {{-- <div class="page-title-right">
-        <ol class="breadcrumb m-0">
-            <li class="breadcrumb-item"><a href="javascript: void(0);"></a>Inicio</li>
-            <li class="breadcrumb-item active">Administrar Seguimientos </li>
-        </ol>
-    </div> --}}
-@endsection
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="font-display font-bold text-4xl mb-4">EL ALTO NECESITA TU FUERZA</h2>
+            <p class="text-xl text-gray-300 mb-8">El cambio lo construimos entre todos. Únete al equipo digital y
+                recibe las noticias de campaña.</p>
 
-@section('title')
-    {{-- Administración de Seguimientos --}}
-@endsection
+            <form class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10 max-w-lg mx-auto">
+                <div class="space-y-4">
+                    <input type="text" placeholder="Tu Nombre Completo"
+                        class="w-full px-4 py-3 rounded bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-mts-copper">
 
-@section('js')
-    <!-- list.js min js -->
-    {{-- <script src="{{ url('assets/libs/list.js/list.min.js') }}"></script> --}}
-    {{-- <script src="{{ url('assets/libs/list.pagination.js/list.pagination.min.js') }}"></script> --}}
-    {{-- <script src="{{ url('/js/plugins/scrollpagination-container.js') }}"></script>
+                    <div class="flex gap-2">
+                        <select class="px-2 py-3 rounded bg-gray-100 text-gray-700 border-none outline-none">
+                            <option>+591</option>
+                        </select>
+                        <input type="tel" placeholder="Número de WhatsApp"
+                            class="w-full px-4 py-3 rounded bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-mts-copper">
+                    </div>
 
-    <script src="{{ url('/assets/libs/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ url('/js/plugins/croppie_2.6.5_croppie.min.js') }}"></script> --}}
+                    <button type="button"
+                        class="w-full bg-mts-copper hover:bg-orange-600 text-white font-bold py-4 rounded shadow-lg transition text-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> QUIERO PARTICIPAR
+                    </button>
+                    <p class="text-xs text-gray-400 mt-2">Tus datos están protegidos. Movimiento Tercer Sistema.</p>
+                </div>
+            </form>
+        </div>
+    </section>
 
-    {{-- <script src="{{ url('/admin/js/valoracion/indexValoracion.js') }}"></script> --}}
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-12 border-t border-gray-800">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="font-display font-bold text-2xl text-mts-green">DAVID VARGAS</h3>
+                <p class="text-gray-500 text-sm mt-1">Candidato a la Alcaldía de El Alto 2026</p>
+            </div>
 
-    <!-- Sweet Alerts js -->
-@endsection
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-mts-copper text-2xl transition"><i
+                        class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center mt-8 pt-8 border-t border-gray-800 text-gray-600 text-sm">
+            &copy; 2026 Movimiento Tercer Sistema. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- JS simple para menú móvil -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Efecto sticky navbar más suave
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.add('py-2');
+            }
+        });
+    </script>
+</body>
+
+</html>

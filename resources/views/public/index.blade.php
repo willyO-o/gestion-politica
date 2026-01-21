@@ -148,7 +148,7 @@
         class="relative pt-20 min-h-[90vh] flex items-center clip-diagonal bg-gray-900 overflow-hidden">
         <!-- Background Image Parallax -->
         <div class="absolute inset-0 z-0 transform scale-105">
-            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+            <img src="/img/candidato/IMG5.jpg"
                 alt="El Alto Fondo" class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
@@ -219,7 +219,7 @@
                 <!-- Imagen Historia -->
                 <div class="relative" data-aos="fade-right">
                     <div class="absolute top-4 -left-4 w-full h-full border-2 border-mts-green rounded-xl z-0"></div>
-                    <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=1932&auto=format&fit=crop"
+                    <img src="/img/candidato/IMG5.jpg"
                         alt="David Vargas con el pueblo"
                         class="relative z-10 rounded-xl shadow-2xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition duration-500">
                     <div

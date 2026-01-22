@@ -148,8 +148,7 @@
         class="relative pt-20 min-h-[90vh] flex items-center clip-diagonal bg-gray-900 overflow-hidden">
         <!-- Background Image Parallax -->
         <div class="absolute inset-0 z-0 transform scale-105">
-            <img src="/img/candidato/IMG5.jpg"
-                alt="El Alto Fondo" class="w-full h-full object-cover opacity-30">
+            <img src="/img/candidato/IMG5.jpg" alt="El Alto Fondo" class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
@@ -219,8 +218,7 @@
                 <!-- Imagen Historia -->
                 <div class="relative" data-aos="fade-right">
                     <div class="absolute top-4 -left-4 w-full h-full border-2 border-mts-green rounded-xl z-0"></div>
-                    <img src="/img/candidato/IMG5.jpg"
-                        alt="David Vargas con el pueblo"
+                    <img src="/img/candidato/IMG5.jpg" alt="David Vargas con el pueblo"
                         class="relative z-10 rounded-xl shadow-2xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition duration-500">
                     <div
                         class="absolute -bottom-6 -right-6 bg-white p-4 shadow-xl rounded-lg z-20 max-w-xs border-l-4 border-mts-copper">
@@ -233,7 +231,8 @@
                 <div data-aos="fade-left">
                     <h4 class="text-mts-copper font-bold tracking-widest uppercase mb-2">Sobre David Vargas</h4>
                     <h2 class="font-display font-bold text-4xl lg:text-5xl text-mts-dark mb-6">UN LÍDER QUE CONOCE
-                        <br><span class="text-mts-green">TUS LUCHAS</span></h2>
+                        <br><span class="text-mts-green">TUS LUCHAS</span>
+                    </h2>
 
                     <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
                         <p>
@@ -300,7 +299,8 @@
                         class="font-display font-bold text-2xl text-gray-800 mb-3 group-hover:text-mts-copper transition">
                         Seguridad Canina</h3>
                     <p class="text-gray-600 leading-relaxed">Rescate masivo de canes callejeros para entrenamiento en
-                        <strong>seguridad barrial</strong>. Calles seguras y trato ético animal en un solo programa.</p>
+                        <strong>seguridad barrial</strong>. Calles seguras y trato ético animal en un solo programa.
+                    </p>
                 </div>
 
                 <!-- Card 3 -->
@@ -342,15 +342,21 @@
                         Ver canal oficial de YouTube <i class="fas fa-external-link-alt ml-2"></i>
                     </a>
                 </div>
+                <div style="border-radius: 10px; overflow: hidden">
+                    <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/OUaBnzxd0wo?si=uEYxt-alYKVsG0B7"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-                <div class="w-full md:w-1/2" data-aos="zoom-in">
+                </div>
+
+                {{-- <div class="w-full md:w-1/2" data-aos="zoom-in">
                     <!-- Contenedor Responsive para Video -->
                     <div
                         class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-700 bg-black aspect-video group cursor-pointer">
                         <!-- Placeholder Image (Thumbnail) -->
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop"
-                            class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition duration-500"
-                            alt="Video Thumbnail">
+
 
                         <!-- Play Button Overlay -->
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -372,7 +378,7 @@
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/TU_ID_VIDEO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         -->
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -481,7 +487,7 @@
                 <div class="bg-white p-6 rounded-lg shadow border border-gray-100" data-aos="fade-up"
                     data-aos-delay="100">
                     <div class="flex items-center gap-4 mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-12 h-12 rounded-full">
+                        <img src="/img/mts/resenia2.jpg" class="w-12 h-12 rounded-full">
                         <div class="text-left">
                             <p class="font-bold text-sm">Juana Mamani</p>
                             <p class="text-xs text-gray-500">Comerciante - La Ceja</p>
@@ -493,7 +499,7 @@
                 <div class="bg-white p-6 rounded-lg shadow border border-gray-100" data-aos="fade-up"
                     data-aos-delay="200">
                     <div class="flex items-center gap-4 mb-4">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full">
+                        <img src="/img/mts/resenia1.jpg" class="w-12 h-12 rounded-full">
                         <div class="text-left">
                             <p class="font-bold text-sm">Carlos Quispe</p>
                             <p class="text-xs text-gray-500">Estudiante UPEA</p>
@@ -505,7 +511,7 @@
                 <div class="bg-white p-6 rounded-lg shadow border border-gray-100" data-aos="fade-up"
                     data-aos-delay="300">
                     <div class="flex items-center gap-4 mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full">
+                        <img src="/img/mts/resenia3.jpg" class="w-12 h-12 rounded-full">
                         <div class="text-left">
                             <p class="font-bold text-sm">Sra. Elena T.</p>
                             <p class="text-xs text-gray-500">Junta Vecinal Dist. 8</p>

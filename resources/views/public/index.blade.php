@@ -167,7 +167,7 @@
                     Gestión 2026 - 2031
                 </div> --}}
                 <h1 class="font-display font-bold text-5xl md:text-7xl leading-tight mb-6">
-                    ¡POR UNA CIUDAD VALIENTE,<br>
+                    ¡PARA UNA CIUDAD VALIENTE,<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">UN ALCALDE
                         VALIENTE!</span>
                 </h1>
@@ -391,10 +391,11 @@
                     <h2 class="font-display font-bold text-4xl text-mts-green">LOS 7 PILARES DEL CAMBIO</h2>
                     <p class="text-gray-500 mt-2 text-lg">Estructura técnica para problemas reales.</p>
                 </div>
-                <button
+                <a href="{{ url('downloads/plan_gobierno_el_alto.pdf') }}"
+                    download="PLAN DE GOBIERNO MUNICIPAL PARA EL ALTO.pdf"
                     class="hidden md:block mt-4 md:mt-0 text-mts-copper font-bold hover:text-orange-700 border-b-2 border-mts-copper pb-1 transition">
                     <i class="fas fa-file-pdf mr-2"></i> Descargar Plan Completo PDF
-                </button>
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -478,6 +479,15 @@
         </div>
     </section>
 
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="font-display font-bold text-3xl text-mts-dark mb-12" data-aos="fade-up">
+                Unete a nuestros bloques
+            </h2>
+
+        </div>
+    </section>
+
     <!-- TESTIMONIOS (NUEVA SECCIÓN DE CONFIANZA) -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 text-center">
@@ -542,7 +552,7 @@
                 class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 max-w-lg mx-auto shadow-2xl">
                 <div class="space-y-4">
                     <div>
-                        <input type="text" placeholder="Tu Nombre Completo"
+                        <input type="text" id="nombreUsuario" placeholder="Tu Nombre Completo"
                             class="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-mts-copper/50 transition">
                     </div>
 
@@ -551,7 +561,7 @@
                             class="px-2 py-3 rounded-lg bg-gray-100 text-gray-700 border-none outline-none font-bold">
                             <option>🇧🇴 +591</option>
                         </select>
-                        <input type="tel" placeholder="Número de WhatsApp"
+                        <input type="tel" id="numeroUsuario" placeholder="Número de WhatsApp"
                             class="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-mts-copper/50 transition">
                     </div>
 
@@ -561,7 +571,7 @@
                             (No SPAM, solo propuestas).</label>
                     </div>
 
-                    <button type="button"
+                    <button type="button" onclick="abrirWhatsApp()"
                         class="w-full bg-gradient-to-r from-mts-copper to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:-translate-y-1 text-lg flex justify-center items-center gap-2">
                         <i class="fab fa-whatsapp"></i> QUIERO PARTICIPAR
                     </button>
@@ -644,6 +654,34 @@
                 navbar.classList.add('py-2');
             }
         });
+
+        // Función para abrir WhatsApp
+        function abrirWhatsApp() {
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombreUsuario').value.trim();
+            const numero = document.getElementById('numeroUsuario').value.trim();
+
+            // Validar que los campos no estén vacíos
+            if (!nombre) {
+                alert('Por favor, ingresa tu nombre completo');
+                return;
+            }
+
+            if (!numero) {
+                alert('Por favor, ingresa tu número de WhatsApp');
+                return;
+            }
+
+            const numeroWhatsApp = '59178877050'; // Número con código de país (Bolivia +591)
+            const mensaje = encodeURIComponent(
+                `¡Hola! Soy ${nombre} y mi número es ${numero}.\n\n` +
+                `Quiero participar y ser parte del cambio para El Alto. Me gustaría recibir más información sobre las propuestas de David Vargas.`
+            );
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+
+            // Abrir en nueva ventana
+            window.open(urlWhatsApp, '_blank');
+        }
     </script>
 </body>
 

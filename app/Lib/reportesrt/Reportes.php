@@ -131,7 +131,7 @@ class Reportes extends  FpdfSicaf
         $this->SetFont('Arial', 'B', 9);
         $this->Cell(0, 4, utf8Decode("SUCURSAL " . $inscripcion->nombre_sucursal), 0, 1, 'C');
 
-        $this->Cell(0, 4, 'Fundado el 14 de diciembre de 2020', 0, 1, 'C');
+        $this->Cell(0, 4, 'Gestión 2026', 0, 1, 'C');
         $this->SetFont('Arial', 'B', 9);
         $this->Cell(0, 4, 'Consultas y Referencias: cel: 73726566 - 68100601', 0, 1, 'C');
 
@@ -824,7 +824,7 @@ class Reportes extends  FpdfSicaf
         $this->Ln(5);
         $this->SetTextColor(16, 87, 97);
 
-        $this->Cell(0, 10, utf8Decode('DETALLES DE INSCRIPCIÓN'), 0, 1, 'C');
+        $this->Cell(0, 10, utf8Decode('DETALLES DE APORTES'), 0, 1, 'C');
         $this->Ln(2);
         $this->SetFont('Arial', 'B', 10);
         $this->SetTextColor(0, 0, 0);
@@ -834,7 +834,7 @@ class Reportes extends  FpdfSicaf
         $this->ln();
         $this->SetFont('Arial', 'B', 10);
 
-        $this->Cell(20, 5, utf8Decode('Alumno:'), 0);
+        $this->Cell(20, 5, utf8Decode('Militante:'), 0);
         $this->SetFont('Arial', '', 8);
         $this->Cell(70, 5, utf8Decode($inscripcion->nombre . " " . $inscripcion->paterno . " " . $inscripcion->materno), 0);
         $this->SetFont('Arial', 'B', 10);
@@ -846,8 +846,8 @@ class Reportes extends  FpdfSicaf
         $this->SetFont('Arial', '', 8);
         $this->Cell(20, 5, utf8Decode($inscripcion->genero), 0);
         $this->ln();
-        $this->SetFont('Arial', 'B', 10);
-        $this->Cell(22, 5, utf8Decode('Apoderado:'), 0);
+        // $this->SetFont('Arial', 'B', 10);
+        // $this->Cell(22, 5, utf8Decode('Apoderado:'), 0);
         $this->SetFont('Arial', '', 8);
         $this->Cell(68, 5, utf8Decode($inscripcion->apoderado), 0);
         $this->SetFont('Arial', 'B', 10);
@@ -874,25 +874,25 @@ class Reportes extends  FpdfSicaf
         $this->Cell(40, 5, utf8Decode($inscripcion->direccion), 0);
         $this->ln();
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(20, 5, utf8Decode('Categoria:'), 0);
+        $this->Cell(20, 5, utf8Decode('Distrito:'), 0);
         $this->SetFont('Arial', '', 8);
         $this->Cell(70, 5, utf8Decode($inscripcion->nombre_categoria . " - " . $inscripcion->gestion), 0);
         $this->ln();
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(22, 5, utf8Decode('Entrenador:'), 0);
+        $this->Cell(22, 5, utf8Decode('Encargado:'), 0);
         $this->SetFont('Arial', '', 8);
         $this->Cell(70, 5, utf8Decode($entrenador->nombre . " " . $entrenador->paterno . " " . $entrenador->materno), 0);
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(35, 5, utf8Decode('Tipo de Inscripción:'), 0);
+        $this->Cell(35, 5, utf8Decode('Tipo de militancia:'), 0);
         $this->SetFont('Arial', '', 8);
         $this->Cell(40, 5, utf8Decode($inscripcion->tipo_inscripcion), 0);
         $this->ln();
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(58, 5, utf8Decode('Monto Inscripción (Matricula) Bs.: '), 0);
-        $this->SetFont('Arial', '', 10);
-        $this->Cell(35, 5, formatoMoneda($inscripcion->monto_inscripcion), 0);
+        // $this->Cell(58, 5, utf8Decode('Monto Inscripción (Matricula) Bs.: '), 0);
+        // $this->SetFont('Arial', '', 10);
+        // $this->Cell(35, 5, formatoMoneda($inscripcion->monto_inscripcion), 0);
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(20, 5, utf8Decode('Sucursal: '), 0);
+        $this->Cell(20, 5, utf8Decode('Casa de campaña'), 0);
         $this->SetFont('Arial', '', 10);
         $this->Cell(40, 5, utf8Decode($inscripcion->nombre_sucursal), 0);
         $this->ln(10);
@@ -901,7 +901,7 @@ class Reportes extends  FpdfSicaf
 
         $this->SetFont('Arial', 'B', 12);
         $this->SetTextColor(16, 87, 97);
-        $this->Cell(0, 5, utf8Decode('DETALLE DE PAGOS'), 0, 1, 'C');
+        $this->Cell(0, 5, utf8Decode('DETALLE DE APORTES'), 0, 1, 'C');
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(0, 5, utf8Decode('(Expresado en Bolivianos)'), 0, 1, 'C');
 

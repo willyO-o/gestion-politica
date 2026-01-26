@@ -729,7 +729,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
             <div class="modal-content border-0">
                 <div class="modal-header bg-soft-secondary p-3">
-                    <h5 class="modal-title" >Pagos de la Inscripción Nro.: <span id="tituloModalPago" class="text-danger"></span></h5>
+                    <h5 class="modal-title" >Datos de Aporte Nro.: <span id="tituloModalPago" class="text-danger"></span></h5>
                     <button type="button" class="btn-close cancel-btn-photo" data-bs-dismiss="modal" aria-label="Close"
                         id="btn-cancel-pay-x"></button>
                 </div>
@@ -746,7 +746,7 @@
                                 <h4 class="card-title text-center" id="actionTitlePago">Registrar Pago</h4>
                                 <div class="row mb-2">
                                     <div class="col-md-12">
-                                        <label for="datosInscripcionPago" class="form-label">Datos de Inscripción</label>
+                                        <label for="datosInscripcionPago" class="form-label">Datos de aporte</label>
                                         <div type="text" class="form-control form-control-sm bg-light" id="datosInscripcionPago"  disabled ></div>
                                     </div>
                                 </div>
@@ -772,7 +772,7 @@
                                     </div>
                                     <div class="col-md-4 col-lg-3">
                                         <div>
-                                            <label for="fecha_pago" class="form-label">Fecha de Pago <small
+                                            <label for="fecha_pago" class="form-label">Fecha de Aporte <small
                                                     class="text-danger">*</small> </label>
 
                                             <input type="date" class="form-control form-control-sm" id="fecha_pago"
@@ -786,7 +786,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 col-lg-3">
+                                    <div class="col-md-4 col-lg-3 d-none">
                                         <div>
                                             <label for="id_mes_fk" class="form-label">Mes del Pago
                                                 <small class="text-danger">*</small></label>
@@ -810,7 +810,7 @@
 
                                     <div class="col-md-4 col-lg-3">
                                         <div class="mt-1">
-                                            <label for="monto" class="form-label">Monto de Mensualidad
+                                            <label for="monto" class="form-label">Monto
                                                 (Bs.)</label>
                                             <input type="text" id="monto" name="monto"
                                                 class="form-control form-control-sm max-length txtDecimal" maxlength="8" required
@@ -820,7 +820,7 @@
                                                 </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-lg-3">
+                                    <div class="col-md-4 col-lg-3 d-none">
                                         <div class="mt-1">
                                             <label for="saldo" class="form-label">Saldo
                                                 (Bs.)</label>
@@ -834,7 +834,7 @@
 
                                     <div class="col-md-4 col-lg-3">
                                         <div class="mt-1">
-                                            <label for="" class="form-label">Estado del Pago <small
+                                            <label for="" class="form-label">Estado del aporte <small
                                                     class="text-danger">*</small> </label>
                                             <div class="form-check form-radio-primary mb-0">
                                                 <input class="form-check-input" type="radio" name="estado_pago"

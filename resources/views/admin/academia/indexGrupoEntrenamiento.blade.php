@@ -121,10 +121,10 @@
 
                             <div class="col-lg-12">
                                 <div>
-                                    <label for="descripcion_grupo" class="form-label">Descripción del Bloque Politico
+                                    <label for="descripcion_grupo" class="form-label">Descripción de actividades del Bloque
                                         <small class="text-danger">*</small>
                                     </label>
-                                    <textarea type="text" id="descripcion_grupo" name="descripcion_grupo" class="form-control txtNormal  " required
+                                    <textarea type="text" id="descripcion_grupo" name="descripcion_grupo" class="form-control txtNormal  " required rows="15"
                                         placeholder=""></textarea>
                                     <div class="invalid-feedback">
                                         Por favor ingrese una descripción para el bloque político.

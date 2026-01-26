@@ -84,11 +84,11 @@ class FpdfSicaf extends exFPDF
         }
 
         if ($this->imprimirEncabezado) {
-            $this->SetY(35);
+            // $this->SetY(35);
 
 
 
-            $this->Image(public_path('/img/logo/membrete_rt.jpg'), 0, 0, 219, 280, 'JPG');
+            // $this->Image(public_path('/img/logo/membrete_rt.jpg'), 0, 0, 219, 280, 'JPG');
         }
         // dar un espacio arriba para el logo
 

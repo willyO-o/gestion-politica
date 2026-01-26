@@ -1551,8 +1551,8 @@ $(function () {
         $("#formPagos")[0].reset();
         $("#formPagos").removeClass('was-validated');
         $("#actionPago").val("registrar");
-        $("#btn-add-pago span").text("Registrar Pago");
-        $("#actionTitlePago").text("Registrar Pago");
+        $("#btn-add-pago span").text("Registrar Aporte");
+        $("#actionTitlePago").text("Registrar Aporte");
         $("#id_pago_mes_gestion").val("");
         $("#formPagos").find("#fecha_pago").prop("disabled", false);
 

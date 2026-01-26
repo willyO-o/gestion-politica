@@ -32,7 +32,7 @@
                                     <div class="row row-30">
                                         <div class="col-lg-6">
                                             <h2>2021-{{ date('Y') }}</h2>
-                                            <h4> Fundado el 14 de diciembre de 2020 </h4>
+                                            <h4> Gestion 2026 </h4>
                                             <p>
                                                 Nuevas Estrellas es una academia de fútbol fundada el 14 de diciembre de
                                                 2020, inspirada en el legado y pasión de Ramiro Ticona, un referente del

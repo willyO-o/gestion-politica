@@ -44,7 +44,7 @@ class CategoriaController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Categoria registrada correctamente',
+            'message' => 'Distrito registrado correctamente',
             'data' => $categoria,
         ]);
     }
@@ -90,7 +90,7 @@ class CategoriaController extends Controller
 
         return response()->json([
             'success' => $result,
-            'message' => $result ? 'Categoria actualizada correctamente' : 'Error al actualizar la categoria',
+            'message' => $result ? 'Distrito actualizado correctamente' : 'Error al actualizar el distrito',
             'data' => $categoria,
         ], $result ? 200 : 422);
     }
@@ -106,7 +106,7 @@ class CategoriaController extends Controller
 
         return response()->json([
             'success' => $result,
-            'message' => $result ? 'Categoria eliminada correctamente' : 'Error al eliminar la categoria',
+            'message' => $result ? 'Distrito eliminada correctamente' : 'Error al eliminar el distrito',
         ], $result ? 200 : 422);
 
     }

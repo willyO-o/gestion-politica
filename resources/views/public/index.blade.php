@@ -181,7 +181,7 @@
                         class="bg-mts-copper hover:bg-mts-copperDark text-white text-center px-8 py-4 rounded-lg font-bold text-lg shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
                         <span>Ver Propuestas</span> <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="https://www.youtube.com/watch?v=placeholder" target="_blank"
+                    <a href="https://youtu.be/OUaBnzxd0wo?si=6e8Dqzzqa-4_kIae" target="_blank"
                         class="group flex items-center justify-center gap-3 px-8 py-4 rounded-lg border-2 border-white/30 hover:bg-white/10 text-white font-bold transition">
                         <i class="fas fa-play-circle text-2xl group-hover:text-mts-copper transition-colors"></i> Ver
                         Spot

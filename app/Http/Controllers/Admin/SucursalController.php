@@ -44,7 +44,7 @@ class SucursalController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Sucursal registrada correctamente',
+            'message' => 'Casa de campaña registrada correctamente',
             'data' => $sucursal,
         ]);
     }

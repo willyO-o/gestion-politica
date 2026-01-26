@@ -39,6 +39,7 @@
                                         <th data-sort="celular" scope="col">telefono</th>
                                         <th data-sort="tipoPersonal" scope="col">Coordenadas </th>
                                         <th data-sort="celular" scope="col">fecha creación</th>
+                                        <th data-sort="municipio" scope="col">Municipio</th>
                                         <th scope="col">Estado</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
@@ -93,7 +94,7 @@
 
                         <div class="row g-3">
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div>
                                     <label for="nombre_sucursal" class="form-label">Nombre de la Casa de Campaña <small
                                             class="text-danger">*</small>
@@ -111,6 +112,13 @@
                                 <div>
                                     <label for="telefono" class="form-label">Número de teléfono</label>
                                     <input type="text" id="telefono" name="telefono"
+                                        class="form-control txtMayuscula txtNormal" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <label for="municipio" class="form-label">Municipio</label>
+                                    <input type="text" id="municipio" name="municipio"
                                         class="form-control txtMayuscula txtNormal" placeholder="" />
                                 </div>
                             </div>

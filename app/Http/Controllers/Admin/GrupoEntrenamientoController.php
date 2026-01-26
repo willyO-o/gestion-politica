@@ -77,7 +77,7 @@ class GrupoEntrenamientoController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => "Grupo de entrenamiento registrado correctamente",
+                'message' => "Bloque político registrado correctamente",
                 'data' => GrupoEntrenamiento::getAllGrupos([], $grupoEntrenamiento->id_grupo_entrenamiento)->first(),
             ]);
         } catch (\Throwable $th) {
@@ -329,7 +329,7 @@ class GrupoEntrenamientoController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => "Grupo de entrenamiento registrado correctamente",
+                'message' => "Bloque político registrado correctamente",
                 'data' => GrupoEntrenamiento::getAllGrupos([], $grupoEntrenamiento->id_grupo_entrenamiento)->first(),
             ]);
         } catch (\Throwable $th) {

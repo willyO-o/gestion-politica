@@ -538,7 +538,7 @@ $(function () {
 
 
                 </ul>
-                <ul class="list-inline hstack gap-2 mb-0 d-none">
+                <ul class="list-inline hstack gap-2 mb-0">
                     <li class="list-inline-item edit" >
                         <a href="javascript:void(0);" class="text-success hover-secondary d-inline-block card-btn" tooltip="tooltip" data-bs-placement="top" title="Credencial">
                             <i class=" mdi mdi-card-account-details-star-outline mdi-20px"></i>

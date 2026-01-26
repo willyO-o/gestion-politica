@@ -70,7 +70,7 @@
         <div class="container">
             <div class="layout-justify">
                 <!-- Rights-->
-                <p class="rights"><span>WalterPaco - WillyChana</span><span>&nbsp;&copy;&nbsp;</span><span
+                <p class="rights"><span>Walter P - WillyChana</span><span>&nbsp;&copy;&nbsp;</span><span
                         class="copyright-year"></span><span>.&nbsp;</span><a class="link-underline"
                         href="#">R.T.</a></p>
                 <nav class="nav-minimal">

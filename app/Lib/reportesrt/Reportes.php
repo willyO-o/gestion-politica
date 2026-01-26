@@ -283,8 +283,8 @@ class Reportes extends  FpdfSicaf
         $this->SetAutoPageBreak(false);
 
         $this->SetLineWidth(0.7);
-        $this->AddPage("P", [180, 140]);
-        $this->Image(public_path('img/logo/fondo_2025vt1.png'), 0, 0, 140, 90, 'png');
+        $this->AddPage("L", [115, 90]);
+        $this->Image(public_path('img/candidato/fondo-credencial.png'), 0, 0, 115, 90, 'png');
         $this->setDrawColor(0, 0, 0);
 
         $this->SetTextColor(255, 255, 255);
@@ -292,21 +292,21 @@ class Reportes extends  FpdfSicaf
         $this->SetFont('Arial', 'B', 10);
 
 
-        $this->verificarFotoInscripcion($inscripcion);
+        // $this->verificarFotoInscripcion($inscripcion);
 
         $this->setDrawColor(255, 255, 255);
 
-        $this->Line(10, 35, 45, 35);
-        $this->Line(10, 35, 10, 70);
-        $this->Line(45, 35, 45, 70);
-        $this->Line(10, 70, 45, 70);
+        // $this->Line(10, 35, 45, 35);
+        // $this->Line(10, 35, 10, 70);
+        // $this->Line(45, 35, 45, 70);
+        // $this->Line(10, 70, 45, 70);
 
-        $this->setDrawColor(0, 0, 0);
+        // $this->setDrawColor(0, 0, 0);
 
-        $this->Line(10, 100, 130, 100);
-        $this->Line(10, 170, 130, 170);
-        $this->Line(10, 170, 10, 100);
-        $this->Line(130, 170, 130, 100);
+        // $this->Line(10, 100, 130, 100);
+        // $this->Line(10, 170, 130, 170);
+        // $this->Line(10, 170, 10, 100);
+        // $this->Line(130, 170, 130, 100);
 
 
 
@@ -345,8 +345,8 @@ class Reportes extends  FpdfSicaf
         $this->SetTextColor(255, 255, 255);
 
 
-        $this->Cell(0, 8, utf8Decode('CLUB DEPORTIVO R.T.'), 0, 1, 'C');
-        $this->Cell(0, 8, '"NUEVAS ESTRELLAS"', 0, 0, 'C');
+        // $this->Cell(0, 8, utf8Decode('CLUB DEPORTIVO R.T.'), 0, 1, 'C');
+        // $this->Cell(0, 8, '"NUEVAS ESTRELLAS"', 0, 0, 'C');
 
         $this->SetFont('Arial', 'B', 10);
 
@@ -354,28 +354,30 @@ class Reportes extends  FpdfSicaf
         $this->SetTextColor(255, 255, 255);
 
         $this->ln(8);
-        $this->Cell(0, 5, utf8Decode("Sucursal: " . $inscripcion->nombre_sucursal), 0, 1, 'C');
+        // $this->Cell(0, 5, utf8Decode("Sucursal: " . $inscripcion->nombre_sucursal), 0, 1, 'C');
         // $this->Cell(0, 7, utf8Decode("Sucursal: ". $inscripcion->nombre_sucursal) , 0, 1, 'C');
         $this->SetFont('Arial', 'B', 7.5);
 
-        $this->MultiCell(110, 5, utf8Decode("CATEGORIA: " . $inscripcion->nombre_categoria . " - TURNO: " . $inscripcion->turno));
+        // $this->MultiCell(110, 5, utf8Decode("CATEGORIA: " . $inscripcion->nombre_categoria . " - TURNO: " . $inscripcion->turno));
 
         $this->SetFont('Arial', 'B', 9);
 
 
-        $this->setXY(10, 73);
+        $this->setXY(10, 32);
 
-        $this->SetFillColor(255, 255, 255);
+        // $this->SetFillColor(255, 255, 255);
         $this->SetTextColor(0, 0, 0);
-        $this->Cell(35, 8, utf8Decode('C.I: ' . $inscripcion->numero_documento), 0, 1, 'C', true);
+        $this->Cell(35, 8, utf8Decode('C.I: ' . $inscripcion->numero_documento), 0, 1, 'C',);
 
+
+        $this->SetTextColor(0, 132, 30);
 
         $this->SetFont('Arial', 'B', 10);
-        $this->setXY(50, 38);
-        $this->Cell(54, 6,  utf8Decode($inscripcion->nombre), 0, 1, 'L', true);
+        $this->setXY(5, 23);
+        $this->Cell(50, 6,  utf8Decode($inscripcion->nombre), 0, 1, 'C');
 
-        $this->setXY(50, 50);
-        $this->MultiCell(54, 6,  utf8Decode($inscripcion->paterno . " " . $inscripcion->materno), 0, 1, 'L', true);
+        $this->setXY(5, 27);
+        $this->MultiCell(50, 6,  utf8Decode($inscripcion->paterno . " " . $inscripcion->materno), 0,  'C');
 
 
 
@@ -383,15 +385,15 @@ class Reportes extends  FpdfSicaf
         $this->SetTextColor(255, 255, 255);
         $this->SetFont('Arial', 'B', 9);
 
-        $this->ln(2);
-        // $this->setXY(50, 55);
-        $this->SetFont('Arial', 'B', 8);
-        $this->Cell(42, 6, "");
-        $this->Cell(22, 6, 'F. Nac. / Edad: ');
+        // $this->ln(2);
+        // // $this->setXY(50, 55);
+        // $this->SetFont('Arial', 'B', 8);
+        // $this->Cell(42, 6, "");
+        // $this->Cell(22, 6, 'F. Nac. / Edad: ');
 
-        $this->SetFillColor(255, 255, 255);
-        $this->SetTextColor(0, 0, 0);
-        $this->Cell(33, 6,  utf8Decode(fechaMesLiteral($inscripcion->fecha_nacimiento)." [ ".calcEdad($inscripcion->fecha_nacimiento) ." años]" ), 0, 1, 'L', true);
+        // $this->SetFillColor(255, 255, 255);
+        // $this->SetTextColor(0, 0, 0);
+        // $this->Cell(33, 6,  utf8Decode(fechaMesLiteral($inscripcion->fecha_nacimiento)." [ ".calcEdad($inscripcion->fecha_nacimiento) ." años]" ), 0, 1, 'L', true);
 
 
         $this->SetFont('Arial', 'B', 8);
@@ -400,37 +402,37 @@ class Reportes extends  FpdfSicaf
 
 
 
-        $this->setXY(106, 51);
-        $this->Cell(30, 5, utf8Decode($inscripcion->numero), 0, 1, 'C', true);
+        // $this->setXY(106, 51);
+        // $this->Cell(30, 5, utf8Decode($inscripcion->numero), 0, 1, 'C', true);
 
         // $numero_filas = $this->
 
         // $this->RoundedRect(60, 30, 68, 46, 5, '13', 'DF');
 
-        $this->Image(public_path('img/logo/logo_2023.png'), 3, 0, 25, 20, 'png');
+        // $this->Image(public_path('img/logo/logo_2023.png'), 3, 0, 25, 20, 'png');
 
-        // $this->Image(public_path('img/logo/logo_2023.png'), 115, 0, 25, 20, 'png');
+        // // $this->Image(public_path('img/logo/logo_2023.png'), 115, 0, 25, 20, 'png');
 
 
-        $this->Image(public_path('img/logo/fbf.png'), 116, 3, 15, 15, 'png');
+        // $this->Image(public_path('img/logo/fbf.png'), 116, 3, 15, 15, 'png');
 
-        $this->Image(public_path('img/logo/aflp.png'), 118, 20, 12, 12, 'png');
+        // $this->Image(public_path('img/logo/aflp.png'), 118, 20, 12, 12, 'png');
 
-        $this->Image(public_path('img/logo/amfeal.png'), 118, 35, 12, 12, 'png');
+        // $this->Image(public_path('img/logo/amfeal.png'), 118, 35, 12, 12, 'png');
 
 
 
         // $urlQr = url("/admin/asistencia-estudiante/" . $inscripcion->codigo);
 
-        $base64QrAsistencia = "data:image/png;base64," .    $this->getBase64Qr($inscripcion->codigo, 400, "png", "L", "", 2);
+        // $base64QrAsistencia = "data:image/png;base64," .    $this->getBase64Qr($inscripcion->codigo, 400, "png", "L", "", 2);
 
-        $this->Image($base64QrAsistencia, 106, 55, 30, 30, 'png');
+        // $this->Image($base64QrAsistencia, 77, 59, 20, 20, 'png');
 
-        $this->SetXY(107, 85);
+        // $this->SetXY(107, 85);
 
-        $this->SetTextColor(255, 255, 255);
-        $this->SetFont('Arial', 'B', 8);
-        $this->Cell(40, 5, utf8Decode('QR para asistencia'), 0, 1);
+        // $this->SetTextColor(255, 255, 255);
+        // $this->SetFont('Arial', 'B', 8);
+        // $this->Cell(40, 5, utf8Decode('QR para asistencia'), 0, 1);
         // $fpdf->Image(FCPATH . 'uploads/img/qr_cel.png', 115, 67, 15, 15, 'png');
         // $this->Image(public_path('img/logo/qr_cel.png'), 110, 58, 25, 25, 'png');
 
@@ -438,13 +440,13 @@ class Reportes extends  FpdfSicaf
 
         $urlQr = url("/detalle-inscripcion/" . $inscripcion->codigo);
 
-        $base64Qr = "data:image/png;base64," .    $this->getBase64Qr($urlQr, 400, "png", "M", "/public/img/logo/logo_2023_cirular.png", 2);
+        $base64Qr = "data:image/png;base64," .    $this->getBase64Qr($urlQr, 400, "png", "M", "/public/img/mts/logo-mts.png", 2);
 
-        $this->Image($base64Qr, 12, 129, 40, 40, 'png');
+        $this->Image($base64Qr, 76.5, 59, 20, 20, 'png');
 
         if (empty($inscripcion->foto) == false) {
             // $this->Image(FCPATH . 'uploads/foto/' . $persona->foto, 110, 80, 20, 20);
-            $this->image(public_path('storage/' . $inscripcion->foto), 10.5, 35.5, 34, 34);
+            $this->image(public_path('storage/' . $inscripcion->foto), 17.5, 45, 22, 20);
         }
 
         $this->SetTextColor(0, 0, 0);
@@ -452,11 +454,11 @@ class Reportes extends  FpdfSicaf
 
         $this->SetFont('Arial', 'B', 7);
 
-        $this->setXY(49, 33);
-        $this->Cell(30, 5, utf8Decode('NOMBRE(S):'));
+        // $this->setXY(49, 33);
+        // $this->Cell(30, 5, utf8Decode('NOMBRE(S):'));
 
-        $this->setXY(49, 45);
-        $this->Cell(30, 5, utf8Decode('APELLIDOS:'));
+        // $this->setXY(49, 45);
+        // $this->Cell(30, 5, utf8Decode('APELLIDOS:'));
 
 
         // $this->SetFont('Arial', 'B', 8);
@@ -472,14 +474,14 @@ class Reportes extends  FpdfSicaf
 
 
         $this->setXY(48, 77);
-        $this->Cell(30, 6, utf8Decode( "Gestión ".date("Y")));
+        // $this->Cell(30, 6, utf8Decode( "Gestión ".date("Y")));
 
         $this->setXY(25, 83);
         $this->SetTextColor(0, 0, 0);
         $this->SetTextColor(255, 255, 255);
 
         $this->SetFont('Arial', 'B', 10);
-        $this->Cell(100, 6, 'Informaciones al celular 73726566', 0, 0, "C");
+        // $this->Cell(100, 6, 'Informaciones al celular 73726566', 0, 0, "C");
         // $this->Image(public_path('img/logo/flecha.png'), 120, 83, 5, 5, 'png');
 
 
@@ -489,39 +491,39 @@ class Reportes extends  FpdfSicaf
         $this->SetTextColor(0, 0, 0);
 
         $this->setXY(15, 116);
-        $this->Cell(34, 6, "Ariel Ticona Vargas", "T", 1, 'C', false);
+        // $this->Cell(34, 6, "Ariel Ticona Vargas", "T", 1, 'C', false);
 
 
-        $this->SetFont('Arial', 'B', 8);
-        $this->SetTextColor(0, 0, 0);
-        $this->setXY(15, 122.5);
-        $this->Cell(34, 3, utf8Decode('DIRECTOR GENERAL'),0,0,"C");
+        // $this->SetFont('Arial', 'B', 8);
+        // $this->SetTextColor(0, 0, 0);
+        // $this->setXY(15, 122.5);
+        // $this->Cell(34, 3, utf8Decode('DIRECTOR GENERAL'),0,0,"C");
 
-        // 		$this->setXY(20, 120);
-        $this->Image(public_path('img/logo/firma.png'), 15, 99, 40, 20, 'png');
+        // // 		$this->setXY(20, 120);
+        // $this->Image(public_path('img/logo/firma.png'), 15, 99, 40, 20, 'png');
 
-        $this->setXY(90, 120);
+        // $this->setXY(90, 120);
 
 
-        $this->SetFont('Arial', 'B', 9);
+        // $this->SetFont('Arial', 'B', 9);
 
-        $this->setXY(55, 110);
-        $this->MultiCell(70, 6, utf8Decode("La presente Credencial acredita la Inscripción a la Academia de Fútbol R.T. \"Nuevas Estrellas\", y la presentación es de uso personal e intransferible permitiendo al portador participar en los entrenamientos. \n \nNOTA: Recordar la puntualidad de los pagos en la Academia, caso contrario el interés será 5% por día atrasado."));
+        // $this->setXY(55, 110);
+        // $this->MultiCell(70, 6, utf8Decode("La presente Credencial acredita la Inscripción a la Academia de Fútbol R.T. \"Nuevas Estrellas\", y la presentación es de uso personal e intransferible permitiendo al portador participar en los entrenamientos. \n \nNOTA: Recordar la puntualidad de los pagos en la Academia, caso contrario el interés será 5% por día atrasado."));
 
-        $this->Ln(60);
-        $this->SetFont('Arial', 'B', 8);
-        $this->Cell(55, 30, 'PRESIDENTE', 0, 0, 'R');
-        $this->Cell(50, 30, 'PRESIDENTE  A.F.L.P.', 0, 0, 'C');
-        $this->Ln(32);
+        // $this->Ln(60);
+        // $this->SetFont('Arial', 'B', 8);
+        // $this->Cell(55, 30, 'PRESIDENTE', 0, 0, 'R');
+        // $this->Cell(50, 30, 'PRESIDENTE  A.F.L.P.', 0, 0, 'C');
+        // $this->Ln(32);
 
-        $this->SetFont('Arial', 'B', 10);
+        // $this->SetFont('Arial', 'B', 10);
+
+        // $this->Ln(7);
+        // $this->SetFont('Arial', 'B', 9);
 
         $this->Ln(7);
-        $this->SetFont('Arial', 'B', 9);
 
-        $this->Ln(7);
-
-        $this->piePagina();
+        // $this->piePagina();
 
         return $this->Output();
 
@@ -649,9 +651,9 @@ class Reportes extends  FpdfSicaf
         $this->Cell(42, 6, "");
         $this->Cell(22, 6, 'F. Nac. / Edad: ');
 
-        $this->SetFillColor(255, 255, 255);
-        $this->SetTextColor(0, 0, 0);
-        $this->Cell(33, 6,  utf8Decode(fechaMesLiteral($inscripcion->fecha_nacimiento)." [ ".calcEdad($inscripcion->fecha_nacimiento) ." años]" ), 0, 1, 'L', true);
+        // $this->SetFillColor(255, 255, 255);
+        // $this->SetTextColor(0, 0, 0);
+        // $this->Cell(33, 6,  utf8Decode(fechaMesLiteral($inscripcion->fecha_nacimiento)." [ ".calcEdad($inscripcion->fecha_nacimiento) ." años]" ), 0, 1, 'L', true);
 
 
         $this->SetFont('Arial', 'B', 8);

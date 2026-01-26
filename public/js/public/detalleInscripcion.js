@@ -45,7 +45,7 @@ $(function () {
 
         let cabecera = `<thead>
         <tr>
-            <th >Mes - Gestión</th>
+            <th >Actividad</th>
             ${cabeceraDias}
             <th class="text-${coloresAsistencia["A"]}" >Asistencias</th>
             <th class="text-${coloresAsistencia["F"]}" >Faltas</th>

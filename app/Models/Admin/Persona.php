@@ -207,7 +207,7 @@ class Persona extends Model implements Auditable
             ->join('weps_grupo_entrenamiento as ge', 'ge.id_grupo_entrenamiento', '=', 'i.id_grupo_entrenamiento')
             ->join('weps_sucursal as s', 's.id_sucursal', '=', 'ge.id_sucursal_fk')
             ->orderBy('i.id_inscripcion', 'desc')
-            ->where('id_tipo_persona_fk','=', 1)
+            // ->where('id_tipo_persona_fk','=', 1)
             ->where('i.estado_inscripcion', '!=', 'RETIRADO')
             ->limit(15);
 

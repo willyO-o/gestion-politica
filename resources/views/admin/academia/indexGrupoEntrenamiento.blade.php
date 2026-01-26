@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-xl-3 col-md-6">
                             <div class="">
-                                <select id="filtroCategoria"  class="form-select"></select>
+                                <select id="filtroCategoria" class="form-select"></select>
                             </div>
                         </div>
 
@@ -190,7 +190,25 @@
                                 </div>
                             </div>
 
-                            <hr>
+                            <div class="col-lg-6 ">
+                                <div>
+                                    <label for="direccion_sucursal" class="form-label">Tipo bloque político <small
+                                            class="text-danger">*</small> </label><br>
+
+                                    <select name="dia" id="" class="form-select">
+
+                                        <option value="ALCALDIA">Alcaldía</option>
+                                        <option value="GOBERNACION">Gobernación</option>
+                                        <option value="ALCALDIA y GOBERNACION">Ambos</option>
+
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor seleccione un tipo de bloque político.
+                                    </div>
+
+                                </div>
+                            </div>
+
 
 
                             <div class="col-lg-3">
@@ -216,27 +234,7 @@
                             </div>
 
 
-                            <div class="col-lg-6 d-none">
-                                <div>
-                                    <label for="direccion_sucursal" class="form-label">Dias de entrenamiento <small
-                                            class="text-danger">*</small> </label><br>
-                                    @foreach ($dias as $dia)
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="check-dias-{{ $dia->id_dia }}" name="dias[]"
-                                                value="{{ $dia->id_dia }}">
 
-                                            <label class="form-check-label"
-                                                for="check-dias-{{ $dia->id_dia }}">{{ $dia->nombre_dia }}</label>
-                                        </div>
-                                    @endforeach
-
-                                    <div class="invalid-feedback">
-                                        Por favor seleccione al menos un dia de entrenamiento.
-                                    </div>
-
-                                </div>
-                            </div>
 
 
                             <div class="col-lg-3 d-none">
@@ -244,7 +242,7 @@
                                     <label for="hora_inicio" class="form-label"> Hora de Inicio <small
                                             class="text-danger">*</small> </label>
                                     <input type="time" id="hora_inicio" name="hora_inicio" class="form-control  "
-                                        min="06:00" max="21:00"  />
+                                        min="06:00" max="21:00" />
                                     <small class="text-muted"> </small>
 
                                 </div>
@@ -256,7 +254,7 @@
                                             class="text-danger">*</small> </label>
 
                                     <input type="time" id="hora_fin" name="hora_fin" class="form-control  "
-                                        min="06:00" max="21:00"  />
+                                        min="06:00" max="21:00" />
                                     <small class="text-muted"></small>
 
                                 </div>
@@ -270,7 +268,7 @@
 
                                     <div class="form-check mb-2">
                                         <input class="form-check-input" type="radio" name="turno" id="turno-maniana"
-                                            value="MAÑANA" >
+                                            value="MAÑANA">
                                         <label class="form-check-label" for="turno-maniana">
                                             Mañana
                                         </label>
@@ -278,7 +276,7 @@
 
                                     <div class="form-check mb-2">
                                         <input class="form-check-input" type="radio" name="turno" id="turno-tarde"
-                                            value="TARDE" >
+                                            value="TARDE">
                                         <label class="form-check-label" for="turno-tarde">
                                             Tarde
                                         </label>
@@ -290,57 +288,57 @@
                                 </div>
 
 
-                            <div class="col-lg-6 d-none">
-                                <div>
-                                    <label for="" class="form-label">Dia Extra de Entrenamiento </label><br>
-                                    @foreach ($dias as $dia)
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio"
-                                                id="check-dia-extra-{{ $dia->id_dia }}" name="dia_extra[]"
-                                                value="{{ $dia->id_dia }}">
+                                <div class="col-lg-6 d-none">
+                                    <div>
+                                        <label for="" class="form-label">Dia Extra de Entrenamiento </label><br>
+                                        @foreach ($dias as $dia)
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio"
+                                                    id="check-dia-extra-{{ $dia->id_dia }}" name="dia_extra[]"
+                                                    value="{{ $dia->id_dia }}">
 
-                                            <label class="form-check-label"
-                                                for="check-dia-extra-{{ $dia->id_dia }}">{{ $dia->nombre_dia }}</label>
+                                                <label class="form-check-label"
+                                                    for="check-dia-extra-{{ $dia->id_dia }}">{{ $dia->nombre_dia }}</label>
+                                            </div>
+                                        @endforeach
+
+                                        <div class="invalid-feedback">
+                                            Por favor seleccione al menos un dia de entrenamiento.
+
                                         </div>
-                                    @endforeach
-
-                                    <div class="invalid-feedback">
-                                        Por favor seleccione al menos un dia de entrenamiento.
 
                                     </div>
-
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3 d-none">
-                                <div>
-                                    <label for="hora_inicio_dia_extra" class="form-label"> Hora de Inicio dia
-                                        Extra</label>
-                                    <input type="time" id="hora_inicio_dia_extra" name="hora_inicio_dia_extra"
-                                        min="06:00" max="21:00" class="form-control  " />
+                                <div class="col-lg-3 d-none">
+                                    <div>
+                                        <label for="hora_inicio_dia_extra" class="form-label"> Hora de Inicio dia
+                                            Extra</label>
+                                        <input type="time" id="hora_inicio_dia_extra" name="hora_inicio_dia_extra"
+                                            min="06:00" max="21:00" class="form-control  " />
 
                                         <div class="invalid-feedback">
                                             Por favor seleccione una hora entre las 6:00 y 21:00.
                                         </div>
 
-                                    <small class="text-muted"> </small>
+                                        <small class="text-muted"> </small>
 
+                                    </div>
                                 </div>
+
+
                             </div>
 
-
                         </div>
+                        <div class="modal-footer mt-3">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="reset" class="btn btn-light" data-bs-dismiss="modal"
+                                    id="cancel-btn">Cancelar</button>
+                                <button type="submit" class="btn btn-success mdi" id="add-btn">Registrar
+                                    Grupo de Entrenamiento</button>
 
-                    </div>
-                    <div class="modal-footer mt-3">
-                        <div class="hstack gap-2 justify-content-end">
-                            <button type="reset" class="btn btn-light" data-bs-dismiss="modal"
-                                id="cancel-btn">Cancelar</button>
-                            <button type="submit" class="btn btn-success mdi" id="add-btn">Registrar
-                                Grupo de Entrenamiento</button>
-
+                            </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>

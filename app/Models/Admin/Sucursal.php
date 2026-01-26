@@ -27,7 +27,8 @@ class Sucursal extends Model implements Auditable
         'telefono',
         'estado_sucursal',
         'latitud',
-        'logitud'
+        'logitud',
+        'municipio'
     ];
 
     protected $dates = [

@@ -72,12 +72,12 @@
                                     <table class="table-custom">
                                         <tbody>
                                             <tr>
-                                                <th colspan="2">Sucursal</th>
+                                                <th colspan="2">Casa de Campaña</th>
                                                 <th colspan="2">{{ $inscripcion->nombre_sucursal }}</th>
 
                                             </tr>
                                             <tr>
-                                                <th colspan="2">Categoría</th>
+                                                <th colspan="2">Distrito</th>
                                                 <th colspan="2">
                                                     {{ $inscripcion->nombre_categoria }}
                                                 </th>
@@ -104,68 +104,14 @@
                                                     {{ $inscripcion->tipo_inscripcion }}
                                                 </th>
                                             </tr>
-                                            <tr>
-                                                <th colspan="2">Turno</th>
-                                                <th colspan="2">
-                                                    {{ $inscripcion->turno }}
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="2"> Dias de Entrenamiento</th>
-                                                <th colspan="2">
-                                                    {{ $inscripcion->dia }}
-                                                </th>
-                                            </tr>
+
 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="player-info-main">
-                            <h4 class="player-info-title">Datos del Apoderado</h4>
-                            <p class="player-info-subtitle">Referencia </p>
-                            <hr>
-                            <div class="player-info-table">
-                                <div class="table-custom-wrap">
-                                    <table class="table-custom">
-                                        <tbody>
-                                            <tr>
-                                                <th>Nombre:</th>
-                                                <th>{{ $inscripcion->apoderado ?? '-' }}</th>
-                                            </tr>
-                                            <tr>
-                                                <th>Celular</th>
-                                                <th>
-                                                    {{ $inscripcion->celular ?? '-' }}
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th>Correo</th>
-                                                <th>
-                                                    {{ $inscripcion->correo ?? '-' }}
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th>Dirección</th>
-                                                <th>
-                                                    {{ $inscripcion->direccion }}
-                                                </th>
-                                            </tr>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <hr>
-                            <dl class="list-terms">
-                                <dt class="heading-6">Observaciones</dt>
-                                <dd>
-                                    {{ $inscripcion->observacion ?? 'Sin observaciones' }}
-                                </dd>
-
-                            </dl>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -187,7 +133,7 @@
                             Control de Asistencia
                         </a>
                     </li>
-                    <li class="nav-item" role="tab" aria-selected="false" tabindex="-1">
+                    <li class="nav-item d-none" role="tab" aria-selected="false" tabindex="-1">
                         <a class="nav-link py-3" href="#tabs-asistencia" data-bs-toggle="tab" aria-selected="false"
                             role="tab" tabindex="-1">
                             Resumen de Pagos
@@ -208,14 +154,14 @@
 
                                 <h5 class="text-center">Tabla de Resumen de Asistencias del Inscrito</h5>
                                 <p class="text-center">
-                                    Dias de entrenamiento : {{ $inscripcion->dia }}
+                                    Asistencias a Actividades : {{ $inscripcion->dia }}
                                     @if($inscripcion->dia_extra)
                                     , {{ $inscripcion->dia_extra }}
                                     @endif
                                 </p>
                                 <p class="text-center">
                                     <small>
-                                        <b>Nota:</b> Las celdas en blanco son los días que no corresponde a los días de entrenamiento
+                                        <b>Nota:</b> Las celdas en blanco son los días que no corresponde a los días de actividades
 
                                     </small>
                                 </p>
@@ -238,7 +184,7 @@
                                 <thead class="sticky-top  table-light">
                                     <tr>
                                         <th>#</th>
-                                        <th>Mes</th>
+                                        <th>Actividad</th>
                                         <th>Gestión</th>
                                         <th>Monto (Bs.)</th>
                                         <th>Saldo (Bs.)</th>

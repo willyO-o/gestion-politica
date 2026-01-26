@@ -97,6 +97,9 @@ $(function () {
             <td class="fecha_creacion">
                 ${fomatDate(item.created_at || "", "fh")}
             </td>
+            <td class="municipio">
+                ${item.municipio || ""}
+            </td>
 
             <td class="estado">
 

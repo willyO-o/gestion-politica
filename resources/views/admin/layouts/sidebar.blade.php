@@ -77,8 +77,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('inscripciones.index') }}" aria-expanded="false">
-                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-inscripciones">Inscripciones y
-                                Pagos</span>
+                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-inscripciones">Inscripciones </span>
                         </a>
                     </li>
                     {{-- <li class="nav-item">

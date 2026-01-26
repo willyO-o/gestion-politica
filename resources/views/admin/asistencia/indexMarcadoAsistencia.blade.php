@@ -244,13 +244,13 @@
     <div class="page-title-right">
         <ol class="breadcrumb m-0">
             <li class="breadcrumb-item"><a href="javascript: void(0);"></a>Inicio</li>
-            <li class="breadcrumb-item active">Asistencia Estudiantil </li>
+            <li class="breadcrumb-item active">Asistencia  </li>
         </ol>
     </div>
 @endsection
 
 @section('title')
-    Administración de Asistencia Estudiantil
+    Administración de Asistencia
 @endsection
 
 @section('js')

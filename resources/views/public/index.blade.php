@@ -238,6 +238,11 @@
 
                     <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
                         <p>
+                            David Vargas no es un político de escritorio. Es un profesional que caminó las mismas calles
+                            de tierra que tú, enfrentó las mismas carencias y decidió prepararse para cambiar esa
+                            realidad.
+                        </p>
+                        <p>
                             Nacido en el Distrito 8, David no es un político de escritorio. Es un profesional que caminó
                             las mismas calles de tierra que tú, enfrentó las mismas carencias y decidió prepararse para
                             cambiar esa realidad.
@@ -977,7 +982,7 @@
                 '🎶 ¡Escucha la Cumbia del Mayor Vargas! El ritmo del cambio llegó a El Alto 🎵');
             const mensaje = encodeURIComponent(
                 '¡Dale play a la Cumbia del Mayor Vargas! El ritmo del cambio para El Alto 2026 🎶🔥 #DavidVargas #ElAlto #Cumbia'
-                );
+            );
 
             let shareUrl = '';
 

@@ -175,16 +175,16 @@ class Persona extends Model implements Auditable
 
         $query = DB::table('weps_persona as p')
             ->selectRaw("id_persona as id,concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),', C.I.: ',COALESCE(numero_documento,''),', - ',COALESCE(tipo_persona,'')) as text")
-            ->join('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
+            ->leftJoin('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
             ->orderBy('p.id_persona', 'desc')
             ->limit(10);
 
 
         $query->where(function ($query) use ($search) {
-            $query->whereRaw("concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                ->orWhereRaw("concat(COALESCE(paterno,''),' ',COALESCE(materno,''),' ',nombre,' ',numero_documento) LIKE ?", ["%$search%"])
-                ->orWhereRaw("concat(nombre,' ',COALESCE(materno,''),' ',COALESCE(paterno,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                ->orWhereRaw("concat(numero_documento,' ',COALESCE(paterno,''),' ',nombre,' ',COALESCE(materno,'')) LIKE ?", ["%$search%"]);
+            $query->whereRaw("concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                ->orWhereRaw("concat(COALESCE(paterno,''),' ',COALESCE(materno,''),' ',nombre,' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                ->orWhereRaw("concat(nombre,' ',COALESCE(materno,''),' ',COALESCE(paterno,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                ->orWhereRaw("concat(COALESCE(numero_documento,''),' ',COALESCE(paterno,''),' ',nombre,' ',COALESCE(materno,'')) LIKE ?", ["%$search%"]);
         });
 
         empty($tipoPersona) ?: $query->where('id_tipo_persona_fk', $tipoPersona);

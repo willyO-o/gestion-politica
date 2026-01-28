@@ -106,11 +106,11 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="{{ route('asistencia.marcado') }}" class="nav-link"
-                                        data-key="t-asistencia-estudiante"> Asistencia Actividades </a>
+                                        data-key="t-asistencia-estudiante"> Asistencia de  Actividades </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route("asistencia.index") }}" class="nav-link" data-key="t-asistencia"> Asistencia </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>

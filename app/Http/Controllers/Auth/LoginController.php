@@ -64,7 +64,7 @@ class LoginController extends Controller
 
 
 
-        if ($captcha !=session('captcha')) {
+        if (mb_strtolower($captcha) != mb_strtolower(session('captcha'))) {
             return response()->json([
                 'success' => false,
                 'errors' => 'Captcha incorrecto'

@@ -422,11 +422,11 @@ class Reportes extends  FpdfSicaf
 
 
 
-        // $urlQr = url("/admin/asistencia-estudiante/" . $inscripcion->codigo);
+        $urlQr = url("/admin/asistencia-estudiante/" . $inscripcion->codigo);
 
-        // $base64QrAsistencia = "data:image/png;base64," .    $this->getBase64Qr($inscripcion->codigo, 400, "png", "L", "", 2);
+        $base64QrAsistencia = "data:image/png;base64," .    $this->getBase64Qr($inscripcion->codigo, 400, "png", "L", "", 2);
 
-        // $this->Image($base64QrAsistencia, 77, 59, 20, 20, 'png');
+        $this->Image($base64QrAsistencia, 20, 65, 20, 20, 'png');
 
         // $this->SetXY(107, 85);
 

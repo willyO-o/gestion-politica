@@ -302,11 +302,9 @@ $(function () {
             <td class="fecha_creacion">
                 ${fomatDate(item.fecha_creacion || "")}
             </td>
-            <td class="fecha_fin">
-                ${fomatDate(item.fecha_fin || "")}
-            </td>
 
-            <td class="estado">
+
+            <td class="estado d-none">
 
                 <div class="form-check form-switch">
                     <input class="form-check-input switch-status-btn" type="checkbox" role="switch"  ${item.estado_grupo == "ACTIVO" ? "checked" : ""} >
@@ -317,12 +315,12 @@ $(function () {
                 <ul class="list-inline hstack gap-2 mb-0">
 
                     <li class="list-inline-item edit" >
-                        <a href="javascript:void(0);" class="text-muted hover-warning d-inline-block edit-item-btn" tooltip="tooltip" data-bs-placement="top" title="Editar Sucursal">
+                        <a href="javascript:void(0);" class="text-muted hover-warning d-inline-block edit-item-btn" tooltip="tooltip" data-bs-placement="top" title="Editar Bloque Politico">
                             <i class="ri-pencil-line fs-16"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item edit" >
-                        <a href="javascript:void(0);" class="text-muted hover-danger d-inline-block remove-item-btn" tooltip="tooltip" data-bs-placement="top" title="Eliminar Sucursal">
+                    <li class="list-inline-item edit d-none" >
+                        <a href="javascript:void(0);" class="text-muted hover-danger d-inline-block remove-item-btn" tooltip="tooltip" data-bs-placement="top" title="Eliminar Bloque Politico">
                             <i class="ri-delete-bin-2-line fs-16"></i>
                         </a>
                     </li>

@@ -347,20 +347,7 @@ $(function () {
             <td class="celular">
                 ${item.celular || ""}
             </td>
-            <td class="oficina break-word"  >
-            ${item.genero || ""}
-            </td>
-            <td class="tipoPersonal">
-                ${item.tipo_persona}
-            </td>
-            <td class="tipoPersonal">
-                ${fomatDate(item.fecha_nacimiento)}
-            </td>
 
-            <td class="estado">
-                ${item.estado_persona || ""}
-
-            </td>
             <td class="tipoPersonal">
                 <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">
@@ -383,7 +370,7 @@ $(function () {
                             <i class="ri-pencil-line fs-16"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item edit" >
+                    <li class="list-inline-item edit d-none" >
                         <a href="javascript:void(0);" class="text-muted hover-danger d-inline-block remove-item-btn" tooltip="tooltip" data-bs-placement="top" title="Eliminar Persona">
                             <i class="ri-delete-bin-2-line fs-16"></i>
                         </a>

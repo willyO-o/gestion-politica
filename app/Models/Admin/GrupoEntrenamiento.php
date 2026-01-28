@@ -55,7 +55,7 @@ class GrupoEntrenamiento extends Model implements Auditable
     static $rules = [
         'id_categoria' => 'required|exists:weps_categoria,id_categoria',
         'id_gestion' => 'required|exists:weps_gestion,id_gestion',
-        'id_entrenador' => 'required|exists:weps_persona,id_persona',
+        'id_entrenador' => 'nullable|exists:weps_persona,id_persona',
         'nombre_grupo' => 'required|min:3|max:240',
         'descripcion_grupo' => 'nullable|max:1000',
         'fecha_creacion' => 'required|date',
@@ -67,7 +67,7 @@ class GrupoEntrenamiento extends Model implements Auditable
         'hora_inicio_dia_extra' => 'nullable|date_format:H:i',
         'estado_grupo' => 'nullable|in:ACTIVO,INACTIVO',
         'turno' => 'nullable|in:MAÑANA,TARDE',
-        'id_sucursal_fk' => 'required|exists:weps_sucursal,id_sucursal',
+        'id_sucursal_fk' => 'nullable|exists:weps_sucursal,id_sucursal',
     ];
 
 
@@ -140,10 +140,10 @@ class GrupoEntrenamiento extends Model implements Auditable
 
         }
 
-        $query->join('weps_sucursal as s', 's.id_sucursal', '=', 'ge.id_sucursal_fk')
+        $query->leftJoin('weps_sucursal as s', 's.id_sucursal', '=', 'ge.id_sucursal_fk')
             ->join('weps_categoria as c', 'c.id_categoria', '=', 'ge.id_categoria')
             ->join('weps_gestion as g', 'g.id_gestion', '=', 'ge.id_gestion')
-            ->join('weps_persona as p', 'p.id_persona', '=', 'ge.id_entrenador')
+            ->leftJoin('weps_persona as p', 'p.id_persona', '=', 'ge.id_entrenador')
             ->orderBy('ge.id_grupo_entrenamiento', 'desc');
 
         return $query;

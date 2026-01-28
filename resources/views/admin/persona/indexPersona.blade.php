@@ -56,10 +56,10 @@
                                         <th data-sort="nombre" scope="col">Nombre</th>
                                         <th data-sort="ci" scope="col">C.I.</th>
                                         <th data-sort="celular" scope="col">Celular</th>
-                                        <th data-sort="oficina" scope="col" class="break-word">Genero</th>
+                                        {{-- <th data-sort="oficina" scope="col" class="break-word">Genero</th>
                                         <th data-sort="tipoPersonal" scope="col">Tipo </th>
                                         <th data-sort="tipoPersonal" scope="col">F. Nacimiento </th>
-                                        <th data-sort="estado" scope="col">Estado</th>
+                                        <th data-sort="estado" scope="col">Estado</th> --}}
                                         <th data-sort="estado" scope="col">Foto</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
@@ -139,15 +139,15 @@
                                     <td class="fw-medium" scope="row">Celular</td>
                                     <td>-------------------------- </td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td class="fw-medium" scope="row">Correo</td>
                                     <td>-------------------------- </td>
                                 </tr>
                                 <tr>
                                     <td class="fw-medium" scope="row">Genero</td>
                                     <td>-------------------------- </td>
-                                </tr>
-                                <tr>
+                                </tr> --}}
+                                {{-- <tr>
                                     <td class="fw-medium" scope="row">Fecha Nacimiento / Edad</td>
                                     <td>-------------------------- </td>
                                 </tr>
@@ -158,7 +158,7 @@
                                 <tr>
                                     <td class="fw-medium" scope="row">Lugar de Nacimiento</td>
                                     <td>-------------------------- </td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td class="fw-medium" scope="row">Fecha de Registro</td>
                                     <td>--------------------------</td>
@@ -297,13 +297,13 @@
 
 
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 d-none" >
                                 <div>
                                     <label for="genero" class="form-label">Genero</label>
                                     <div class="form-check form-radio-primary mb-0">
-                                        <input class="form-check-input" type="radio" name="genero" value="MASCULINO"
-                                            id="genero_m" required>
-                                        <label class="form-check-label" for="genero_m">
+                                        <input class="form-check-input" type="radio" name="genero" value="MASCULINO" selected
+                                            id="genero_m" >
+                                        <label class="form-check-label" for="genero_m" >
                                             Masculino
                                         </label>
                                     </div>
@@ -321,7 +321,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 d-none">
                                 <div>
                                     <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento <small
                                             class="text-danger">*</small> </label>
@@ -346,7 +346,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div>
                                     <label for="correo" class="form-label">Correo</label>
                                     <input type="email" id="correo" name="correo" class="form-control"
@@ -358,7 +358,7 @@
 
 
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div>
                                     <label for="id_tipo_persona_fk" class="form-label">Tipo
                                         Militancia <small class="text-danger">*</small></label>
@@ -367,7 +367,7 @@
                                         required>
                                         <option value="">Seleccione el Tipo de Persona</option>
                                         @foreach ($tipoPersona as $tp)
-                                            <option value="{{ $tp->id_tipo_persona }}">
+                                            <option value="{{ $tp->id_tipo_persona }}" selected>
                                                 {{ $tp->tipo_persona }}</option>
                                         @endforeach
                                     </select>
@@ -376,7 +376,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div>
                                     <label for="direccion" class="form-label">Dirección de Domicilio </label>
 

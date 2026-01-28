@@ -204,7 +204,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 d-none">
                                         <div>
                                             <label for="monto_inscripcion" class="form-label">Aporte Inicial
                                                 (Bs.)</label>
@@ -247,7 +247,7 @@
 
 
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 d-none">
                                         <div>
                                             <label for="" class="form-label">Estado Inscripción <small
                                                     class="text-danger">*</small> </label>
@@ -284,7 +284,7 @@
 
 
 
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12 d-none">
                                         <div>
                                             <label for="descripcion" class="form-label">Descripción </label>
 
@@ -414,12 +414,12 @@
 
 
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 d-none">
                                             <div>
                                                 <label for="genero" class="form-label">Genero</label>
                                                 <div class="form-check form-radio-primary mb-0">
                                                     <input class="form-check-input" type="radio" name="genero"
-                                                        value="MASCULINO" id="genero_m" required>
+                                                        value="MASCULINO" id="genero_m" required checked>
                                                     <label class="form-check-label" for="genero_m">
                                                         Masculino
                                                     </label>
@@ -438,13 +438,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 d-none">
                                             <div>
                                                 <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento
                                                     <small class="text-danger">*</small> </label>
 
                                                 <input type="date" class="form-control" id="fecha_nacimiento"
-                                                    name="fecha_nacimiento" required
+                                                    name="fecha_nacimiento"
                                                     max="{{ date('Y-m-d', strtotime('-3 year')) }}"
                                                     min="{{ date('Y-m-d', strtotime('-80 year')) }}" />
 
@@ -465,7 +465,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 d-none">
                                             <div>
                                                 <label for="correo" class="form-label">Correo</label>
                                                 <input type="email" id="correo" name="correo" class="form-control"
@@ -476,7 +476,7 @@
 
 
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 d-none">
                                             <div>
                                                 <label for="estado_persona" class="form-label">Estado de
                                                     Inscripción</label>
@@ -502,7 +502,7 @@
                                         </div>
 
 
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 d-none">
                                             <div>
                                                 <label for="id_tipo_persona_fk" class="form-label">Tipo
                                                     Militancia <small class="text-danger">*</small></label>
@@ -511,7 +511,7 @@
                                                     name="id_tipo_persona_fk" required>
                                                     <option value="">Seleccione el Tipo de Militancia</option>
                                                     @foreach ($tipoPersona as $tp)
-                                                        <option value="{{ $tp->id_tipo_persona }}">
+                                                        <option value="{{ $tp->id_tipo_persona }}" selected>
                                                             {{ $tp->tipo_persona }}</option>
                                                     @endforeach
                                                 </select>
@@ -520,7 +520,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-12 d-none">
                                             <div>
                                                 <label for="direccion" class="form-label">Dirección de Domicilio </label>
 
@@ -743,7 +743,7 @@
                             <input type="hidden" id="actionPago"  value="registrar" />
 
                             <div class="card-body">
-                                <h4 class="card-title text-center" id="actionTitlePago">Registrar Pago</h4>
+                                <h4 class="card-title text-center" id="actionTitlePago">Registrar Aporte</h4>
                                 <div class="row mb-2">
                                     <div class="col-md-12">
                                         <label for="datosInscripcionPago" class="form-label">Datos de aporte</label>
@@ -879,7 +879,7 @@
 
                                             <button type="submit" class="btn btn-secondary btn-sm mdi" id="btn-add-pago">
                                                 <i class="ri-save-fill me-1 align-bottom"></i>
-                                                <span class=""> Registrar Pago </span>
+                                                <span class=""> Registrar Aporte </span>
                                             </button>
                                         </div>
                                     </div>
@@ -890,15 +890,15 @@
                     <div class="card mb-1">
                         <div class="card-header border border-top">
                             <form action="#" method="get" id="formGenerarPdfPagos" target="popupWindow"  onkeydown="return event.key != 'Enter';" >
-                            <div class="row">
+                            <div class="row justify-content-between g-3">
                                 <div class="col-md-4 col-lg-3">
-                                    <h5 class="card-title">Listado de Pagos</h5>
+                                    <h5 class="card-title">Listado de Aportes</h5>
                                 </div>
-                                <div class="col-md-4 col-lg-3">
+                                <div class="col-md-4 col-lg-3 d-none">
                                     <div class="choice-mb-none ">
                                         <select name="id_gestion" id="filtro_gestion" class="form-select form-select-sm"
                                             required>
-                                            <option value="">Seleccione una Gestión</option>
+                                            <option value="" >Seleccione una Gestión</option>
                                             @foreach ($gestiones as $gestion)
 
                                                     <option value="{{ $gestion->id_gestion }}" >
@@ -910,7 +910,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-lg-3">
+                                <div class="col-md-4 col-lg-3 d-none">
                                     <div class="choice-mb-none ">
                                         <select name="estado_pago" id="filtro_estado_pago" class="form-select form-select-sm"
                                             required>

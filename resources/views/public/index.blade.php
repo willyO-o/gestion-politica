@@ -395,7 +395,7 @@
                 </div>
                 <div style="border-radius: 10px; overflow: hidden">
                     <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/OUaBnzxd0wo?si=uEYxt-alYKVsG0B7"
+                        src="https://www.youtube.com/embed/DNufAAlG0EM?si=g7czk6EbweN8vPOW"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -434,7 +434,7 @@
         </div>
     </section>
     <!-- PROPUESTAS DESTACADAS -->
-    <section id="propuestas" class="py-24 bg-mts-light relative z-20">
+    {{-- <section id="propuestas" class="py-24 bg-mts-light relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="font-display font-bold text-4xl text-mts-green mb-4">MEDIDAS URGENTES</h2>
@@ -488,13 +488,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- EL PLAN DE GOBIERNO (GRID DETALLADO) -->
 
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="font-display font-bold text-3xl text-mts-dark mb-12" data-aos="fade-up">
-                Unete a nuestros bloques
+                Unete a nuestras Casas de Campaña
             </h2>
 
         </div>

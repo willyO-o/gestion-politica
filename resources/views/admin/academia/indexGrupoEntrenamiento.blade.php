@@ -53,9 +53,9 @@
                                         <th data-sort="celular" scope="col">Encargado</th>
                                         <th data-sort="tipoPersonal" scope="col">gestion </th>
                                         <th data-sort="celular" scope="col">fecha creación</th>
-                                        <th data-sort="celular" scope="col">fecha finalización</th>
+                                        {{-- <th data-sort="celular" scope="col">fecha finalización</th> --}}
 
-                                        <th scope="col">Estado</th>
+                                        {{-- <th scope="col">Estado</th> --}}
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -151,10 +151,10 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label for="id_sucursal_fk" class="form-label">Casa de campaña <small
-                                            class="text-danger">*</small>
+                                            class="text-secondary">(opcional)</small>
                                     </label>
                                     <select type="text" id="id_sucursal_fk" name="id_sucursal_fk"
-                                        class="form-control   " required placeholder=""></select>
+                                        class="form-control   "  placeholder=""></select>
                                     <div class="invalid-feedback">
                                         Por favor seleccione una casa de campaña.
                                     </div>
@@ -163,20 +163,20 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label for="id_entrenador" class="form-label"> Encargado <small
-                                            class="text-danger">*</small>
+                                            class="text-secondary">(opcional)</small>
                                     </label>
                                     <select type="text" id="id_entrenador" name="id_entrenador"
-                                        class="form-control   " required placeholder=""></select>
+                                        class="form-control   "  placeholder=""></select>
                                     <div class="invalid-feedback">
                                         Por favor seleccione un encargado.
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none" >
                                 <div>
                                     <label for="id_gestion" class="form-label">Gestión <small
-                                            class="text-danger">*</small>
+                                            class="text-secondary">(opcional)</small>
                                     </label>
                                     <select type="text" id="id_gestion" name="id_gestion" class="form-control   "
                                         required placeholder="">
@@ -190,7 +190,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 ">
+                            <div class="col-lg-6 d-none ">
                                 <div>
                                     <label for="direccion_sucursal" class="form-label">Tipo bloque político <small
                                             class="text-danger">*</small> </label><br>
@@ -216,7 +216,7 @@
                                     <label for="fecha_creacion" class="form-label">Fecha Creación <small
                                             class="text-danger">*</small> </label>
                                     <input type="date" id="fecha_creacion" name="fecha_creacion"
-                                        class="form-control   " required placeholder="" />
+                                        class="form-control   " required placeholder=""  value="{{ date('Y-m-d') }}"/>
                                     <div class="invalid-feedback">
                                         Por favor ingrese una fecha de creación.
                                     </div>

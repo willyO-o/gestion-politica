@@ -426,7 +426,7 @@ class Reportes extends  FpdfSicaf
 
         $base64QrAsistencia = "data:image/png;base64," .    $this->getBase64Qr($inscripcion->codigo, 400, "png", "L", "", 2);
 
-        $this->Image($base64QrAsistencia, 20, 65, 20, 20, 'png');
+        $this->Image($base64QrAsistencia, 18.5, 65, 20, 20, 'png');
 
         // $this->SetXY(107, 85);
 

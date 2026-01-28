@@ -836,7 +836,7 @@
                 <a href="https://www.tiktok.com/@david_vargas_alcalde" target="_blank"
                     class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white hover:border-white border border-transparent transition duration-300"><i
                         class="fab fa-tiktok"></i></a>
-                <a href="#"
+                <a href="https://www.instagram.com/davidvargas_la?igsh=dXR0bzV6cGQ4eXNy" target="_blank"
                     class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition duration-300"><i
                         class="fab fa-instagram"></i></a>
                 <a href="https://x.com/DavidVargas_ea" target="_blank"

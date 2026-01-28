@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pagina', function (Blueprint $table) {
+        Schema::create('weps_pagina', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo', 200);
+            $table->text('enlace')->nullable();
+            $table->integer('compartidas')->unsigned();
+            $table->integer('me_gusta')->unsigned();
+            $table->integer('id_bloque');
+            $table->integer('id_persona');
+            $table->string('tipo', 50);
+            $table->foreign('id_bloque')->references('id_grupo_entrenamiento')->on('weps_grupo_entrenamiento')->onDelete('restrict');
+            $table->foreign('id_persona')->references('id_persona')->on('weps_persona')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -22,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pagina');
+        Schema::dropIfExists('weps_pagina');
     }
 };

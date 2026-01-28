@@ -84,6 +84,7 @@
 
 
 
+
     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true"
         data-bs-backdrop="static" data-bs-keyboard="false" data-bs-focus="false">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -121,11 +122,12 @@
 
                             <div class="col-lg-12">
                                 <div>
-                                    <label for="descripcion_grupo" class="form-label">Descripción de actividades del Bloque
+                                    <label for="descripcion_grupo" class="form-label">Descripción de actividades del
+                                        Bloque
                                         <small class="text-danger">*</small>
                                     </label>
-                                    <textarea type="text" id="descripcion_grupo" name="descripcion_grupo" class="form-control txtNormal  " required rows="15"
-                                        placeholder=""></textarea>
+                                    <textarea type="text" id="descripcion_grupo" name="descripcion_grupo" class="form-control txtNormal  " required
+                                        rows="15" placeholder=""></textarea>
                                     <div class="invalid-feedback">
                                         Por favor ingrese una descripción para el bloque político.
                                     </div>
@@ -154,7 +156,7 @@
                                             class="text-secondary">(opcional)</small>
                                     </label>
                                     <select type="text" id="id_sucursal_fk" name="id_sucursal_fk"
-                                        class="form-control   "  placeholder=""></select>
+                                        class="form-control   " placeholder=""></select>
                                     <div class="invalid-feedback">
                                         Por favor seleccione una casa de campaña.
                                     </div>
@@ -166,14 +168,14 @@
                                             class="text-secondary">(opcional)</small>
                                     </label>
                                     <select type="text" id="id_entrenador" name="id_entrenador"
-                                        class="form-control   "  placeholder=""></select>
+                                        class="form-control   " placeholder=""></select>
                                     <div class="invalid-feedback">
                                         Por favor seleccione un encargado.
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 d-none" >
+                            <div class="col-lg-6 d-none">
                                 <div>
                                     <label for="id_gestion" class="form-label">Gestión <small
                                             class="text-secondary">(opcional)</small>
@@ -216,7 +218,7 @@
                                     <label for="fecha_creacion" class="form-label">Fecha Creación <small
                                             class="text-danger">*</small> </label>
                                     <input type="date" id="fecha_creacion" name="fecha_creacion"
-                                        class="form-control   " required placeholder=""  value="{{ date('Y-m-d') }}"/>
+                                        class="form-control   " required placeholder="" value="{{ date('Y-m-d') }}" />
                                     <div class="invalid-feedback">
                                         Por favor ingrese una fecha de creación.
                                     </div>
@@ -339,7 +341,45 @@
 
                             </div>
                         </div>
+                    </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPaginaSocial" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false" data-bs-focus="false">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content border-0">
+                <div class="modal-header bg-soft-info p-3">
+                    <h5 class="modal-title" id="tituloModal">Registrar Bloque Politico</h5>
+                    <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="close-modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="contenidoPaginaSocial"></div>
+
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre Pagina</th>
+                                <th>Enlace</th>
+                                <th>Cantidad Compartidas</th>
+                                <th>Me gusta</th>
+                                <th>tipo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
             </div>
         </div>
     </div>

@@ -319,6 +319,11 @@ $(function () {
                             <i class="ri-pencil-line fs-16"></i>
                         </a>
                     </li>
+                    <li class="list-inline-item edit" >
+                        <a href="javascript:void(0);" class="text-muted hover-warning d-inline-block pagina-item-btn" tooltip="tooltip" data-bs-placement="top" title="Paginas del Bloque Politico">
+                            <i class="ri-file-list-line fs-16"></i>
+                        </a>
+                    </li>
                     <li class="list-inline-item edit d-none" >
                         <a href="javascript:void(0);" class="text-muted hover-danger d-inline-block remove-item-btn" tooltip="tooltip" data-bs-placement="top" title="Eliminar Bloque Politico">
                             <i class="ri-delete-bin-2-line fs-16"></i>
@@ -424,6 +429,19 @@ $(function () {
 
             $(this).removeData();
 
+
+
+        })
+        .on("click", ".pagina-item-btn", function (e) {
+            e.preventDefault();
+
+
+            let itemId = $(this).closest("tr").data("id");
+
+
+
+
+            $("#modalPaginaSocial").modal("show");
 
 
         })
@@ -543,6 +561,37 @@ $(function () {
 
     })
 
+
+
+    let dataScrollPaginas = {
+        'page': 1,
+        'size': 15,
+        'search': '',
+        '_token': crfToken,
+    }
+
+
+
+
+    function cargarPaginasPorBloque(idBloque) {
+
+        scrollGrupoEntrenamiento.destroyScrollPagination();
+
+        scrollGrupoEntrenamiento = $('#tbodyListaGrupo').scrollPagination({
+            'url': baseUrl + '/admin/grupos-entrenamientos-listar', // the url you are fetching the results
+            'method': 'post',
+            'data': getDataFilter(),
+            'dataTemplateCallback': rowHtml,
+            'elementCountSelector': '#contadorListaGrupo',
+            'elementCountTemplate': '<span  class=""> Listando <b> {count}  </b>elementos de <b> {total} </b> encontrados </span>',
+            'loading': '#loadingGrupo',
+            'scroller': "#containerListaGrupo",
+            'loadingText': `<div  class=" text-center"><span class="loaderHttp"></span><span class="text-muted">Cargando...</span></div>`,
+            'loadingNomoreText': '<h6 class="text-danger">No se encontraron más Resultados</h6>',
+
+        });
+
+    }
 
 
 

@@ -49,6 +49,7 @@ Route::post('/admin/getInicio', [App\Http\Controllers\HomeController::class, 'ge
 Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin' , 'middleware' => 'auth'], function () {
     // Route::get('/dashboard', 'DashboardController@index');
     // Route::get('/users', 'UserController@index');
+    Route::resource('paginas', 'PaginaController');
 
 
 

@@ -16,11 +16,8 @@ class PaginaController extends Controller
         $buscar = $request->input('buscar', '');
 
         $query = DB::table('weps_pagina')
-            ->leftJoin('weps_persona', 'weps_pagina.id_persona', '=', 'weps_persona.id_persona')
             ->select(
                 'weps_pagina.*',
-                'weps_persona.nombre as persona_nombres',
-                'weps_persona.paterno as persona_apellido'
             )
             ->where('weps_pagina.id_bloque', $idBloque);
 

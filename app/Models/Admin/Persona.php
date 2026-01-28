@@ -175,7 +175,7 @@ class Persona extends Model implements Auditable
 
         $query = DB::table('weps_persona as p')
             ->selectRaw("id_persona as id,concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),', C.I.: ',COALESCE(numero_documento,''),', - ',COALESCE(tipo_persona,'')) as text")
-            // ->join('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
+            ->join('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
             ->orderBy('p.id_persona', 'desc')
             ->limit(10);
 

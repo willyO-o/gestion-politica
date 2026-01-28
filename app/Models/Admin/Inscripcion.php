@@ -130,10 +130,10 @@ class Inscripcion extends Model implements Auditable
                 nombre_grupo, nombre_categoria, nombre_sucursal,gestion" . (!empty($idInscripcion) ? $fieldsAdd : ''))
             ->join('weps_persona as p', 'p.id_persona', '=', 'i.id_persona')
             ->join('weps_grupo_entrenamiento as ge', 'ge.id_grupo_entrenamiento', '=', 'i.id_grupo_entrenamiento')
-            ->join('weps_sucursal as s', 's.id_sucursal', '=', 'i.id_sucursal_fk')
-            ->join('weps_categoria as c', 'c.id_categoria', '=', 'ge.id_categoria')
+            ->leftJoin('weps_sucursal as s', 's.id_sucursal', '=', 'i.id_sucursal_fk')
+            ->leftJoin('weps_categoria as c', 'c.id_categoria', '=', 'ge.id_categoria')
             ->join('weps_gestion as g', 'g.id_gestion', '=', 'ge.id_gestion')
-            ->join('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
+            ->leftJoin('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
             ->orderBy('i.id_inscripcion', 'desc')
             ->orderBy('ge.id_grupo_entrenamiento', 'desc');
 

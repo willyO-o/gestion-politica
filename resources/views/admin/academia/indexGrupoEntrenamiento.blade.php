@@ -356,13 +356,13 @@
     <div class="page-title-right">
         <ol class="breadcrumb m-0">
             <li class="breadcrumb-item"><a href="javascript: void(0);"></a>Inicio</li>
-            <li class="breadcrumb-item active">Administrar Grupos de Entrenamiento </li>
+            <li class="breadcrumb-item active">Administrar Bloques Politicos </li>
         </ol>
     </div>
 @endsection
 
 @section('title')
-    Administración de Grupos de Entrenamiento
+    Administración de Bloques Politicos
 @endsection
 
 @section('js')

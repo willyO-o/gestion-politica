@@ -188,6 +188,10 @@
                         <i class="fas fa-play-circle text-2xl group-hover:text-mts-copper transition-colors"></i> Ver
                         Spot
                     </a>
+                    <a href="https://www.facebook.com/alcaldevaliente" target="_blank"
+                        class="group flex items-center justify-center gap-3 px-8 py-4 rounded-lg border-2 border-white/30 hover:bg-white/10 text-white font-bold transition">
+                        <i class="fab fa-facebook text-2xl group-hover:text-blue-500 transition-colors"></i> Síguenos
+                    </a>
                 </div>
             </div>
 

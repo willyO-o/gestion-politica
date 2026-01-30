@@ -35,6 +35,7 @@ class Persona extends Model implements Auditable
         'apoderado',
         'foto',
         'id_tipo_persona_fk',
+        'id_grupo_entrenamiento',
 
     ];
 
@@ -53,6 +54,7 @@ class Persona extends Model implements Auditable
         'apoderado' => 'nullable|max:250',
         // 'foto' => 'nullable|max:200',
         'id_tipo_persona_fk' => 'required|exists:weps_tipo_persona,id_tipo_persona',
+        'id_grupo_entrenamiento' => 'nullable|exists:weps_grupo_entrenamiento,id_grupo_entrenamiento',
 
     ];
 
@@ -79,10 +81,21 @@ class Persona extends Model implements Auditable
         'apoderado' => 'Nombre completo delApoderado',
         // 'foto' => 'Foto',
         'id_tipo_persona_fk' => 'Tipo de persona',
+        'id_grupo_entrenamiento' => 'Bloque Político',
 
     ];
 
 
+
+    public function tipoPersona()
+    {
+        return $this->belongsTo(TipoPersona::class, 'id_tipo_persona_fk', 'id_tipo_persona');
+    }
+
+    public function grupoEntrenamiento()
+    {
+        return $this->belongsTo(GrupoEntrenamiento::class, 'id_grupo_entrenamiento', 'id_grupo_entrenamiento');
+    }
 
 
 
@@ -98,20 +111,26 @@ class Persona extends Model implements Auditable
         $search = convMayuscula(str_replace(' ', '%', $search));
 
         $tipoPersona = $filtros['tipo_persona'] ?? '';
+        $idBloque = $filtros['id_bloque'] ?? '';
         $estadoPersona = $filtros['estado_persona'] ?? '';
 
 
         $query = DB::table('weps_persona as p')
-            ->selectRaw("id_persona, numero_documento, nombre, paterno, materno, genero, fecha_nacimiento,
+            ->selectRaw("id_persona, numero_documento, nombre, paterno, materno, genero, fecha_nacimiento, id_grupo_entrenamiento,
             celular, correo, direccion, lugar_nacimiento, estado_persona, apoderado, foto, created_at, updated_at,id_tipo_persona_fk,tipo_persona")
             ->leftJoin('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
             ->orderBy('p.id_persona', 'desc');
+
+
 
 
         if (!empty($idPersona)) {
 
             $query->where('id_persona', $idPersona);
         } else {
+
+
+
             if (!empty($search)) {
                 $query->where(function ($query) use ($search) {
                     $query->whereRaw("concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),' ',numero_documento) LIKE ?", ["%$search%"])
@@ -123,6 +142,8 @@ class Persona extends Model implements Auditable
 
 
             empty($tipoPersona) ?: $query->where('id_tipo_persona_fk', $tipoPersona);
+
+            empty($idBloque) ?: $query->where('id_grupo_entrenamiento', $idBloque);
 
             if ($estadoPersona != '') {
 

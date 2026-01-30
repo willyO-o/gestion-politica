@@ -31,11 +31,11 @@ class Reportes extends  FpdfSicaf
         "6" => "Sabado",
     ];
 
-    protected $coloresAsistenciaHexadecima=[
-        "A"=> "#00FF00",
-        "F"=> "#FF0000",
-        "P"=> "#0000FF",
-        ""=> "#000000",
+    protected $coloresAsistenciaHexadecima = [
+        "A" => "#00FF00",
+        "F" => "#FF0000",
+        "P" => "#0000FF",
+        "" => "#000000",
     ];
 
 
@@ -79,14 +79,14 @@ class Reportes extends  FpdfSicaf
 
         $this->Line(5, 36, 135, 36);
 
-        $this->setDrawColor(255,255,255);
+        $this->setDrawColor(255, 255, 255);
 
         $this->Line(132, 78, 108, 78);
         $this->Line(132, 102, 132, 78);
         $this->Line(108, 102, 108, 78);
         $this->Line(132, 102, 108, 102);
 
-        $this->setDrawColor(0,0,0);
+        $this->setDrawColor(0, 0, 0);
 
         $this->Line(5, 115, 135, 115);
         $this->Line(5, 210, 135, 210);
@@ -363,7 +363,16 @@ class Reportes extends  FpdfSicaf
         $this->SetFont('Arial', 'B', 9);
 
 
+
+        $this->SetTextColor(255, 255, 255);
+
+        $this->SetFont('Arial', 'B', 8);
+        $this->setXY(5, 5);
+        $this->MultiCell(48, 6, "BLOQUE ". utf8Decode($inscripcion->grupoEntrenamiento->nombre_grupo), 0, 'C');
+
+
         $this->setXY(10, 32);
+        $this->SetFont('Arial', 'B', 9);
 
         // $this->SetFillColor(255, 255, 255);
         $this->SetTextColor(0, 0, 0);
@@ -438,7 +447,7 @@ class Reportes extends  FpdfSicaf
 
 
 
-        $urlQr = url("/detalle-inscripcion/" . $inscripcion->codigo);
+        $urlQr = url("/detalle-inscripcion/" . md5($inscripcion->id_persona));
 
         $base64Qr = "data:image/png;base64," .    $this->getBase64Qr($urlQr, 400, "png", "M", "/public/img/mts/logo-mts.png", 2);
 
@@ -449,10 +458,17 @@ class Reportes extends  FpdfSicaf
             $this->image(public_path('storage/' . $inscripcion->foto), 17.5, 45, 22, 20);
         }
 
-        $this->SetTextColor(0, 0, 0);
-        $this->SetTextColor(255, 255, 255);
 
-        $this->SetFont('Arial', 'B', 7);
+        if ($inscripcion->id_tipo_persona_fk == 2 ) {
+
+            $this->setXY(2, 65);
+            $this->SetTextColor(0, 0, 0);
+            $this->SetTextColor(255, 255, 255);
+
+            $this->Cell(55, 8, utf8Decode($inscripcion->tipoPersona->tipo_persona), 0, 1, 'C',);
+        }
+
+        // $this->SetFont('Arial', 'B', 7);
 
         // $this->setXY(49, 33);
         // $this->Cell(30, 5, utf8Decode('NOMBRE(S):'));
@@ -466,31 +482,31 @@ class Reportes extends  FpdfSicaf
         // $this->setXY(48, 64);
         // $this->Cell(30, 6, ' Nro Registro:');
 
-        $this->SetFont('d-LaCruz', '', 28);
+        // $this->SetFont('d-LaCruz', '', 28);
         // $this->SetFont('Arial', 'B', 20);
         // $this->SetFont('BungeeOutline', '', 32);
-        $this->SetTextColor(0, 0, 0);
-        $this->SetTextColor(255, 255, 255);
+        // $this->SetTextColor(0, 0, 0);
+        // $this->SetTextColor(255, 255, 255);
 
 
-        $this->setXY(48, 77);
+        // $this->setXY(48, 77);
         // $this->Cell(30, 6, utf8Decode( "Gestión ".date("Y")));
 
-        $this->setXY(25, 83);
-        $this->SetTextColor(0, 0, 0);
-        $this->SetTextColor(255, 255, 255);
+        // $this->setXY(25, 83);
+        // $this->SetTextColor(0, 0, 0);
+        // $this->SetTextColor(255, 255, 255);
 
-        $this->SetFont('Arial', 'B', 10);
+        // $this->SetFont('Arial', 'B', 10);
         // $this->Cell(100, 6, 'Informaciones al celular 73726566', 0, 0, "C");
         // $this->Image(public_path('img/logo/flecha.png'), 120, 83, 5, 5, 'png');
 
 
-        $this->Ln(3);
+        // $this->Ln(3);
 
-        $this->SetFont('Arial', '', 10);
-        $this->SetTextColor(0, 0, 0);
+        // $this->SetFont('Arial', '', 10);
+        // $this->SetTextColor(0, 0, 0);
 
-        $this->setXY(15, 116);
+        // $this->setXY(15, 116);
         // $this->Cell(34, 6, "Ariel Ticona Vargas", "T", 1, 'C', false);
 
 
@@ -734,7 +750,7 @@ class Reportes extends  FpdfSicaf
 
 
         $this->setXY(48, 77);
-        $this->Cell(30, 6, utf8Decode( "Gestión ".date("Y")));
+        $this->Cell(30, 6, utf8Decode("Gestión " . date("Y")));
 
         $this->setXY(25, 83);
         $this->SetTextColor(0, 0, 0);
@@ -793,10 +809,11 @@ class Reportes extends  FpdfSicaf
         exit;
     }
 
-    public function piePagina($setY = -10){
+    public function piePagina($setY = -10)
+    {
         $this->SetY($setY);
         $this->SetFont('Arial', 'I', 6);
-        $this->Cell(0, 6, utf8Decode(config('app.constants.sistem')." - ".config('app.constants.sistem_prefix')), 0, 0, "R");
+        $this->Cell(0, 6, utf8Decode(config('app.constants.sistem') . " - " . config('app.constants.sistem_prefix')), 0, 0, "R");
     }
 
     public function pagosInscripcion($datos)
@@ -1582,7 +1599,7 @@ class Reportes extends  FpdfSicaf
 
         $this->SetFont('Arial', '', 8);
 
-        $grupo= $datos["grupo"];
+        $grupo = $datos["grupo"];
 
         $this->MultiCell(250, 7, utf8Decode("{$grupo["nombre_categoria"]} - {$grupo["nombre_grupo"]}, sucursal:  {$grupo["nombre_sucursal"]}, horario: {$grupo["hora_inicio"]} - {$grupo["hora_fin"]}, dias: {$grupo["dia"]} "), 0, "C");
 
@@ -1664,14 +1681,14 @@ class Reportes extends  FpdfSicaf
         foreach ($datos["asistencias"] as $llave => $fila) {
             $tabla->rowStyle('border:1;bgcolor:#fff;valign:M;font-style:B;font-size:6;');
 
-            $tabla->easyCell(utf8Decode($fila["nombre"]. " ". $fila["paterno"]. " ".$fila["materno"]), " align:L;font-style:B");
+            $tabla->easyCell(utf8Decode($fila["nombre"] . " " . $fila["paterno"] . " " . $fila["materno"]), " align:L;font-style:B");
 
             $totalesAsistencias = ["A" => 0, "F" => 0, "P" => 0, "" => 0];
 
             foreach ($listadoFechas as $key => $fecha) {
 
                 $asistencia = $this->extraerAsistencia($fila->asistencias, $fecha["fecha"]);
-                $tabla->easyCell(utf8Decode($asistencia), " align:C;font-style:B;font-color:".$this->coloresAsistenciaHexadecima[$asistencia]);
+                $tabla->easyCell(utf8Decode($asistencia), " align:C;font-style:B;font-color:" . $this->coloresAsistenciaHexadecima[$asistencia]);
 
                 $totalesAsistencias[$asistencia]++;
             }

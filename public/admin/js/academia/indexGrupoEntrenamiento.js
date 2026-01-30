@@ -213,7 +213,7 @@ $(function () {
 
     let dataScroll = {
         'page': 1,
-        'size': 15,
+        'size': 25,
         'search': '',
         '_token': crfToken,
     }
@@ -322,6 +322,11 @@ $(function () {
                     <li class="list-inline-item edit" >
                         <a href="javascript:void(0);" class="text-muted hover-warning d-inline-block pagina-item-btn" tooltip="tooltip" data-bs-placement="top" title="Paginas del Bloque Politico">
                             <i class="ri-file-list-line fs-16"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item edit" >
+                        <a href="${baseUrl+'/admin/personas?id_bloque='+item.id_grupo_entrenamiento}" class="text-muted hover-warning d-inline-block" tooltip="tooltip" data-bs-placement="top" title="Integrantes del Bloque Politico">
+                            <i class="ri-group-line fs-16"></i>
                         </a>
                     </li>
                     <li class="list-inline-item edit d-none" >

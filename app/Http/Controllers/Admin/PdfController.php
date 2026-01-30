@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Lib\reportesrt\Reportes;
 use App\Models\Admin\Valoracion;
+use App\Models\Admin\Persona;
 use App\Models\Admin\Inscripcion;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -66,18 +67,20 @@ class PdfController extends Controller
     public function credencialInscripcion($id)
     {
 
-        $inscripcion = Inscripcion::listAll([], $id)->first();
+        // $inscripcion = Inscripcion::listAll([], $id)->first();
+        $persona = Persona::findOrFail($id);
 
-        if (empty($inscripcion->id_inscripcion)) {
-            abort(404);
-        }
+
+        // if (empty($inscripcion->id_inscripcion)) {
+        //     abort(404);
+        // }
 
         //set header type pdf
 
-        $datos['inscripcion'] = $inscripcion;
-        $inscripcion = Inscripcion::find($id);
+        $datos['inscripcion'] = $persona;
+        // $inscripcion = Inscripcion::find($id);
 
-        // dd($datos);
+        // dd($persona->tipoPersona);
 
         $this->reportes->credencialInscripcion($datos);
 

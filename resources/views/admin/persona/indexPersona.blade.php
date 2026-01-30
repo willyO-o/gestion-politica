@@ -1,6 +1,16 @@
 @section('content')
     <div class="row">
 
+
+        <div class="col-12 pt-2">
+
+            <h4>
+                Integrantes del Bloque: {{ $grupoEntrenamiento->nombre_grupo ?? 'TODOS LOS BLOQUES' }}
+            </h4>
+            <input type="hidden" id="id_bloque" value="{{ $grupoEntrenamiento->id_grupo_entrenamiento ?? '' }}" />
+        </div>
+
+
         <!--end col-->
         <div class="col-xxl-9">
             <div class="card" id="contactList">
@@ -29,7 +39,7 @@
                             <select class="form-select" id="filtroEstadoPersona">
                                 <option value="">Todos</option>
                                 @foreach ($estadoPersona as $estado)
-                                    <option value="{{ $estado->estado_persona ?? 0 }}" >
+                                    <option value="{{ $estado->estado_persona ?? 0 }}">
                                         {{ $estado->estado_persona ?? 'SIN DEFINIR' }}</option>
                                 @endforeach
                             </select>
@@ -56,10 +66,10 @@
                                         <th data-sort="nombre" scope="col">Nombre</th>
                                         <th data-sort="ci" scope="col">C.I.</th>
                                         <th data-sort="celular" scope="col">Celular</th>
-                                        {{-- <th data-sort="oficina" scope="col" class="break-word">Genero</th>
+                                        {{-- <th data-sort="oficina" scope="col" class="break-word">Genero</th> --}}
                                         <th data-sort="tipoPersonal" scope="col">Tipo </th>
-                                        <th data-sort="tipoPersonal" scope="col">F. Nacimiento </th>
-                                        <th data-sort="estado" scope="col">Estado</th> --}}
+                                        {{-- <th data-sort="tipoPersonal" scope="col">F. Nacimiento </th> --}}
+                                        {{-- <th data-sort="estado" scope="col">Estado</th> --}}
                                         <th data-sort="estado" scope="col">Foto</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
@@ -242,10 +252,25 @@
                                 </div>
 
                             </div>
+                            <div class="col-lg-12">
+                                <div>
+                                    <label for="id_grupo_entrenamiento" class="form-label">Bloque de Militancia
+                                        <small class="text-danger">*</small> </label>
+
+                                    <select name="id_grupo_entrenamiento" class="form-select" id="id_grupo_entrenamiento"
+                                        required>
+                                        <option value="">Seleccione una Casa de Campaña para continuar...</option>
+                                    </select>
+
+                                    <div class="invalid-feedback">Por favor seleccione un Bloque de Militancia
+                                    </div>
+                                </div>
+
+                            </div>
 
                             <div class="col-lg-4">
                                 <div>
-                                    <label for="numero_documento" class="form-label">Nro C.I.  <small
+                                    <label for="numero_documento" class="form-label">Nro C.I. <small
                                             class="text-danger">*</small>
                                     </label>
                                     <input type="text" id="numero_documento" name="numero_documento"
@@ -281,29 +306,51 @@
                             </div>
                             <div class="col-lg-4">
                                 <div>
-                                    <label for="paterno" class="form-label">Apellido Paterno</label>
+                                    <label for="paterno" class="form-label">Apellidos</label>
                                     <input type="text" id="paterno" name="paterno"
                                         class="form-control txtMayuscula txtNormal" placeholder="" />
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 d-none">
                                 <div>
-                                    <label for="materno" class="form-label">Apellido Materno</label>
+                                    <label for="materno" class="form-label">materno</label>
                                     <input type="text" id="materno" name="materno"
                                         class="form-control txtMayuscula txtNormal" placeholder="" />
                                 </div>
                             </div>
 
+                            <div class="col-lg-4">
+                                <div>
+                                    <label for="celular" class="form-label">Telefono/Celular</label>
+                                    <input type="text" id="celular" name="celular"
+                                        class="form-control max-length txtNumero" maxlength="8" placeholder="" />
+                                </div>
+                            </div>
 
 
+                            <div class="col-lg-4 ">
+                                <div>
+                                    <label for="es_representante" class="form-label">Es Representante ?</label>
+                                    <div class="form-check form-radio-primary mb-0">
+                                        <input class="form-check-input" type="checkbox" name="es_representante" value="SI"
+                                             id="es_representante">
+                                        <label class="form-check-label" for="es_representante">
+                                            SI
+                                        </label>
+                                    </div>
 
-                            <div class="col-lg-4 d-none" >
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 d-none">
                                 <div>
                                     <label for="genero" class="form-label">Genero</label>
                                     <div class="form-check form-radio-primary mb-0">
-                                        <input class="form-check-input" type="radio" name="genero" value="MASCULINO" checked
-                                            id="genero_m" >
-                                        <label class="form-check-label" for="genero_m" >
+                                        <input class="form-check-input" type="radio" name="genero" value="MASCULINO"
+                                            checked id="genero_m">
+                                        <label class="form-check-label" for="genero_m">
                                             Masculino
                                         </label>
                                     </div>
@@ -327,7 +374,7 @@
                                             class="text-danger">*</small> </label>
 
                                     <input type="date" class="form-select" id="fecha_nacimiento"
-                                        name="fecha_nacimiento"  max="{{ date('Y-m-d') }}"
+                                        name="fecha_nacimiento" max="{{ date('Y-m-d') }}"
                                         min="{{ date('Y-m-d', strtotime('-80 year')) }}" />
 
                                     <div class="invalid-feedback">
@@ -338,13 +385,7 @@
                             </div>
 
 
-                            <div class="col-lg-4">
-                                <div>
-                                    <label for="celular" class="form-label">Telefono/Celular</label>
-                                    <input type="text" id="celular" name="celular"
-                                        class="form-control max-length txtNumero" maxlength="8" placeholder="" />
-                                </div>
-                            </div>
+
 
                             <div class="col-lg-6 d-none">
                                 <div>
@@ -367,7 +408,8 @@
                                         required>
                                         <option value="" disabled selected>Seleccione el Tipo de Persona</option>
                                         @foreach ($tipoPersona as $tp)
-                                            <option value="{{ $tp->id_tipo_persona }}" @if ($tp->id_tipo_persona == '1') selected @endif>
+                                            <option value="{{ $tp->id_tipo_persona }}"
+                                                @if ($tp->id_tipo_persona == '1') selected @endif>
                                                 {{ $tp->tipo_persona }}</option>
                                         @endforeach
                                     </select>

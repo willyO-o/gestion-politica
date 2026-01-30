@@ -8,12 +8,109 @@ $(function () {
 
 
 
+    let listaGrupoEntrenamiento = [];
+    getParametros()
+    function getParametros(tipo = "grupo") {
+
+        $.post(baseUrl + '/admin/inscripciones-parametrico', { _token: crfToken, tipo: tipo })
+            .done(function (data) {
+
+
+                if (tipo == "all" || tipo == "grupo") {
+                    listaGrupoEntrenamiento = data.data.grupo;
+                    generateSelectGrupo($("#id_bloque").val());
+
+
+                }
+
+
+
+            })
+            .fail(function (jqXHR) {
+                processError(jqXHR);
+
+            })
+
+    }
+
+    let configChoices = {
+        removeItemButton: true,
+
+        noResultsText: "No se encontraron resultados",
+        noChoicesText: "No hay opciones para seleccionar",
+        itemSelectText: "Click para seleccionar",
+        searchPlaceholderValue: "Buscar...",
+        searchPlaceholderValue: null,
+        loadingText: "Buscando...",
+        searchFields: ["label", "value"],
+        shouldSort: false,
+    };
+
+    let selectGrupos = new Choices("#id_grupo_entrenamiento", configChoices);
+
+
+
+    function generateSelectGrupo(idBloque) {
+
+
+
+        selectGrupos.clearChoices();
+
+        let optionsGrupoEntrenamiento = [];
+
+        optionsGrupoEntrenamiento.push({
+            label: "Seleccione Bloque de Militancia",
+            value: "",
+            id: "",
+            disabled: true,
+        });
+
+
+        listaGrupoEntrenamiento.forEach((item) => {
+            // if (Number(item.id_grupo_entrenamiento) == Number(idBloque)) {
+            optionsGrupoEntrenamiento.push({
+                label: item.nombre_grupo,
+                value: item.id_grupo_entrenamiento,
+                id: item.id_grupo_entrenamiento,
+                selected: Number(item.id_grupo_entrenamiento) == Number(idBloque) ? true : false,
+            });
+            // }
+
+        });
+
+
+
+        if (optionsGrupoEntrenamiento.length == 1) {
+            optionsGrupoEntrenamiento = [];
+            optionsGrupoEntrenamiento.push({
+                label: "Por favor seleccione una casa de campaña para continuar...",
+                value: "",
+                id: "",
+                disabled: true,
+            });
+        }
+
+
+        selectGrupos.setChoices(optionsGrupoEntrenamiento, "value", "label", true);
+
+        if (idBloque) {
+            selectGrupos.setChoiceByValue(idBloque);
+            selectGrupos.disable();
+            console.log($("#id_grupo_entrenamiento").val());
+            return;
+        }
+
+        // selectGrupos.setChoiceByValue("");
+
+    }
+
 
     let dataScroll = {
         'page': 1,
-        'size': 15,
+        'size': 25,
         'search': '',
         '_token': crfToken,
+        'id_bloque': $('#id_bloque').val() || null,
     }
 
 
@@ -333,7 +430,7 @@ $(function () {
     }
 
 
-    function rowHtml(item,opacity = 0) {
+    function rowHtml(item, opacity = 0) {
 
 
         let html =/*html*/ `<tr data-id="${item.id_persona}" style='opacity:${opacity};-moz-opacity: ${opacity};filter: alpha(opacity=${opacity});'>
@@ -346,6 +443,9 @@ $(function () {
             </td>
             <td class="celular">
                 ${item.celular || ""}
+            </td>
+            <td class="celular">
+                ${item.tipo_persona || ""}
             </td>
 
             <td class="tipoPersonal">
@@ -370,13 +470,21 @@ $(function () {
                             <i class="ri-pencil-line fs-16"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item edit d-none" >
+                    <li class="list-inline-item edit " >
                         <a href="javascript:void(0);" class="text-muted hover-danger d-inline-block remove-item-btn" tooltip="tooltip" data-bs-placement="top" title="Eliminar Persona">
                             <i class="ri-delete-bin-2-line fs-16"></i>
                         </a>
                     </li>
+                </ul>
+                <ul class="list-inline hstack gap-2 mb-0">
+                    <li class="list-inline-item edit" >
+                        <a href="javascript:void(0);" class="text-success hover-secondary d-inline-block card-btn" tooltip="tooltip" data-bs-placement="top" title="Credencial">
+                            <i class=" mdi mdi-card-account-details-star-outline mdi-20px"></i>
+                        </a>
+                    </li>
 
                 </ul>
+
             </td>
         </tr>`;
 
@@ -435,7 +543,10 @@ $(function () {
                         if (Object.hasOwnProperty.call(res.data, key)) {
                             const element = res.data[key];
 
-                            $("#" + key).val(element);
+                            if (key != "id_grupo_entrenamiento") {
+                                $("#" + key).val(element);
+
+                            }
 
                             if (key == "genero" || key == "estado_persona") {
                                 // donde coincida name y value
@@ -449,6 +560,12 @@ $(function () {
 
                         }
                     }
+
+                    if (res.data.id_grupo_entrenamiento) {
+                        selectGrupos.setChoiceByValue(res.data.id_grupo_entrenamiento);
+
+                    }
+
 
                     $("#showModal").modal("show");
                 })
@@ -564,6 +681,17 @@ $(function () {
 
             $(this).removeData();
         })
+        .on("click", ".card-btn", function (e) {
+            e.preventDefault();
+
+            const idInscripcion = $(this).closest("tr").data("id");
+            const url = baseUrl + "/admin/credencial/" + idInscripcion;
+
+            window.open(url, "Tarjeta de Control", "width=800,height=800");
+
+            $(this).removeData();
+
+        })
 
 
     // $("#modalPhoto").modal("show");
@@ -595,7 +723,6 @@ $(function () {
         .submit(function (e) {
             e.preventDefault();
 
-
             let form = $(this);
             form.addClass('was-validated');
 
@@ -605,6 +732,11 @@ $(function () {
             }
 
             let data = $(this).serializeArray();
+
+
+
+
+            data.push({ name: "id_grupo_entrenamiento", value: $("#id_grupo_entrenamiento").val() });
 
 
             data.push({ name: "_token", value: crfToken });
@@ -676,7 +808,7 @@ $(function () {
                     $(".cancel-btn-photo")[0].click();
 
                     notification(data.message, "Foto de la Persona Actualizada")
-                    let row = rowHtml(data.data,1);
+                    let row = rowHtml(data.data, 1);
                     $("#tbodyListaPersonal").find(`tr[data-id="${data.data.id_persona}"]`).replaceWith(row);
 
                 }
@@ -717,7 +849,7 @@ $(function () {
                 if (data.success) {
                     $("#cancel-btn").trigger("click");
                     notification(data.message, "Persona Registrada")
-                    let row = rowHtml(data.data,1);
+                    let row = rowHtml(data.data, 1);
                     $("#tbodyListaPersonal").prepend(row);
                     $("#formPersona").removeClass('was-validated');
                 }
@@ -747,7 +879,7 @@ $(function () {
                     $("#cancel-btn").trigger("click");
 
                     notification(data.message, "Persona Actualizada")
-                    let row = rowHtml(data.data,1);
+                    let row = rowHtml(data.data, 1);
                     $("#tbodyListaPersonal").find(`tr[data-id="${data.data.id_persona}"]`).replaceWith(row);
 
                 }
@@ -815,26 +947,13 @@ $(function () {
                                 <td class="fw-medium" scope="row">Celular</td>
                                 <td> ${datos.celular || ""}</td>
                             </tr>
-                            <tr>
-                                <td class="fw-medium" scope="row">Correo</td>
-                                <td>${datos.correo || ""} </td>
-                            </tr>
+
                             <tr>
                                 <td class="fw-medium" scope="row">Genero</td>
                                 <td> ${datos.genero || ""}</td>
                             </tr>
-                            <tr>
-                                <td class="fw-medium" scope="row">Fecha Nacimiento / Edad</td>
-                                <td> ${fomatDate(datos.fecha_nacimiento) || ""} / ${calcularEdad(datos.fecha_nacimiento)} </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium" scope="row">Dirección Domicilio</td>
-                                <td>${datos.direccion || ""} </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-medium" scope="row">Lugar de Nacimiento</td>
-                                <td>${datos.lugar_nacimiento || ""} </td>
-                            </tr>
+
+
                             <tr>
                                 <td class="fw-medium" scope="row">Fecha de Registro</td>
                                 <td>${fomatDate(datos.created_at || "", "fh")} </td>

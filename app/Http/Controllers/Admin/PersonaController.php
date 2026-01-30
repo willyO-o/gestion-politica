@@ -7,6 +7,8 @@ use App\Models\Admin\Persona;
 use App\Models\Admin\TipoPersona;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\GrupoEntrenamiento;
+
 
 class PersonaController extends Controller
 {
@@ -15,11 +17,16 @@ class PersonaController extends Controller
      */
     public function index()
     {
+
+        $idBloque = request()->get('id_bloque', null);
+
+        $grupoEntrenamiento = GrupoEntrenamiento::find($idBloque);
+
         $tipoPersona = TipoPersona::where('estado_tipo', 'ACTIVO')->get();
 
         $estadoPersona = Persona::select('estado_persona')->distinct()->get();
 
-        return view('admin.persona.indexPersona')
+        return view('admin.persona.indexPersona', compact('grupoEntrenamiento'))
             ->with('estadoPersona', $estadoPersona)
             ->with('tipoPersona', $tipoPersona);
     }
@@ -62,6 +69,13 @@ class PersonaController extends Controller
             if (empty($persona->id_persona)) {
                 throw new \Exception("Error al guardar la persona", 1);
             }
+
+            if($request->input('es_representante')){
+                $grupoEntrenamiento = GrupoEntrenamiento::find($request->input('id_grupo_entrenamiento'));
+                $grupoEntrenamiento->id_entrenador = $persona->id_persona;
+                $grupoEntrenamiento->save();
+            }
+
 
             DB::commit();
 

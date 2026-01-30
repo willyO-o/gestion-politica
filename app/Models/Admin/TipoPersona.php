@@ -10,6 +10,7 @@ class TipoPersona extends Model
     use HasFactory;
 
     protected $table = 'weps_tipo_persona';
+    protected $primaryKey = 'id_tipo_persona';
 
 
 }

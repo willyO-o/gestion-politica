@@ -301,7 +301,7 @@
                                 <div>
                                     <label for="genero" class="form-label">Genero</label>
                                     <div class="form-check form-radio-primary mb-0">
-                                        <input class="form-check-input" type="radio" name="genero" value="MASCULINO" selected
+                                        <input class="form-check-input" type="radio" name="genero" value="MASCULINO" checked
                                             id="genero_m" >
                                         <label class="form-check-label" for="genero_m" >
                                             Masculino
@@ -327,7 +327,7 @@
                                             class="text-danger">*</small> </label>
 
                                     <input type="date" class="form-select" id="fecha_nacimiento"
-                                        name="fecha_nacimiento" required max="{{ date('Y-m-d') }}"
+                                        name="fecha_nacimiento"  max="{{ date('Y-m-d') }}"
                                         min="{{ date('Y-m-d', strtotime('-80 year')) }}" />
 
                                     <div class="invalid-feedback">

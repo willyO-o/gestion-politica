@@ -358,16 +358,16 @@
 
 
 
-                            <div class="col-lg-6 d-none">
+                            <div class="col-lg-4 ">
                                 <div>
                                     <label for="id_tipo_persona_fk" class="form-label">Tipo
                                         Militancia <small class="text-danger">*</small></label>
 
                                     <select class="form-select" id="id_tipo_persona_fk" name="id_tipo_persona_fk"
                                         required>
-                                        <option value="">Seleccione el Tipo de Persona</option>
+                                        <option value="" disabled selected>Seleccione el Tipo de Persona</option>
                                         @foreach ($tipoPersona as $tp)
-                                            <option value="{{ $tp->id_tipo_persona }}" selected>
+                                            <option value="{{ $tp->id_tipo_persona }}" @if ($tp->id_tipo_persona == '1') selected @endif>
                                                 {{ $tp->tipo_persona }}</option>
                                         @endforeach
                                     </select>

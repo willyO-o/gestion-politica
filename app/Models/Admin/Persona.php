@@ -133,10 +133,10 @@ class Persona extends Model implements Auditable
 
             if (!empty($search)) {
                 $query->where(function ($query) use ($search) {
-                    $query->whereRaw("concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                        ->orWhereRaw("concat(COALESCE(paterno,''),' ',COALESCE(materno,''),' ',nombre,' ',numero_documento) LIKE ?", ["%$search%"])
-                        ->orWhereRaw("concat(nombre,' ',COALESCE(materno,''),' ',COALESCE(paterno,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                        ->orWhereRaw("concat(numero_documento,' ',COALESCE(paterno,''),' ',nombre,' ',COALESCE(materno,'')) LIKE ?", ["%$search%"]);
+                    $query->whereRaw("concat(nombre,' ',COALESCE(paterno,''),' ',COALESCE(materno,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                        ->orWhereRaw("concat(COALESCE(paterno,''),' ',COALESCE(materno,''),' ',nombre,' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                        ->orWhereRaw("concat(nombre,' ',COALESCE(materno,''),' ',COALESCE(paterno,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                        ->orWhereRaw("concat(COALESCE(numero_documento,''),' ',COALESCE(paterno,''),' ',nombre,' ',COALESCE(materno,'')) LIKE ?", ["%$search%"]);
                 });
             }
 

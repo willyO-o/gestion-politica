@@ -368,7 +368,7 @@ class Reportes extends  FpdfSicaf
 
         $this->SetFont('Arial', 'B', 8);
         $this->setXY(5, 5);
-        $this->MultiCell(48, 6, "BLOQUE ". utf8Decode($inscripcion->grupoEntrenamiento->nombre_grupo), 0, 'C');
+        $this->MultiCell(48, 6, "BLOQUE ". utf8Decode($inscripcion->grupoEntrenamiento?->nombre_grupo || ""), 0, 'C');
 
 
         $this->setXY(10, 32);

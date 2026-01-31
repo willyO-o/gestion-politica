@@ -67,10 +67,10 @@
                                         <th data-sort="ci" scope="col">C.I.</th>
                                         <th data-sort="celular" scope="col">Celular</th>
                                         {{-- <th data-sort="oficina" scope="col" class="break-word">Genero</th> --}}
-                                        <th data-sort="tipoPersonal" scope="col">Tipo </th>
+                                        <th data-sort="tipoPersonal" scope="col"> Bloque </th>
                                         {{-- <th data-sort="tipoPersonal" scope="col">F. Nacimiento </th> --}}
                                         {{-- <th data-sort="estado" scope="col">Estado</th> --}}
-                                        <th data-sort="estado" scope="col">Foto</th>
+                                        <!-- <th data-sort="estado" scope="col">Foto</th> -->
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
@@ -520,7 +520,7 @@
                             <div class="text-center">
 
                                 <div class="input-group">
-                                    <input type="file" class="form-control" id="imagenUpdate">
+                                    <input type="file" class="form-control" id="imagenUpdate" accept=".png,jpg,.jpeg,.webp">
                                     <label class="input-group-text" for="imagenUpdate">Buscar</label>
 
 

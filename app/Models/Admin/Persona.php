@@ -116,9 +116,9 @@ class Persona extends Model implements Auditable
 
 
         $query = DB::table('weps_persona as p')
-            ->selectRaw("id_persona, numero_documento, nombre, paterno, materno, genero, fecha_nacimiento, id_grupo_entrenamiento,
-            celular, correo, direccion, lugar_nacimiento, estado_persona, apoderado, foto, created_at, updated_at,id_tipo_persona_fk,tipo_persona")
+            ->selectRaw("p.*, tp.tipo_persona, ge.nombre_grupo")
             ->leftJoin('weps_tipo_persona as tp', 'tp.id_tipo_persona', '=', 'p.id_tipo_persona_fk')
+            ->leftJoin('weps_grupo_entrenamiento as ge', 'ge.id_grupo_entrenamiento', '=', 'p.id_grupo_entrenamiento')
             ->orderBy('p.id_persona', 'desc');
 
 

@@ -436,7 +436,26 @@ $(function () {
         let html =/*html*/ `<tr data-id="${item.id_persona}" style='opacity:${opacity};-moz-opacity: ${opacity};filter: alpha(opacity=${opacity});'>
 
             <td class="nombre">
-                ${item.nombre} ${item.paterno || ""} ${item.materno || ""}
+                <div class="d-flex align-items-center">
+                    <div class="flex-shrink-0 me-2">
+                        ${item.foto ? `<a class="image-popup cursor-pointer  "> <img src="${baseUrl}/storage/${item.foto}" alt="" class="avatar-lg  rounded"> </a>` : `<img src="${baseUrl}/assets/images/users/user-dummy-img.jpg" alt="" class="avatar-lg  ">`}
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="fs-14 mb-1">
+                        <a class="flex-grow-1 btn-update-photo" href="javascript:void(0)" data-persona="${item.id_persona}"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Actualizar Foto">
+                            <i class="ri-camera-fill align-bottom"></i>
+
+                        </a>
+                            <a href="javascript:void(0)" class="text-dark nombre">${item.nombre} ${item.paterno || ""} ${item.materno || ""} </a>
+
+                        </h5>
+                        <p class="text-muted mb-0">C.I.: <span class="fw-medium"> ${(item.numero_documento)} </span></p>
+                        <p class="text-muted mb-0">Celular: <span class="fw-medium"> ${item.celular || "-"} </span></p>
+                        <p class="text-muted mb-0"> <span class="fw-medium"> ${item.tipo_persona || "-"} </span></p>
+                    </div>
+                </div>
+                        
             </td>
             <td class="ci">
                 ${item.numero_documento || ""}
@@ -445,18 +464,7 @@ $(function () {
                 ${item.celular || ""}
             </td>
             <td class="celular">
-                ${item.tipo_persona || ""}
-            </td>
-
-            <td class="tipoPersonal">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                    ${item.foto ? `<a class="image-popup cursor-pointer  "> <img src="${baseUrl}/storage/${item.foto}" alt="" class="avatar-xs  rounded"> </a>` : `<img src="${baseUrl}/assets/images/users/user-dummy-img.jpg" alt="" class="avatar-xs  ">`}
-                    </div>
-                    <a class="flex-grow-1 ms-2 btn-update-photo" href="javascript:void(0)">
-                        Actualizar <br> Foto
-                    </a>
-                </div>
+                ${item.nombre_grupo || ""}
             </td>
             <td>
                 <ul class="list-inline hstack gap-2 mb-0">
@@ -831,7 +839,7 @@ $(function () {
         $("#add-btn").text("Registrar Persona");
         $("#tituloModal").text("Registrar Persona");
         generateSelectGrupo("");
-        
+
     }
 
     $("#cancel-btn,#close-modal").click(function (e) {

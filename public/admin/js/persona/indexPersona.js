@@ -830,6 +830,8 @@ $(function () {
         $("#action").val("crear");
         $("#add-btn").text("Registrar Persona");
         $("#tituloModal").text("Registrar Persona");
+        generateSelectGrupo("");
+        
     }
 
     $("#cancel-btn,#close-modal").click(function (e) {

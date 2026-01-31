@@ -143,7 +143,7 @@ class Persona extends Model implements Auditable
 
             empty($tipoPersona) ?: $query->where('id_tipo_persona_fk', $tipoPersona);
 
-            empty($idBloque) ?: $query->where('id_grupo_entrenamiento', $idBloque);
+            empty($idBloque) ?: $query->where('p.id_grupo_entrenamiento', $idBloque);
 
             if ($estadoPersona != '') {
 

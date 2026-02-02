@@ -246,11 +246,7 @@
                             de tierra que tú, enfrentó las mismas carencias y decidió prepararse para cambiar esa
                             realidad.
                         </p>
-                        <p>
-                            Nacido en el Distrito 8, David no es un político de escritorio. Es un profesional que caminó
-                            las mismas calles de tierra que tú, enfrentó las mismas carencias y decidió prepararse para
-                            cambiar esa realidad.
-                        </p>
+   
                         <p>
                             Como parte del <strong>Movimiento Tercer Sistema (MTS)</strong>, David representa la
                             verdadera renovación. Su trayectoria en la gestión social y su lucha incansable por los

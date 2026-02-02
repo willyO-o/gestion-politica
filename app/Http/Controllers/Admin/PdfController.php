@@ -80,7 +80,7 @@ class PdfController extends Controller
         $datos['inscripcion'] = $persona;
         // $inscripcion = Inscripcion::find($id);
 
-        // dd($persona->tipoPersona);
+        // dd($datos['inscripcion']->grupoEntrenamiento);
 
         $this->reportes->credencialInscripcion($datos);
 

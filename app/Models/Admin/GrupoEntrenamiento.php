@@ -71,6 +71,10 @@ class GrupoEntrenamiento extends Model implements Auditable
     ];
 
 
+    public function integrantes()
+    {
+        return $this->hasMany(Persona::class, 'id_grupo_entrenamiento', 'id_grupo_entrenamiento');
+    }
 
 
 

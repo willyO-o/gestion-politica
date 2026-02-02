@@ -293,13 +293,16 @@ class Reportes extends  FpdfSicaf
 
 
         // $this->verificarFotoInscripcion($inscripcion);
+        $this->SetLineWidth(0.5);
 
-        $this->setDrawColor(255, 255, 255);
+        $this->setDrawColor(0, 111, 20);
 
-        // $this->Line(10, 35, 45, 35);
-        // $this->Line(10, 35, 10, 70);
-        // $this->Line(45, 35, 45, 70);
-        // $this->Line(10, 70, 45, 70);
+ 
+
+        $this->Line(99, 82, 72, 82);
+        $this->Line(99, 55, 72, 55);
+        $this->Line(99, 55, 99, 82);
+        $this->Line(72, 55, 72, 82);
 
         // $this->setDrawColor(0, 0, 0);
 
@@ -362,13 +365,13 @@ class Reportes extends  FpdfSicaf
 
         $this->SetFont('Arial', 'B', 9);
 
-
+    // dd($inscripcion->grupoEntrenamiento->nombre_grupo);
 
         $this->SetTextColor(255, 255, 255);
 
-        $this->SetFont('Arial', 'B', 8);
-        $this->setXY(5, 5);
-        $this->MultiCell(48, 6, "BLOQUE ". utf8Decode($inscripcion->grupoEntrenamiento?->nombre_grupo || ""), 0, 'C');
+        $this->SetFont('Arial', 'B', 9);
+        $this->setXY(8, 6);
+        $this->MultiCell(40, 4, "BLOQUE ". utf8Decode($inscripcion->grupoEntrenamiento?->nombre_grupo ), 0, 'C');
 
 
         $this->setXY(10, 32);
@@ -449,9 +452,9 @@ class Reportes extends  FpdfSicaf
 
         $urlQr = url("/detalle-inscripcion/" . md5($inscripcion->id_persona));
 
-        $base64Qr = "data:image/png;base64," .    $this->getBase64Qr($urlQr, 400, "png", "M", "/public/img/mts/logo-mts.png", 2);
+        $base64Qr = "data:image/png;base64," .    $this->getBase64Qr($urlQr, 1000, "png", "M", "/public/img/mts/logo-mts.png", 2);
 
-        $this->Image($base64Qr, 76.5, 59, 20, 20, 'png');
+        $this->Image($base64Qr, 73, 56, 25, 25, 'png');
 
         if (empty($inscripcion->foto) == false) {
             // $this->Image(FCPATH . 'uploads/foto/' . $persona->foto, 110, 80, 20, 20);

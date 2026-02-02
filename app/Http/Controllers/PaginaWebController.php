@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Inscripcion;
+use App\Models\Admin\Persona;
 use App\Models\Admin\Asistencia;
 use App\Models\Admin\GrupoEntrenamiento;
 use Illuminate\Support\Facades\DB;
+
 
 class PaginaWebController extends Controller
 {
@@ -70,13 +72,15 @@ class PaginaWebController extends Controller
     public function detalleInscripcion($codigo)
     {
 
-        $inscripcion = Inscripcion::getInscripcionCodigo($codigo)->first();
+        // $inscripcion = Inscripcion::getInscripcionCodigo($codigo)->first();
+        $inscripcion = Persona::whereRaw('md5(id_persona) = ?', [$codigo])->first();
 
-        if (empty($inscripcion->id_inscripcion)) {
+        if (empty($inscripcion->id_persona)) {
             abort(404);
         }
 
         $condicion["i.id_inscripcion"] = $inscripcion->id_inscripcion;
+        // $pagos = Inscripcion::getPagosInscripcion($condicion)->get();
         $pagos = Inscripcion::getPagosInscripcion($condicion)->get();
 
         // dd($pagos);

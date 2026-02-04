@@ -20,15 +20,15 @@ $(function () {
 
 
 
-    let scrollGrupoEntrenamiento = $('#tbodyListaAsistencia').scrollPagination({
-        'url': baseUrl + '/admin/asistencia-estudiante-listar', // the url you are fetching the results
-        'method': 'post',
+    let scrollActividad = $('#tbodyActividad').scrollPagination({
+        'url': baseUrl + '/admin/actividad', // the url you are fetching the results
+        'method': 'get',
         'data': getDataFilter(),
         'dataTemplateCallback': rowHtml,
-        'elementCountSelector': '#contadorListaAsistencia',
+        'elementCountSelector': '#contadorListaActividad',
         'elementCountTemplate': '<span  class=""> Listando <b> {count}  </b>elementos de <b> {total} </b> encontrados </span>',
-        'loading': '#loadingAsistencia',
-        'scroller': "#containerListaAsistencia",
+        'loading': '#loadingActividad',
+        'scroller': "#containerListaActividad",
         'loadingText': `<div  class=" text-center"><span class="loaderHttp"></span><span class="text-muted">Cargando...</span></div>`,
         'loadingNomoreText': '<h6 class="text-danger">No se encontraron más Resultados</h6>',
 
@@ -89,7 +89,7 @@ $(function () {
         dataScroll.fecha_inicio = picker.startDate.format('YYYY-MM-DD');
         dataScroll.fecha_fin = picker.endDate.format('YYYY-MM-DD');
 
-        scrollGrupoEntrenamiento.resetScrollPagination(getDataFilter());
+        scrollActividad.resetScrollPagination(getDataFilter());
 
 
     });
@@ -100,7 +100,7 @@ $(function () {
         .on("change", function (e) {
             e.preventDefault();
 
-            scrollGrupoEntrenamiento.resetScrollPagination(getDataFilter());
+            scrollActividad.resetScrollPagination(getDataFilter());
 
         })
 
@@ -113,7 +113,7 @@ $(function () {
 
             timer = setTimeout(() => {
 
-                scrollGrupoEntrenamiento.resetScrollPagination(getDataFilter());
+                scrollActividad.resetScrollPagination(getDataFilter());
 
             }, 500);
 
@@ -133,76 +133,25 @@ $(function () {
 
 
 
-    // function updateClock() {
-    //     const now = new Date(); // Obtener la fecha y hora actual de la zona horaria local
-    //     const hours = String(now.getHours()).padStart(2, '0'); // Asegurar dos dígitos para horas
-    //     const minutes = String(now.getMinutes()).padStart(2, '0'); // Asegurar dos dígitos para minutos
-    //     const seconds = String(now.getSeconds()).padStart(2, '0'); // Asegurar dos dígitos para segundos
-
-    //     // Actualizar el contenido del reloj
-    //     const clockElement = document.getElementById('reloj');
-    //     clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-    // }
-
-    function updateClock() {
-        // Obtener la hora exacta en una zona horaria específica
-        const now = new Date();
-        const options = { timeZone: 'America/La_Paz', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-
-        // Formatear la hora usando Intl.DateTimeFormat
-        const formatter = new Intl.DateTimeFormat('en-US', options);
-        const parts = formatter.formatToParts(now);
-
-        // Extraer horas, minutos y segundos
-        const hours = parts.find(part => part.type === 'hour').value;
-        const minutes = parts.find(part => part.type === 'minute').value;
-        const seconds = parts.find(part => part.type === 'second').value;
-
-        // Actualizar el contenido del reloj
-        // const clockElement = document.querySelector('.reloj');
-        // clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-        $(".reloj").text(`${hours}:${minutes}:${seconds}`);
-    }
-
-    setInterval(updateClock, 1000); // Actualizar cada segundo
-
-
 
 
 
     function rowHtml(item, opacity = 0) {
 
 
-        let html =/*html*/ `<tr data-id="${item.id_asistencia}" style='opacity:${opacity};-moz-opacity: ${opacity};filter: alpha(opacity=${opacity});'>
+        let html =/*html*/ `<tr data-id="${item.id}" style='opacity:${opacity};-moz-opacity: ${opacity};filter: alpha(opacity=${opacity});'>
 
-
-            <td class="row_nombre">
-                ${item.nombre || ""}  ${item.paterno || ""}  ${item.materno || ""}
+            <td class="row_actividad">
+                ${item.nombre_actividad || ""}
             </td>
+
             <td class="row_fecha_asistencia">
-                ${fomatDate(item.fecha_asistencia || "")}
+                ${fomatDate(item.fecha_actividad || "")}
+            </td>
+            <td class="row_descripcion">
+                ${item.descripcion || ""}
             </td>
 
-            <td class="row_ingreso">
-                ${fomatDate(item.ingreso || "", "h")}
-            </td>
-            <td class="row_salida">
-                ${fomatDate(item.salida || "", "h")}
-            </td>
-
-            <td class="row_grupo">
-                ${item.nombre_grupo || ""}
-            </td>
-
-            <td class="row_sucursal">
-                ${item.nombre_sucursal || ""}
-            </td>
-            <td class="row_observacion">
-                ${item.observacion || "-"}
-            </td>
-            <td class="row_permiso">
-                ${item.permiso ? "SI" : ""}
-            </td>
             <td>
                 <ul class="list-inline hstack gap-2 mb-0">
 
@@ -214,6 +163,12 @@ $(function () {
                     <li class="list-inline-item edit" >
                         <a href="javascript:void(0);" class="text-muted hover-danger d-inline-block eliminar-item-btn" tooltip="tooltip" data-bs-placement="top" title="Eliminar Sucursal">
                             <i class="ri-delete-bin-2-line fs-16"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item edit" >
+                        <a href="${baseUrl}/admin/marcar-asistencia?actividad=${item.id}" class="text-muted hover-danger d-inline-block " tooltip="tooltip" data-bs-placement="top" title="Ver Asistencias de la Actividad">
+                            <i class="ri-list-check fs-16"></i>
+                            Asistencias
                         </a>
                     </li>
 
@@ -238,10 +193,8 @@ $(function () {
 
         const codigo = decodedText;
 
-        const codigoReal = codigo.replace(baseUrl + "/detalle-inscripcion/", "").trim();
-
         html5QrcodeScanner.pause();
-        solicitarMarcadoEstudiante(codigoReal)
+        solicitarMarcadoEstudiante(codigo)
 
     }
 
@@ -251,29 +204,29 @@ $(function () {
         // console.warn(`Code scan error = ${error}`);
     }
 
-    let html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader",
-        { fps: 10, qrbox: { width: 250, height: 250 } },
-          /* verbose= */ false);
+    // let html5QrcodeScanner = new Html5QrcodeScanner(
+    //     "reader",
+    //     { fps: 10, qrbox: { width: 250, height: 250 } },
+    //       /* verbose= */ false);
 
-    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+    // html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 
 
     function solicitarMarcadoEstudiante(codigo) {
 
-        $.post(baseUrl + '/admin/asistencia-estudiante', { codigo: codigo, _token: crfToken, actividad: $("#id_actividad_fk").val() })
+        $.post(baseUrl + '/admin/asistencia-estudiante', { codigo: codigo, _token: crfToken })
             .done(function (res) {
                 if (res.success) {
 
-                    let nombre = res.data.persona.nombre + " " + res.data.persona.paterno + " " + res.data.persona.materno;
-                    let nroInscripcion = res.data.persona.numero_documento;
+                    let nombre = res.data.inscripcion.nombre + " " + res.data.inscripcion.paterno + " " + res.data.inscripcion.materno;
+                    let nroInscripcion = res.data.inscripcion.numero;
 
                     let estado = res.data.asistencia ? (res.data.asistencia.salida ? false : "La Salida") : "El Ingreso";
 
                     let idAsistencia = res.data.asistencia ? res.data.asistencia.id_asistencia : null;
 
-                    const idPersona = res.data.persona.id_persona;
+                    const idInscripcion = res.data.inscripcion.id_inscripcion;
 
                     if (estado) {
 
@@ -281,7 +234,7 @@ $(function () {
                             title: `¿Desea Registrar <b class="text-${estado == "El Ingreso" ? "success" : "danger"} " > ${estado}  </b>   del Militante?:`,
                             html: `<div><span class="h3 text-primary">
                             <i class="mdi mdi-clock-time-four-outline"></i></span>
-                            <span class="h3  text-primary reloj" id="reloj" class="text-primary"></span></div><p>Nombre: <b>${nombre}  </b> </p> <p>Nro C.I.: <b>${nroInscripcion} </b> </p>`,
+                            <span class="h3  text-primary reloj" id="reloj" class="text-primary"></span></div><p>Nombre: <b>${nombre}  </b> </p> <p>Nro Inscripción: <b>${nroInscripcion} </b> </p>`,
                             showCancelButton: true,
                             confirmButtonColor: '#3085d6',
                             cancelButtonColor: '#d33',
@@ -290,18 +243,18 @@ $(function () {
                         }).then((result) => {
                             if (result.isConfirmed) {
 
-                                $.post(baseUrl + '/admin/asistencia-estudiante-registrar', { idPersona: idPersona, idAsistencia: idAsistencia, _token: crfToken, actividad: $("#id_actividad_fk").val() })
+                                $.post(baseUrl + '/admin/asistencia-estudiante-registrar', { idInscripcion: idInscripcion, idAsistencia: idAsistencia, _token: crfToken })
                                     .done(function (res) {
                                         if (res.success) {
                                             Swal.fire({
                                                 icon: 'success',
                                                 title: ` <p class="text-${estado == "El Ingreso" ? "success" : "danger"} ">Se registró  ${estado} del Militante: </p>  `,
-                                                html: `<p>Nombre: <b>${nombre}  </b> </p> <p>Nro C.I.: <b>${nroInscripcion} </b> </p> `,
+                                                html: `<p>Nombre: <b>${nombre}  </b> </p> <p>Nro Inscripción: <b>${nroInscripcion} </b> </p> `,
                                                 confirmButtonColor: '#3085d6',
                                                 confirmButtonText: 'Aceptar'
                                             })
 
-                                            scrollGrupoEntrenamiento.resetScrollPagination(getDataFilter());
+                                            scrollActividad.resetScrollPagination(getDataFilter());
 
                                         }
                                     })
@@ -321,7 +274,7 @@ $(function () {
                     Swal.fire({
                         icon: 'warning',
                         title: `El militante:`,
-                        html: `<p>Nombre: <b>${nombre}  </b> </p> <p>Nro C.I.: <b>${nroInscripcion} </b> </p> <p class="text-danger">Ya tiene registrado la asistencia del dia de hoy</p>`,
+                        html: `<p>Nombre: <b>${nombre}  </b> </p> <p>Nro Inscripcion: <b>${nroInscripcion} </b> </p> <p class="text-danger">Ya tiene registrado la asistencia del dia de hoy</p>`,
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'Aceptar'
                     })
@@ -415,7 +368,7 @@ $(function () {
     })
 
 
-    $("#tablaAsistencia")
+    $("#tablaActividad")
         .on("click", ".editar-item-btn", function (e) {
             e.preventDefault();
 
@@ -423,37 +376,9 @@ $(function () {
 
             $("#showModal").modal("show");
 
-            resetForm();
-
-            $.get(baseUrl + '/admin/asistencia/' + id)
+            $.get(baseUrl + '/admin/actividad/' + id + '/edit')
                 .done(function (res) {
-                    if (res.success) {
-                        let data = res.data;
-
-                        $("#nroInscripcion").append(new Option(data.numero + ", " + data.nombre + " " + data.paterno + " " + data.materno + ", C.I: " + data.numero_documento, data.id_inscripcion_fk, true, true)).trigger('change').attr('disabled', 'disabled');
-                        $("#id_grupo_entrenamiento_fk").val(data.id_grupo_entrenamiento);
-                        $("#permiso").val(data.permiso).trigger("change");
-                        $("#fecha_asistencia").val(data.fecha_asistencia);
-                        if (data.permiso == 0) {
-                            let ingreso = data.ingreso ? new Date(data.ingreso.replace(" ", "T")) : null;
-                            let salida = data.salida ? new Date(data.salida.replace(" ", "T")) : null;
-                            // poner las horas ingreso y salida en formato  "HH:mm"
-                            $("#ingreso").val(ingreso.getHours().toString().padStart(2, "0") + ":" + ingreso.getMinutes().toString().padStart(2, "0"));
-                            $("#salida").val(salida.getHours().toString().padStart(2, "0") + ":" + salida.getMinutes().toString().padStart(2, "0"));
-                        }
-
-                        $("#observacion").val(data.observacion);
-                        $("#action").val("actualizar");
-                        $("#id_asistencia").val(data.id_asistencia);
-                        $("#tituloModal").text("Editar Asistencia/Permiso");
-                        $("#add-btn").text("Actualizar Asistencia");
-
-                        let html = data.dias_entrenamiento.map(item => {
-                            return `${item.nombre_dia}`
-                        }).join(", ");
-                        $("#caja-dias-entrenamiento").show();
-                        $("#caja-dias-entrenamiento").find("span").html(html);
-                    }
+                    $('#showModal .modal-content').html(res);
                 })
                 .fail(function (jqXHR) {
                     processError(jqXHR);
@@ -468,11 +393,10 @@ $(function () {
 
             let itemId = btn.closest("tr").data("id");
 
-            let fecha = btn.closest("tr").find(".row_fecha_asistencia").text();
-            let codigo = btn.closest("tr").find(".row_numero").text();
+            let actividad = btn.closest("tr").find(".row_actividad").text();
 
             Swal.fire({
-                title: `¿Estas seguro de eliminar la asistencia de fecha: ${fecha}, de la inscripcion: ${codigo} ?`,
+                title: `¿Estas seguro de eliminar la actividad: ${actividad} ?`,
                 text: "No podras revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -483,11 +407,11 @@ $(function () {
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    $.post(baseUrl + '/admin/asistencia/' + itemId, { _token: crfToken, _method: 'DELETE' })
+                    $.post(baseUrl + '/admin/actividad/' + itemId, { _token: crfToken, _method: 'DELETE' })
                         .done(function (data) {
 
                             if (data.success) {
-                                notification(data.message, "Asistencia/Permiso Eliminado Correctamente...")
+                                notification(data.message, "Actividad Eliminada Correctamente...")
 
                                 btn.closest("tr").fadeOut("slow", function () {
                                     $(this).remove();
@@ -508,14 +432,23 @@ $(function () {
     $("#btnRegistrarAsistencia").on("click", function (e) {
         e.preventDefault();
 
-        resetForm();
         $("#showModal").modal("show");
+
+        $.get(baseUrl + '/admin/actividad/create')
+            .done(function (res) {
+                $('#showModal .modal-content').html(res);
+
+            })
+            .fail(function (jqXHR) {
+                processError(jqXHR);
+            })
+
     })
 
-    $("#formAsistencia").submit(function (e) {
+    $(document).on("submit", "#formActividad", function (e) {
         e.preventDefault();
 
-        if (document.getElementById("formAsistencia").checkValidity() === false) {
+        if (document.getElementById("formActividad").checkValidity() === false) {
             $(this).addClass("was-validated");
             return false;
         }
@@ -524,30 +457,17 @@ $(function () {
         $('#add-btn').attr('disabled', 'disabled');
 
         let data = $(this).serializeArray();
-        data.push({ name: "_token", value: crfToken });
 
-        let actionUrl = baseUrl + '/admin/asistencia';
-
-        if ($("#action").val() == "actualizar") {
-            actionUrl = baseUrl + '/admin/asistencia/' + $("#id_asistencia").val();
-            data.push({ name: "_method", value: "PUT" });
-            data.push({ name: "id_persona_fk", value: $("#nroInscripcion").val() });
-            data.push({ name: "id_asistencia", value: $("#id_asistencia").val() });
-            data.push({ name: "id_actividad_fk", value: $("#id_actividad_fk").val() });
-        }
-
+        let actionUrl = $(this).attr('action');
 
         $.post(actionUrl, data)
             .done(function (res) {
 
                 $("#showModal").modal("hide");
 
-                notification(data.message, "Asistencia/Permiso Guardado Correctamente...")
+                notification(res.message, "Actividad Guardada Correctamente...");
 
-                resetForm();
-
-                scrollGrupoEntrenamiento.resetScrollPagination(getDataFilter());
-
+                scrollActividad.resetScrollPagination(getDataFilter());
 
             })
             .fail(function (jqXHR) {
@@ -561,41 +481,7 @@ $(function () {
     })
 
 
-    function resetForm() {
-        $("#formAsistencia")[0].reset();
-        $("#formAsistencia").removeClass("was-validated");
 
-        $("#nroInscripcion").val(null).trigger("change").removeAttr('disabled');
-        $("#id_grupo_entrenamiento_fk").val(null);
-        $("#permiso").val("0").trigger("change");
-        $("#caja-dias-entrenamiento").hide();
-        $("#id_asistencia").val(null);
-        $("#action").val("crear");
-        $("#tituloModal").text("Registrar Asistencia/Permiso");
-        $("#add-btn").text("Registrar Asistencia");
-
-    }
-
-    $(".cancel-btn").on("click", function (e) {
-        // e.preventDefault();
-        resetForm();
-    })
-
-    $("#permiso").on("change", function (e) {
-        e.preventDefault();
-
-        if ($(this).val() == 1) {
-            $("#caja-detalles").show();
-            $("#caja-horas").hide();
-            $("#caja-horas").attr('disabled', 'disabled');
-            return;
-        }
-
-        $("#caja-detalles").hide();
-        $("#caja-horas").show();
-        $("#caja-horas").removeAttr('disabled');
-
-    })
 
 
 })

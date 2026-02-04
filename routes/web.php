@@ -109,6 +109,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin' ,
 
 
     Route::resource('asistencia', 'AsistenciaController');
+    Route::resource('actividad', 'ActividadController');
 
     Route::get('/asistencia-pdf', 'PdfController@asistencia')->name('asistencia.estudiante');
 

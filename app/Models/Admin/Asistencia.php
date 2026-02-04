@@ -18,7 +18,8 @@ class Asistencia extends Model  implements Auditable
 
 
     protected $fillable = [
-        'id_inscripcion_fk',
+        'id_persona_fk',
+        'id_actividad_fk',
         'observacion',
         'ingreso',
         'salida',
@@ -29,7 +30,8 @@ class Asistencia extends Model  implements Auditable
 
 
     static $rules = [
-        'id_inscripcion_fk' => 'required|exists:weps_inscripcion,id_inscripcion',
+        'id_persona_fk' => 'required|exists:weps_persona,id_persona',
+        'id_actividad_fk' => 'required|exists:weps_actividad,id',
         'observacion' => 'nullable|max:2000',
         'ingreso' => 'nullable|date_format:H:i|required_without:permiso',
         'salida' => 'nullable|date_format:H:i|required_without:permiso',
@@ -38,8 +40,10 @@ class Asistencia extends Model  implements Auditable
     ];
 
     static $messages = [
-        'id_inscripcion_fk.required' => 'Por favor seleccione una inscripción de Estudiante',
-        'id_inscripcion_fk.exists' => 'La inscripción no existe',
+        'id_persona_fk.required' => 'Por favor seleccione una persona',
+        'id_persona_fk.exists' => 'La persona no existe',
+        'id_actividad_fk.required' => 'Por favor seleccione una actividad',
+        'id_actividad_fk.exists' => 'La actividad no existe',
         'observacion.max' => 'La observación no debe superar los 2000 caracteres',
         'ingreso.date_format' => 'El campo ingreso debe ser una hora válida',
         'ingreso.required_without' => 'El campo ingreso es obligatorio si no se ha marcado permiso',
@@ -51,6 +55,11 @@ class Asistencia extends Model  implements Auditable
         'fecha_asistencia.unique_asistencia' => 'Ya existe una asistencia o permiso registrada para esta fecha',
     ];
 
+
+    public function actividad()
+    {
+        return $this->belongsTo(Actividad::class, 'id_actividad_fk', 'id');
+    }
 
 
     protected static function boot()
@@ -94,11 +103,10 @@ class Asistencia extends Model  implements Auditable
     public static function getListaAsistencias($filtros)
     {
         $query = DB::table('weps_asistencia as a')
-            ->selectRaw('a.*,p.nombre,p.paterno,p.materno,p.numero_documento,p.foto,i.numero, g.nombre_grupo, s.nombre_sucursal,g.id_grupo_entrenamiento')
-            ->join('weps_inscripcion as i', 'a.id_inscripcion_fk', '=', 'i.id_inscripcion')
-            ->join('weps_persona as p', 'i.id_persona', '=', 'p.id_persona')
-            ->join('weps_grupo_entrenamiento as g', 'i.id_grupo_entrenamiento', '=', 'g.id_grupo_entrenamiento')
-            ->join('weps_sucursal as s', 'g.id_sucursal_fk', '=', 's.id_sucursal')
+            ->selectRaw('a.*,p.nombre,p.paterno,p.materno,p.numero_documento,p.foto, g.nombre_grupo, s.nombre_sucursal,g.id_grupo_entrenamiento')
+            ->join('weps_persona as p', 'a.id_persona_fk', '=', 'p.id_persona')
+            ->leftJoin('weps_grupo_entrenamiento as g', 'p.id_grupo_entrenamiento', '=', 'g.id_grupo_entrenamiento')
+            ->leftJoin('weps_sucursal as s', 'g.id_sucursal_fk', '=', 's.id_sucursal')
             ->orderBy('a.id_asistencia', 'desc')
             ->orderBy('a.fecha_asistencia', 'desc');
 
@@ -109,11 +117,10 @@ class Asistencia extends Model  implements Auditable
             $search = convMayuscula(str_replace(' ', '%', $search));
 
             $query->where(function ($query) use ($search) {
-                $query->orWhereRaw("concat(nombre,' ',COALESCE(materno,''),' ',COALESCE(paterno,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                    ->orWhereRaw("concat(paterno,' ',COALESCE(materno,''),' ',COALESCE(nombre,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                    ->orWhereRaw("concat(materno,' ',COALESCE(paterno,''),' ',COALESCE(nombre,''),' ',numero_documento) LIKE ?", ["%$search%"])
-                    ->orWhere('p.numero_documento', 'like', '%' . $search . '%')
-                    ->orWhere('i.numero', 'like', '%' . $search . '%');
+                $query->orWhereRaw("concat(nombre,' ',COALESCE(materno,''),' ',COALESCE(paterno,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                    ->orWhereRaw("concat(paterno,' ',COALESCE(materno,''),' ',COALESCE(nombre,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                    ->orWhereRaw("concat(materno,' ',COALESCE(paterno,''),' ',COALESCE(nombre,''),' ',COALESCE(numero_documento,'')) LIKE ?", ["%$search%"])
+                    ->orWhere('p.numero_documento', 'like', '%' . $search . '%');
             });
         }
 

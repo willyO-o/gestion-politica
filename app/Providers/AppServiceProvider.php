@@ -86,13 +86,15 @@ class AppServiceProvider extends ServiceProvider
         //validar unica asistencia que funcione para registrar y actualizar
         Validator::extend('unique_asistencia', function ($attribute, $value, $parameters, $validator) {
 
-            $idInscripcion = $validator->getData()['id_inscripcion_fk'];
+            $idActividad = $validator->getData()['id_actividad_fk'];
+            $idPersona = $validator->getData()['id_persona_fk'];
             $fechaAsistencia = $validator->getData()['fecha_asistencia'];
 
 
             // var_dump($idInscripcion, $fechaAsistencia);die;
             $query = DB::table('weps_asistencia')
-                ->where('id_inscripcion_fk', $idInscripcion)
+                ->where('id_actividad_fk', $idActividad)
+                ->where('id_persona_fk', $idPersona)
                 ->where('fecha_asistencia', $fechaAsistencia);
 
             if (isset($validator->getData()['id_asistencia'])) {

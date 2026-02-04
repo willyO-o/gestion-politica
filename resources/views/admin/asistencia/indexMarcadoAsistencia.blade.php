@@ -50,7 +50,6 @@
                             <table class="table align-middle table-wrap table-sm  mb-0" id="tablaAsistencia">
                                 <thead class="table-light sticky-top top-0 z-index-10 ">
                                     <tr>
-                                        <th data-sort="nombre" scope="col">Nro. <br> Inscripción</th>
                                         <th data-sort="nombre" scope="col">Militante</th>
                                         <th data-sort="celular" scope="col">Fecha Asistencia</th>
                                         <th data-sort="tipoPersonal" scope="col"> Entrada</th>
@@ -103,8 +102,8 @@
 
                         <input type="hidden" id="id_asistencia" value="" />
                         <input type="hidden" id="action" name="action" value="crear" />
-                        <input type="hidden" id="id_grupo_entrenamiento_fk" name="id_grupo_entrenamiento_fk"
-                            value="" />
+                        <input type="hidden" id="id_actividad_fk" name="id_actividad_fk"
+                            value="{{ $actividad->id }}" />
 
                         <div class="row g-3">
 
@@ -114,7 +113,7 @@
                                     <label for="id_inscripcion_fk" class="form-label">Numero de Inscripción <small
                                             class="text-danger">*</small>
                                     </label>
-                                    <select name="id_inscripcion_fk" id="nroInscripcion" required></select>
+                                    <select name="id_persona_fk" id="nroInscripcion" required></select>
 
                                     <div class="invalid-feedback">
                                         Por favor ingrese un numero de inscripcion
@@ -151,7 +150,7 @@
                                     </label>
                                     <input type="date" id="fecha_asistencia" name="fecha_asistencia"
                                         class="form-control txtNormal txtMayuscula " required value="{{ date('Y-m-d') }}"
-                                        min="{{ date('2021-01-01') }}" max="{{ date('Y-m-d') }}" />
+                                        min="{{ date('2021-01-01') }}" />
                                     <div class="invalid-feedback">
                                         Por favor ingrese una fecha para la asistencia o permiso.
                                     </div>
@@ -169,7 +168,7 @@
                                             class="text-danger">*</small>
                                     </label>
                                     <input type="time" id="ingreso" name="ingreso" class="form-control txtNormal "
-                                        required />
+                                        required  value="{{ date('H:i') }}"/>
                                     <div class="invalid-feedback">
                                         Por favor ingrese la hora de ingreso.
                                     </div>
@@ -183,8 +182,7 @@
                                     <label for="salida" class="form-label">Hora Salida <small
                                             class="text-danger">*</small>
                                     </label>
-                                    <input type="time" id="salida" name="salida" class="form-control txtNormal "
-                                        min="06:00:00" max="22:00:00" required placeholder="" />
+                                    <input type="time" id="salida" name="salida" class="form-control txtNormal " />
                                     <div class="invalid-feedback">
                                         Por favor ingrese la hora de salida.
                                     </div>
@@ -250,7 +248,7 @@
 @endsection
 
 @section('title')
-    Administración de Asistencia
+    Marcar Asistencia de la actividad: {{ $actividad->nombre_actividad }}
 @endsection
 
 @section('js')

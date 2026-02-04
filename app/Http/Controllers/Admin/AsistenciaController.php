@@ -6,7 +6,9 @@ use App\Models\Admin\Asistencia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Inscripcion;
+use App\Models\Admin\Actividad;
 use App\Models\Admin\GrupoEntrenamiento;
+use App\Models\Admin\Persona;
 
 class AsistenciaController extends Controller
 {
@@ -52,9 +54,9 @@ class AsistenciaController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate(Asistencia::$rules, Asistencia::$messages);
-        // convertir formato de hora "HH:mm" a "Y-m-d HH:mm:ss"
 
+
+        $request->validate(Asistencia::$rules, Asistencia::$messages);
 
         $asistencia = Asistencia::create($request->all());
 
@@ -132,9 +134,11 @@ class AsistenciaController extends Controller
     }
 
     public function indexMarcado(Request $request)
-
     {
-        return view('admin.asistencia.indexMarcadoAsistencia');
+        $idActividad= request()->input('actividad');
+        $actividad= Actividad::findOrFail($idActividad);
+
+        return view('admin.asistencia.indexMarcadoAsistencia', compact('actividad'));
     }
 
     public function asistenciaEstudiante(Request $request)
@@ -142,24 +146,37 @@ class AsistenciaController extends Controller
 
         $codigo = $request->input('codigo');
 
-        $inscripcion = Inscripcion::getInscripcionCodigo($codigo)->first();
+        $persona= Persona::whereRaw('md5(id_persona)=?',[$codigo])->first();
 
-        if (empty($inscripcion->id_inscripcion)) {
+        if (empty($persona->id_persona)) {
 
             return response()->json([
-                'error' => 'No se encontro la inscripcion del estudiante con el codigo ingresado.'
+                'error' => 'No se encontro la persona con el codigo ingresado.'
             ], 404);
         }
 
 
+        // $inscripcion = Inscripcion::getInscripcionCodigo($codigo)->first();
+
+        // if (empty($inscripcion->id_inscripcion)) {
+
+        //     return response()->json([
+        //         'error' => 'No se encontro la inscripcion del estudiante con el codigo ingresado.'
+        //     ], 404);
+        // }
 
 
-        $asistencia = Asistencia::getAsistenciaActualInscripcion($inscripcion->id_inscripcion)->first();
+
+        $idActividad= $request->input('actividad');
+        $asistencia = Asistencia::where('id_persona_fk',$persona->id_persona)
+            ->where('id_actividad_fk',$idActividad)
+            ->where('fecha_asistencia', now()->format('Y-m-d'))
+            ->first();
 
         if (empty($asistencia)) {
             $datosAsistencia = [
-                'id_inscripcion_fk' => $inscripcion->id_inscripcion,
-                'id_grupo_entrenamiento_fk' => $inscripcion->id_grupo_entrenamiento,
+                'id_persona_fk' => $persona->id_persona,
+                'id_actividad_fk' => $idActividad,
                 'fecha_asistencia' => now()->format('Y-m-d'),
                 'ingreso' => now()->format('H:i'),
                 'estado_asistencia' => 'REGISTRADO',
@@ -174,12 +191,14 @@ class AsistenciaController extends Controller
                     'errors' => $validator->errors()
                 ], 422);
             }
+
+            // $asistencia = Asistencia::create($datosAsistencia);
         }
 
         return response()->json([
             'success' => true,
             'data' => [
-                'inscripcion' => $inscripcion,
+                'persona' => $persona,
                 'asistencia' => $asistencia
             ]
         ]);
@@ -188,9 +207,9 @@ class AsistenciaController extends Controller
     public function asistenciaEstudianteRegistrar(Request $request)
     {
 
-        $idInscripcion = $request->input('idInscripcion');
+        $idPersona = $request->input('idPersona');
 
-        $inscripcion = Inscripcion::findOrfail($idInscripcion);
+        $persona = Persona::findOrfail($idPersona);
 
         $idAsistencia = $request->input('idAsistencia');
 
@@ -216,8 +235,8 @@ class AsistenciaController extends Controller
         }
 
         $datosAsistencia = [
-            'id_inscripcion_fk' => $inscripcion->id_inscripcion,
-            'id_grupo_entrenamiento_fk' => $inscripcion->id_grupo_entrenamiento,
+            'id_persona_fk' => $persona->id_persona,
+            'id_actividad_fk' => $request->input('actividad'),
             'fecha_asistencia' => now()->format('Y-m-d'),
             'ingreso' => now()->format('H:i'),
             'estado_asistencia' => 'REGISTRADO',

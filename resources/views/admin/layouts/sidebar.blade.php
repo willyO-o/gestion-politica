@@ -108,9 +108,9 @@
                                     <a href="{{ route('asistencia.marcado') }}" class="nav-link"
                                         data-key="t-asistencia-estudiante"> Asistencia de  Actividades </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="{{ route("asistencia.index") }}" class="nav-link" data-key="t-asistencia"> Asistencia </a>
-                                </li> --}}
+                                <li class="nav-item">
+                                    <a href="{{ route("actividad.index") }}" class="nav-link" data-key="t-asistencia"> Actividades </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -139,10 +139,7 @@
         </div>
         <!-- Sidebar -->
     </div>
-    @php
-        var_dump($listRoles);
 
-    @endphp
 
     <div class="sidebar-background"></div>
 </div>

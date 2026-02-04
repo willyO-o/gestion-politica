@@ -48,6 +48,7 @@ Route::middleware('auth:api')->group(function () {
     // Rutas de Asistencia
     Route::prefix('asistencia')->group(function () {
         // Registro de asistencia
+        Route::post('/qr', [AsistenciaController::class, 'registrarPorQR'])->name('api.asistencia.qr');
         Route::post('/entrada', [AsistenciaController::class, 'registrarEntrada'])->name('api.asistencia.entrada');
         Route::post('/salida', [AsistenciaController::class, 'registrarSalida'])->name('api.asistencia.salida');
         Route::post('/permiso', [AsistenciaController::class, 'registrarPermiso'])->name('api.asistencia.permiso');

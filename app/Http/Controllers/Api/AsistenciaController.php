@@ -22,6 +22,100 @@ class AsistenciaController extends Controller
     }
 
     /**
+     * Registrar asistencia mediante código QR
+     * POST /api/asistencia/qr
+     */
+    public function registrarPorQR(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'codigo' => 'required|string',
+            'id_actividad_fk' => 'required|integer',
+            'observacion' => 'nullable|string|max:2000',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Datos inválidos',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        // Verificar que la actividad exista
+        $actividad = Actividad::find($request->id_actividad_fk);
+        if (!$actividad) {
+            return response()->json([
+                'success' => false,
+                'message' => 'La actividad no existe o no está disponible',
+                'tipo' => 'actividad_no_encontrada'
+            ], 404);
+        }
+
+        // Buscar la persona que coincida con el código MD5
+        $persona = DB::table('weps_persona')
+            ->whereRaw('MD5(id_persona) = ?', [$request->codigo])
+            ->first();
+
+        if (!$persona) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Código QR inválido o persona no registrada',
+                'tipo' => 'persona_no_encontrada'
+            ], 404);
+        }
+
+        // Verificar si ya existe asistencia registrada para hoy
+        $asistenciaExistente = Asistencia::where('id_actividad_fk', $request->id_actividad_fk)
+            ->where('id_persona_fk', $persona->id_persona)
+            ->whereDate('fecha_asistencia', Carbon::today())
+            ->first();
+
+        if ($asistenciaExistente) {
+            $horaRegistro = Carbon::parse($asistenciaExistente->ingreso)->format('H:i:s');
+            return response()->json([
+                'success' => false,
+                'message' => 'Ya registraste tu asistencia el día de hoy',
+                'tipo' => 'asistencia_duplicada',
+                'data' => [
+                    'hora_entrada' => $horaRegistro,
+                    'fecha' => $asistenciaExistente->fecha_asistencia,
+                    'asistencia' => $asistenciaExistente
+                ]
+            ], 422);
+        }
+
+        // Crear registro de asistencia
+        $asistencia = Asistencia::create([
+            'id_actividad_fk' => $request->id_actividad_fk,
+            'id_persona_fk' => $persona->id_persona,
+            'ingreso' => Carbon::now(),
+            'fecha_asistencia' => Carbon::today(),
+            'observacion' => $request->observacion,
+            'estado_asistencia' => 'PRESENTE',
+            'permiso' => 0,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => '¡Asistencia registrada exitosamente!',
+            'data' => [
+                'asistencia' => $asistencia,
+                'hora_entrada' => Carbon::parse($asistencia->ingreso)->format('H:i:s'),
+                'fecha' => $asistencia->fecha_asistencia,
+                'persona' => [
+                    'nombre' => $persona->nombre ?? '',
+                    'paterno' => $persona->paterno ?? '',
+                    'materno' => $persona->materno ?? '',
+                ],
+                'actividad' => [
+                    'id' => $actividad->id,
+                    'nombre' => $actividad->nombre_actividad
+                ]
+            ]
+        ], 201);
+    }
+
+    /**
      * Registrar entrada (marcado de asistencia)
      * POST /api/asistencia/entrada
      */
@@ -206,13 +300,21 @@ class AsistenciaController extends Controller
             return response()->json(['error' => 'Actividad no encontrada'], 404);
         }
 
-        $asistencias = Asistencia::where('id_actividad_fk', $id_actividad)
-            ->orderBy('fecha_asistencia', 'desc')
-            ->orderBy('ingreso', 'desc')
-            ->paginate(15);
+
+        $filtros = request()->all();
+        $filtros['id_actividad_fk'] = $id_actividad;
+
+        // return  $filtros;
+        $limit = request()->input('size', 15);
+        $page = request()->input('page', 1);
+
+        $data = Asistencia::getListaAsistencias($filtros)
+            ->paginate($limit, ['*'], 'page', $page);
+
+        $asistencias = $data->items();
 
         $estadisticas = [
-            'total' => $asistencias->total(),
+            'total' => $data->total(),
             'con_salida' => Asistencia::where('id_actividad_fk', $id_actividad)
                 ->whereNotNull('salida')->count(),
             'sin_salida' => Asistencia::where('id_actividad_fk', $id_actividad)

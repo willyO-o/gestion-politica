@@ -121,6 +121,20 @@ Authorization: Bearer TU_TOKEN_AQUI
 # ENDPOINTS DE ASISTENCIA
 # ============================================
 
+### Registrar asistencia mediante código QR
+POST http://localhost/control-politico/api/asistencia/qr
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "codigo": "c81e728d9d4c2f636f067f89cc14862c",
+    "id_actividad_fk": 1,
+    "observacion": "Registro por QR"
+}
+
+###
+
 ### Registrar entrada (marcado de asistencia)
 POST http://localhost/control-politico/api/asistencia/entrada
 Content-Type: application/json

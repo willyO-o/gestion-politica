@@ -115,6 +115,8 @@ class Asistencia extends Model  implements Auditable
             ->orderBy('a.id_asistencia', 'desc')
             ->orderBy('a.fecha_asistencia', 'desc');
 
+        $query->where('a.id_actividad_fk', $filtros['id_actividad_fk']);
+
         if (empty($filtros['search']) == false) {
 
             $search = $filtros['search'] ?? '';

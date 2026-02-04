@@ -13,6 +13,7 @@ $(function () {
         'size': 15,
         'search': '',
         '_token': crfToken,
+        'id_actividad_fk': $("#id_actividad_fk").val(),
         'fecha_inicio': start.format('YYYY-MM-DD'),
         'fecha_fin': end.format('YYYY-MM-DD'),
 

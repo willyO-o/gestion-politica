@@ -53,6 +53,19 @@
         }
     </script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17926563417"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-17926563417');
+    </script>
+
     <style>
         /* Estilos base adicionales */
         .clip-diagonal {
@@ -246,7 +259,7 @@
                             de tierra que tú, enfrentó las mismas carencias y decidió prepararse para cambiar esa
                             realidad.
                         </p>
-   
+
                         <p>
                             Como parte del <strong>Movimiento Tercer Sistema (MTS)</strong>, David representa la
                             verdadera renovación. Su trayectoria en la gestión social y su lucha incansable por los

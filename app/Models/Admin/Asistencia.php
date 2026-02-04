@@ -61,6 +61,11 @@ class Asistencia extends Model  implements Auditable
         return $this->belongsTo(Actividad::class, 'id_actividad_fk', 'id');
     }
 
+    public function persona()
+    {
+        return $this->belongsTo(\App\Models\Admin\Persona::class, 'id_persona_fk', 'id_persona');
+    }
+
 
     protected static function boot()
     {

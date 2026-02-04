@@ -1,0 +1,191 @@
+### Prueba de Login con Email
+POST http://localhost/control-politico/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "admin@example.com",
+    "password": "password"
+}
+
+###
+
+### Prueba de Login con Usuario
+POST http://localhost/control-politico/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "login": "admin",
+    "password": "password"
+}
+
+###
+
+### Prueba de Registro
+POST http://localhost/control-politico/api/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "usuario": "testuser",
+    "email": "test@example.com",
+    "password": "password123",
+    "password_confirmation": "password123"
+}
+
+###
+
+### Obtener usuario actual (requiere token)
+GET http://localhost/control-politico/api/auth/me
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Cerrar sesión (requiere token)
+POST http://localhost/control-politico/api/auth/logout
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Refrescar token (requiere token)
+POST http://localhost/control-politico/api/auth/refresh
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+# ============================================
+# ENDPOINTS DE ACTIVIDADES
+# ============================================
+
+### Listar todas las actividades
+GET http://localhost/control-politico/api/actividades
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Listar actividades de hoy
+GET http://localhost/control-politico/api/actividades/hoy
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Ver detalle de una actividad
+GET http://localhost/control-politico/api/actividades/1
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Crear nueva actividad
+POST http://localhost/control-politico/api/actividades
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "nombre_actividad": "Entrenamiento Matutino",
+    "fecha_actividad": "2026-02-05",
+    "descripcion": "Sesión de entrenamiento físico"
+}
+
+###
+
+### Actualizar actividad
+PUT http://localhost/control-politico/api/actividades/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "nombre_actividad": "Entrenamiento Vespertino",
+    "fecha_actividad": "2026-02-05",
+    "descripcion": "Sesión actualizada"
+}
+
+###
+
+### Eliminar actividad
+DELETE http://localhost/control-politico/api/actividades/1
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+# ============================================
+# ENDPOINTS DE ASISTENCIA
+# ============================================
+
+### Registrar entrada (marcado de asistencia)
+POST http://localhost/control-politico/api/asistencia/entrada
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "id_actividad_fk": 1,
+    "id_persona_fk": 1,
+    "observacion": "Llegada puntual"
+}
+
+###
+
+### Registrar salida
+POST http://localhost/control-politico/api/asistencia/salida
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "id_asistencia": 1,
+    "observacion": "Completó la sesión"
+}
+
+###
+
+### Consultar mi registro de hoy
+GET http://localhost/control-politico/api/asistencia/mi-registro-hoy?id_actividad_fk=1&id_persona_fk=1
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Historial de asistencias
+GET http://localhost/control-politico/api/asistencia/historial?id_persona_fk=1&fecha_inicio=2026-02-01&fecha_fin=2026-02-28
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Ver asistencias de una actividad
+GET http://localhost/control-politico/api/asistencia/actividad/1
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###
+
+### Registrar permiso
+POST http://localhost/control-politico/api/asistencia/permiso
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "id_actividad_fk": 1,
+    "id_persona_fk": 1,
+    "observacion": "Motivo médico - certificado presentado"
+}
+
+###
+
+### Obtener estadísticas
+GET http://localhost/control-politico/api/asistencia/estadisticas?id_persona_fk=1&fecha_inicio=2026-02-01&fecha_fin=2026-02-28
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###

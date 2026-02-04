@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\DB;
 use Laravolt\Avatar\Facade as Avatar;
 use Illuminate\Notifications\Notifiable;
 use OwenIt\Auditing\Contracts\Auditable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements Auditable
+class User extends Authenticatable implements Auditable, JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
     use \OwenIt\Auditing\Auditable;
@@ -198,5 +199,25 @@ class User extends Authenticatable implements Auditable
         }
 
         return $nombreArchivo;
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

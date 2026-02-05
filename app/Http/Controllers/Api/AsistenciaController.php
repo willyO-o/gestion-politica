@@ -64,17 +64,16 @@ class AsistenciaController extends Controller
             ], 404);
         }
 
-        // Verificar si ya existe asistencia registrada para hoy
+        // Verificar si ya existe asistencia registrada para esta actividad
         $asistenciaExistente = Asistencia::where('id_actividad_fk', $request->id_actividad_fk)
             ->where('id_persona_fk', $persona->id_persona)
-            ->whereDate('fecha_asistencia', Carbon::today())
             ->first();
 
         if ($asistenciaExistente) {
-            $horaRegistro = Carbon::parse($asistenciaExistente->ingreso)->format('H:i:s');
+            $horaRegistro = $asistenciaExistente->ingreso ? Carbon::parse($asistenciaExistente->ingreso)->format('H:i:s') : 'N/A';
             return response()->json([
                 'success' => false,
-                'message' => 'Ya registraste tu asistencia el día de hoy',
+                'message' => 'Ya tienes un registro de asistencia para esta actividad',
                 'tipo' => 'asistencia_duplicada',
                 'data' => [
                     'hora_entrada' => $horaRegistro,
@@ -84,12 +83,12 @@ class AsistenciaController extends Controller
             ], 422);
         }
 
-        // Crear registro de asistencia
+        // Crear registro de asistencia con la fecha de la actividad
         $asistencia = Asistencia::create([
             'id_actividad_fk' => $request->id_actividad_fk,
             'id_persona_fk' => $persona->id_persona,
             'ingreso' => Carbon::now(),
-            'fecha_asistencia' => Carbon::today(),
+            'fecha_asistencia' => $actividad->fecha_actividad,
             'observacion' => $request->observacion,
             'estado_asistencia' => 'PRESENTE',
             'permiso' => 0,
@@ -131,25 +130,30 @@ class AsistenciaController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Verificar si ya existe asistencia para hoy
+        // Obtener la actividad
+        $actividad = Actividad::find($request->id_actividad_fk);
+        if (!$actividad) {
+            return response()->json(['error' => 'Actividad no encontrada'], 404);
+        }
+
+        // Verificar si ya existe asistencia para esta actividad
         $asistenciaExistente = Asistencia::where('id_actividad_fk', $request->id_actividad_fk)
             ->where('id_persona_fk', $request->id_persona_fk)
-            ->whereDate('fecha_asistencia', Carbon::today())
             ->first();
 
         if ($asistenciaExistente) {
             return response()->json([
-                'error' => 'Ya existe un registro de asistencia para esta actividad hoy',
+                'error' => 'Ya existe un registro de asistencia para esta actividad',
                 'asistencia' => $asistenciaExistente
             ], 422);
         }
 
-        // Crear registro de asistencia
+        // Crear registro de asistencia con la fecha de la actividad
         $asistencia = Asistencia::create([
             'id_actividad_fk' => $request->id_actividad_fk,
             'id_persona_fk' => $request->id_persona_fk,
             'ingreso' => Carbon::now(),
-            'fecha_asistencia' => Carbon::today(),
+            'fecha_asistencia' => $actividad->fecha_actividad,
             'observacion' => $request->observacion,
             'estado_asistencia' => 'PRESENTE',
             'permiso' => 0,
@@ -413,5 +417,38 @@ class AsistenciaController extends Controller
         ];
 
         return response()->json($estadisticas);
+    }
+
+    /**
+     * Eliminar registro de asistencia
+     * DELETE /api/asistencia/{id_asistencia}
+     */
+    public function eliminar($id_asistencia)
+    {
+        $asistencia = Asistencia::find($id_asistencia);
+
+        if (!$asistencia) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Registro de asistencia no encontrado'
+            ], 404);
+        }
+
+        // Guardar información antes de eliminar para la respuesta
+        $info = [
+            'id_asistencia' => $asistencia->id_asistencia,
+            'id_persona_fk' => $asistencia->id_persona_fk,
+            'id_actividad_fk' => $asistencia->id_actividad_fk,
+            'fecha_asistencia' => $asistencia->fecha_asistencia,
+            'hora_entrada' => $asistencia->ingreso ? Carbon::parse($asistencia->ingreso)->format('H:i:s') : null,
+        ];
+
+        $asistencia->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Registro de asistencia eliminado exitosamente',
+            'data' => $info
+        ], 200);
     }
 }

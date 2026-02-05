@@ -58,5 +58,8 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/historial', [AsistenciaController::class, 'historial'])->name('api.asistencia.historial');
         Route::get('/estadisticas', [AsistenciaController::class, 'estadisticas'])->name('api.asistencia.estadisticas');
         Route::get('/actividad/{id_actividad}', [AsistenciaController::class, 'asistenciasPorActividad'])->name('api.asistencia.por-actividad');
+
+        // Eliminar asistencia
+        Route::delete('/{id_asistencia}', [AsistenciaController::class, 'eliminar'])->name('api.asistencia.eliminar');
     });
 });

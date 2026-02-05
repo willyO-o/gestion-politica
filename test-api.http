@@ -203,3 +203,10 @@ Accept: application/json
 Authorization: Bearer TU_TOKEN_AQUI
 
 ###
+
+### Eliminar asistencia
+DELETE http://localhost/control-politico/api/asistencia/1
+Accept: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+###

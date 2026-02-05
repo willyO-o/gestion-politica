@@ -130,7 +130,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin' ,
     Route::get('/listar-dias-entrenamiento-grupo','GrupoEntrenamientoController@getDiasEntrenamiento')->name('listar-dias-entrenamiento');
 });
 
-
+Route::get('/multimedia', [\App\Http\Controllers\PaginaWebController::class, 'multimedia'])->name('multimedia');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'App\Http\Controllers\Admin' , 'middleware' => 'auth'], function () {
 

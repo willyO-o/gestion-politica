@@ -18,14 +18,16 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="#inicio"
+                <a href="{{ route('inicio') }}#inicio"
                     class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Inicio</a>
-                <a href="#historia"
+                <a href="{{ route('inicio') }}#historia"
                     class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Biografía</a>
-                <a href="#propuestas"
+                <a href="{{ route('inicio') }}#propuestas"
                     class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Propuestas</a>
-                <a href="#multimedia"
+                <a href="{{ route('inicio') }}#prensa"
                     class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Prensa</a>
+                <a href="{{ route('multimedia') }}"
+                    class="text-mts-dark hover:text-mts-copper font-medium transition text-sm uppercase tracking-wide">Multimedia</a>
                 <a href="https://whatsapp.com/channel/0029Vb7imk5EQIav20vde90Y" target="_blank"
                     class="bg-mts-copper hover:bg-mts-copperDark text-white px-6 py-2 rounded-full font-bold transition shadow-lg transform hover:-translate-y-0.5 text-sm uppercase tracking-wide">
                     <i class="fab fa-whatsapp mr-2"></i> Únete
@@ -45,14 +47,16 @@
     <div id="mobile-menu"
         class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-t border-gray-100 z-40 transform transition-transform duration-300">
         <div class="px-4 pt-2 pb-6 space-y-2">
-            <a href="#inicio"
+            <a href="{{ route('inicio') }}#inicio"
                 class="block px-3 py-3 text-base font-medium text-mts-green hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-green">Inicio</a>
-            <a href="#historia"
+            <a href="{{ route('inicio') }}#historia"
                 class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Biografía</a>
-            <a href="#propuestas"
+            <a href="{{ route('inicio') }}#propuestas"
                 class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Propuestas</a>
-            <a href="#multimedia"
-                class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Videos</a>
+            <a href="{{ route('inicio') }}#prensa"
+                class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Prensa</a>
+            <a href="{{ route('multimedia') }}"
+                class="block px-3 py-3 text-base font-medium text-mts-dark hover:bg-gray-50 rounded border-l-4 border-transparent hover:border-mts-copper">Multimedia</a>
             <a href="#unete"
                 class="block px-3 py-3 text-base font-bold text-white bg-mts-copper rounded text-center mt-4">Sumarse
                 al Cambio</a>

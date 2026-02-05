@@ -68,6 +68,10 @@ class PaginaWebController extends Controller
         return view('public.sucursales')->with('sucursales', $sucursales)->with('central', $central);
     }
 
+    public function multimedia()
+    {
+        return view('public.multimedia');
+    }
 
     public function detalleInscripcion($codigo)
     {

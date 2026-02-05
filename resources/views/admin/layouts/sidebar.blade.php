@@ -59,10 +59,7 @@
                                     <a href="{{ route('categorias.index') }}" class="nav-link" data-key="t-sucursales">
                                         Distritos </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('grupos-entrenamientos.index') }}" class="nav-link"
-                                        data-key="t-sucursales"> Bloques Políticos </a>
-                                </li>
+
 
                             </ul>
                         </div>
@@ -76,27 +73,41 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('inscripciones.index') }}" aria-expanded="false">
-                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-inscripciones">Inscripciones </span>
+                        <a class="nav-link menu-link" href="{{ route('grupos-entrenamientos.index') }}" aria-expanded="false">
+                            <i class="mdi mdi-home"></i> <span data-key="t-bloque-politico">Bloques Políticos</span>
                         </a>
                     </li>
+                    {{-- <li class="nav-item">
+                        <a href="{{ route('grupos-entrenamientos.index') }}" class="nav-link" data-key="t-sucursales">
+                            Bloques Políticos </a>
+                    </li> --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('inscripciones.index') }}" aria-expanded="false">
+                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-inscripciones">Inscripciones
+                            </span>
+                        </a>
+                    </li> --}}
                     {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('categorias.index') }}" aria-expanded="false">
                         <i class="mdi mdi-format-list-bulleted"></i> <span data-key="t-categorias">Categorías</span>
                     </a>
                 </li> --}}
-                {{-- <li class="nav-item">
+                    {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('seguimientos.index') }}" aria-expanded="false">
                         <i class="mdi mdi-format-list-bulleted"></i> <span data-key="t-seguimientos">Seguimientos</span>
                     </a>
                 </li> --}}
-
-
                 @endif
 
 
                 @if ($listRoles == 'ADMINISTRADOR' || $listRoles == 'ENTRENADOR' || $listRoles == 'TÉCNICO')
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('actividad.index') }}" aria-expanded="false">
+                            <i class="mdi mdi-home"></i> <span data-key="t-actividad">Actividades y Asistencia</span>
+                        </a>
+                    </li>
+
+                    {{-- <li class="nav-item">
                         <a class="nav-link menu-link" href="#asistencia" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="asistencia">
                             <i class=" mdi mdi-cog"></i>
@@ -106,14 +117,15 @@
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="{{ route('asistencia.marcado') }}" class="nav-link"
-                                        data-key="t-asistencia-estudiante"> Asistencia de  Actividades </a>
+                                        data-key="t-asistencia-estudiante"> Asistencia de Actividades </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route("actividad.index") }}" class="nav-link" data-key="t-asistencia"> Actividades </a>
+                                    <a href="{{ route('actividad.index') }}" class="nav-link" data-key="t-asistencia">
+                                        Actividades </a>
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                 @endif
 
                 @if ($listRoles == 'ADMINISTRADOR')

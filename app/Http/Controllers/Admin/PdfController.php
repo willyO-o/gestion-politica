@@ -81,8 +81,13 @@ class PdfController extends Controller
         // $inscripcion = Inscripcion::find($id);
 
         // dd($datos['inscripcion']->grupoEntrenamiento);
+        if($persona->id_tipo_persona_fk == 5){
+            $this->reportes->credencialInscripcionConcejal($datos);
 
-        $this->reportes->credencialInscripcion($datos);
+        }else {
+            $this->reportes->credencialInscripcion($datos);
+        }
+
 
         exit;
     }

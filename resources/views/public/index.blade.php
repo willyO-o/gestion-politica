@@ -250,7 +250,7 @@
                     Escucha de viva voz por qué nuestro plan es diferente. No se trata de colores políticos, se
                     trata del futuro de nuestros hijos. Un minuto que cambiará tu perspectiva.
                 </p>
-                <a href="https://youtube.com" target="_blank"
+                <a href="https://www.youtube.com/channel/UCbEmFFg1q9kdnykfOCMzGdw" target="_blank"
                     class="inline-flex items-center text-white font-bold hover:text-mts-copper transition">
                     Ver canal oficial de YouTube <i class="fas fa-external-link-alt ml-2"></i>
                 </a>

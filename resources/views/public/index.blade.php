@@ -674,4 +674,47 @@
     </div>
 </section>
 
+<!-- BOTONES FLOTANTES DE REDES SOCIALES -->
+<div class="fixed left-6 top-[40%] -translate-y-1/2 z-50 flex flex-col gap-4" data-aos="fade-right" data-aos-delay="500">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/alcaldevaliente" target="_blank" rel="noopener noreferrer"
+        class="group flex items-center justify-center w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl relative overflow-hidden"
+        aria-label="Síguenos en Facebook">
+        <div class="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></div>
+        <i class="fab fa-facebook-f text-xl relative z-10"></i>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/channel/UCbEmFFg1q9kdnykfOCMzGdw" target="_blank" rel="noopener noreferrer"
+        class="group flex items-center justify-center w-14 h-14 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl relative overflow-hidden"
+        aria-label="Suscríbete en YouTube">
+        <div class="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></div>
+        <i class="fab fa-youtube text-xl relative z-10"></i>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@davaflor" target="_blank" rel="noopener noreferrer"
+        class="group flex items-center justify-center w-14 h-14 bg-black hover:bg-gray-900 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl relative overflow-hidden border-2 border-white/20"
+        aria-label="Síguenos en TikTok">
+        <div class="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></div>
+        <i class="fab fa-tiktok text-xl relative z-10"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/david_vargas_alcalde" target="_blank" rel="noopener noreferrer"
+        class="group flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl relative overflow-hidden"
+        aria-label="Síguenos en Instagram">
+        <div class="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></div>
+        <i class="fab fa-instagram text-xl relative z-10"></i>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://whatsapp.com/channel/0029Vb7imk5EQIav20vde90Y" target="_blank" rel="noopener noreferrer"
+        class="group flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl relative overflow-hidden animate-pulse"
+        aria-label="Contáctanos por WhatsApp">
+        <div class="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></div>
+        <i class="fab fa-whatsapp text-xl relative z-10"></i>
+    </a>
+</div>
+
 @endsection

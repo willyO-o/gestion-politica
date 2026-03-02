@@ -406,12 +406,92 @@
     </section> --}}
 <!-- EL PLAN DE GOBIERNO (GRID DETALLADO) -->
 
-<section class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-        <h2 class="font-display font-bold text-3xl text-mts-dark mb-12" data-aos="fade-up">
-            Unete a nuestras Casas de Campaña
-        </h2>
+<section id="videos" class="py-20 bg-gray-50 relative overflow-hidden">
+    <!-- Decoración sutil de fondo -->
+    <div class="absolute top-0 right-0 w-72 h-72 bg-mts-green/5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-56 h-56 bg-mts-copper/5 rounded-full -translate-x-1/3 translate-y-1/3"></div>
 
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-14" data-aos="fade-up">
+            <h4 class="text-mts-copper font-bold tracking-widest uppercase mb-2 text-sm">Multimedia</h4>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-mts-dark mb-3">Videos Destacados</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-mts-green to-mts-copper mx-auto rounded-full"></div>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Conoce nuestras propuestas, actividades y el compromiso de David Vargas con El Alto a través de estos videos.</p>
+        </div>
+
+        <!-- Video Principal (destacado) -->
+        <div class="mb-10" data-aos="zoom-in">
+            <div class="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 bg-black group">
+                <div class="aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/pPD5Fd4_eOw" title="Video Destacado - David Vargas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de videos secundarios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Video 2 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="0">
+                <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-black hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/V-uMyKPiNQ4" title="Video David Vargas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-black hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/PX3o_NEedQA" title="Video David Vargas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-black hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/QlkoMRs8_Cw" title="Video David Vargas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="300">
+                <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200 bg-black hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/iyhvgb4XRnY" title="Video David Vargas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Short destacado -->
+        <div class="mt-10 flex justify-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="relative max-w-xs w-full">
+                <div class="text-center mb-4">
+                    <span class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+                        <i class="fab fa-youtube"></i> Short Viral
+                    </span>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-200 bg-black hover:shadow-xl transition duration-300 mx-auto" style="max-width: 315px;">
+                    <div class="relative" style="padding-bottom: 177.78%;">
+                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/2fH7vUp-vig" title="Short David Vargas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón canal YouTube -->
+        <div class="text-center mt-12" data-aos="fade-up">
+            <a href="https://www.youtube.com/channel/UCbEmFFg1q9kdnykfOCMzGdw" target="_blank"
+                class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-1 hover:shadow-2xl text-lg">
+                <i class="fab fa-youtube text-2xl"></i> Suscríbete a nuestro canal
+                <i class="fas fa-external-link-alt text-sm opacity-70"></i>
+            </a>
+        </div>
     </div>
 </section>
 

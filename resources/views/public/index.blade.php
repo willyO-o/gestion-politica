@@ -81,7 +81,7 @@
             <!-- Imagen Historia -->
             <div class="relative" data-aos="fade-right">
                 <div class="absolute top-4 -left-4 w-full h-full border-2 border-mts-green rounded-xl z-0"></div>
-                <img src="/img/candidato/IMG5.jpg" alt="David Vargas con el pueblo"
+                <img src="/img/candidato/IMG6.jpeg" alt="David Vargas con el pueblo"
                     class="relative z-10 rounded-xl shadow-2xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition duration-500">
                 <div
                     class="absolute -bottom-6 -right-6 bg-white p-4 shadow-xl rounded-lg z-20 max-w-xs border-l-4 border-mts-copper">
@@ -152,86 +152,139 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Pilar 1: Seguridad -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(0)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="0">
-                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-shield-alt text-red-600 text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Seguridad</h4>
-                <p class="text-sm text-gray-600">Más patrullaje, iluminación pública, control de bares clandestinos
+                <p class="text-sm text-gray-600 mb-4">Más patrullaje, iluminación pública, control de bares clandestinos
                     y trabajo conjunto con la Policía.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar 2: Proyectos Estratégicos -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(1)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="100">
-                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-city text-blue-600 text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Proyectos Estratégicos</h4>
-                <p class="text-sm text-gray-600">Carta orgánica, embovedado de ríos, autódromo, banco de sangre y
+                <p class="text-sm text-gray-600 mb-4">Carta orgánica, embovedado de ríos, autódromo, banco de sangre y
                     avenidas concluidas.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar 3: Salud -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(2)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="200">
-                <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-heartbeat text-teal-600 text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Salud</h4>
-                <p class="text-sm text-gray-600">Postas de salud, farmacias populares y centros de rehabilitación
+                <p class="text-sm text-gray-600 mb-4">Postas de salud, farmacias populares y centros de rehabilitación
                     accesibles.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar 4: Educación -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(3)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="300">
-                <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-graduation-cap text-yellow-600 text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Educación</h4>
-                <p class="text-sm text-gray-600">Desayuno escolar nutritivo y aulas dignas para todos.</p>
+                <p class="text-sm text-gray-600 mb-4">Desayuno escolar nutritivo y aulas dignas para todos.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar 5: Medio Ambiente -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(4)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="400">
-                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-leaf text-mts-green text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Medio Ambiente</h4>
-                <p class="text-sm text-gray-600">Industrialización de la basura y arborización urbana.</p>
+                <p class="text-sm text-gray-600 mb-4">Industrialización de la basura y arborización urbana.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar 6: Bienestar Animal -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(5)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="500">
-                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-paw text-purple-600 text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Bienestar Animal</h4>
-                <p class="text-sm text-gray-600">Albergue hospital y cementerio municipal para mascotas.</p>
+                <p class="text-sm text-gray-600 mb-4">Albergue hospital y cementerio municipal para mascotas.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar 7: Ayuda Solidaria -->
-            <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300"
+            <div onclick="abrirModalPilar(6)" class="cursor-pointer group/card p-6 border border-gray-100 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition duration-300 relative"
                 data-aos="fade-up" data-aos-delay="600">
-                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-hands-helping text-mts-copper text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2 text-gray-800">Ayuda Solidaria</h4>
-                <p class="text-sm text-gray-600">Transporte gratuito para poblaciones vulnerables y guarderías
+                <p class="text-sm text-gray-600 mb-4">Transporte gratuito para poblaciones vulnerables y guarderías
                     distritales.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-mts-copper opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
             <!-- Pilar Extra (Rostro Humano) -->
-            <div class="p-6 bg-gradient-to-br from-mts-green to-green-800 text-white rounded-xl shadow-lg transform md:scale-105"
+            <div onclick="abrirModalPilar(7)" class="cursor-pointer p-6 bg-gradient-to-br from-mts-green to-green-800 text-white rounded-xl shadow-lg transform md:scale-105 hover:shadow-2xl transition duration-300 group/card relative"
                 data-aos="zoom-in" data-aos-delay="700">
-                <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4 group-hover/card:scale-110 transition duration-300">
                     <i class="fas fa-heart text-white text-xl"></i>
                 </div>
                 <h4 class="font-display font-bold text-lg mb-2">Rostro Humano</h4>
-                <p class="text-sm opacity-90">El centro de todo es la persona. Trato digno en oficinas públicas
+                <p class="text-sm opacity-90 mb-4">El centro de todo es la persona. Trato digno en oficinas públicas
                     garantizado.</p>
+                <span class="inline-flex items-center gap-1 text-xs font-bold text-white/70 opacity-0 group-hover/card:opacity-100 transition duration-300"><i class="fas fa-plus-circle"></i> Ver proyectos</span>
             </div>
         </div>
     </div>
 </section>
 
+
+<!-- MODAL DE PILARES DEL CAMBIO -->
+<div id="pilarModal" class="fixed inset-0 z-[100] pilar-modal-hidden" onclick="cerrarModalPilarBackdrop(event)">
+    <!-- Fondo oscuro -->
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm pilar-modal-backdrop"></div>
+
+    <!-- Contenedor del modal -->
+    <div class="relative z-10 flex items-center justify-center w-full h-full p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden pilar-modal-content relative" onclick="event.stopPropagation()">
+            <!-- Header del modal -->
+            <div id="pilarModalHeader" class="sticky top-0 z-20 px-8 py-6 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div id="pilarModalIcon" class="w-14 h-14 rounded-full flex items-center justify-center shrink-0">
+                            <!-- Icono dinámico -->
+                        </div>
+                        <div>
+                            <h3 id="pilarModalTitle" class="font-display font-bold text-2xl md:text-3xl text-mts-dark"></h3>
+                            <p id="pilarModalSubtitle" class="text-sm text-gray-500 mt-1"></p>
+                        </div>
+                    </div>
+                    <button onclick="cerrarModalPilar()" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-red-100 flex items-center justify-center text-gray-500 hover:text-red-500 transition duration-200 shrink-0 ml-4">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cuerpo del modal con proyectos -->
+            <div id="pilarModalBody" class="px-8 py-6 overflow-y-auto" style="max-height: calc(90vh - 110px);">
+                <!-- Descripción general -->
+                <p id="pilarModalDesc" class="text-gray-600 text-base leading-relaxed mb-8 border-l-4 border-mts-copper pl-4"></p>
+
+                <!-- Grid de proyectos (se llena dinámicamente) -->
+                <div id="pilarModalProyectos" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Los proyectos se inyectan aquí por JavaScript -->
+                </div>
+
+                <!-- Nota al pie -->
+                <div id="pilarModalFooterNote" class="mt-8 pt-6 border-t border-gray-100 text-center">
+                    <p class="text-xs text-gray-400"><i class="fas fa-info-circle mr-1"></i> Los proyectos se irán actualizando conforme avance la planificación técnica.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- SECCIÓN MULTIMEDIA / VIDEO (NUEVA) -->
 <section id="prensa" class="py-20 bg-mts-dark relative overflow-hidden">
